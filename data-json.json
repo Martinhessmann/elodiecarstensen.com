@@ -1,0 +1,103 @@
+{
+  "projects": [
+    {
+      "id": "absence-of-promised-safety",
+      "name": "Absence of Promised Safety",
+      "images": [
+        {
+          "id": "aos1",
+          "src": "/images/absence-of-promised-safety/image1.jpg",
+          "highlight": {
+            "x": 0.2,
+            "y": 0.3,
+            "width": 0.4,
+            "height": 0.2,
+            "text": "Exploring vulnerability as strength"
+          },
+          "nodes": [
+            { "x": 0.5, "y": 0.5, "label": "Custom fabric" },
+            { "x": 0.7, "y": 0.3, "label": "Helix structure" }
+          ]
+        },
+        {
+          "id": "aos2",
+          "src": "/images/absence-of-promised-safety/image2.jpg",
+          "highlight": {
+            "x": 0.3,
+            "y": 0.4,
+            "width": 0.3,
+            "height": 0.3,
+            "text": "Interplay of light and shadow"
+          },
+          "nodes": [
+            { "x": 0.6, "y": 0.2, "label": "Reflective material" },
+            { "x": 0.8, "y": 0.7, "label": "Organic form" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "des-nachtmahrs-schmetterlinge",
+      "name": "Des Nachtmahr's Schmetterlinge",
+      "images": [
+        {
+          "id": "dns1",
+          "src": "/images/des-nachtmahrs-schmetterlinge/image1.jpg",
+          "highlight": {
+            "x": 0.1,
+            "y": 0.2,
+            "width": 0.5,
+            "height": 0.4,
+            "text": "Nocturnal butterfly inspiration"
+          },
+          "nodes": [
+            { "x": 0.3, "y": 0.6, "label": "Wing texture" },
+            { "x": 0.7, "y": 0.4, "label": "Iridescent effect" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alluvial",
+      "name": "Alluvial",
+      "images": [
+        {
+          "id": "al1",
+          "src": "/images/alluvial/image1.jpg",
+          "highlight": {
+            "x": 0.4,
+            "y": 0.3,
+            "width": 0.2,
+            "height": 0.5,
+            "text": "Fluid dynamics in fabric"
+          },
+          "nodes": [
+            { "x": 0.2, "y": 0.7, "label": "Flow patterns" },
+            { "x": 0.8, "y": 0.5, "label": "Translucent layers" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "contact",
+      "name": "Contact",
+      "images": [
+        {
+          "id": "ct1",
+          "src": "/images/contact/image1.jpg",
+          "highlight": {
+            "x": 0.5,
+            "y": 0.5,
+            "width": 0.3,
+            "height": 0.3,
+            "text": "Intersection of form and space"
+          },
+          "nodes": [
+            { "x": 0.2, "y": 0.3, "label": "Negative space" },
+            { "x": 0.8, "y": 0.7, "label": "Tactile surface" }
+          ]
+        }
+      ]
+    }
+  ]
+}
