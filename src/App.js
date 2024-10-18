@@ -15,7 +15,9 @@ const App = () => {
 
   useEffect(() => {
     setProjects(data.projects);
-    setCurrentProject(data.projects[0]);
+    if (data.projects.length > 0 && !currentProject) {
+      setCurrentProject(data.projects[0]);
+    }
   }, []);
 
   const toggleMenu = () => setShowMenu(!showMenu);
@@ -26,6 +28,12 @@ const App = () => {
     setShowMenu(false);
   };
 
+  const handleHeaderClick = () => {
+    if (!showMenu) {
+      setShowMenu(true);
+    }
+  };
+
   const showHeader = location.pathname !== '/';
 
   return (
@@ -33,14 +41,20 @@ const App = () => {
       {showHeader && (
         <Header
           onLogoClick={toggleMenu}
-          projectName={currentProject?.name}
+          onHeaderClick={handleHeaderClick}
+          project={currentProject}
+          isMenuOpen={showMenu}
         />
       )}
-      <NavigationMenu
-        isOpen={showMenu}
-        onClose={toggleMenu}
-        onSelectProject={handleProjectSelect}
-      />
+      {showMenu && (
+        <NavigationMenu
+          isOpen={showMenu}
+          onClose={toggleMenu}
+          onSelectProject={handleProjectSelect}
+          projects={projects}
+          currentProject={currentProject}
+        />
+      )}
       <main className={showHeader ? "main-content with-header" : "main-content"}>
         <Routes>
           <Route path="/" element={

@@ -2,7 +2,8 @@
   "projects": [
     {
       "id": "absence-of-promised-safety",
-      "name": "Absence of Promised Safety",
+      "name": "ABSENCE OF PROMISED SAFETY",
+      "season": "SS25",
       "images": [
         {
           "id": "aos1",
@@ -143,7 +144,8 @@
     },
     {
       "id": "des-nachtmahrs-schmetterlinge",
-      "name": "Des Nachtmahr's Schmetterlinge",
+      "name": "DES NACHTMAHR'S SCHMETTERLINGE",
+      "season": "SS24",
       "images": [
         {
           "id": "dns1",
@@ -164,7 +166,8 @@
     },
     {
       "id": "alluvial",
-      "name": "Alluvial",
+      "name": "ALLUVIAL",
+      "season": "SS23",
       "images": [
         {
           "id": "al1",

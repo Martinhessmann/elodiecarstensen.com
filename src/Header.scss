@@ -7,29 +7,77 @@
   right: 0;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 8px 14px;
-  gap: 2px;
   height: 76px;
-  background-color: transparent;
-  filter: drop-shadow(0px 6px 38px rgba(255, 254, 254, 0.1));
-  border-radius: 30px 30px 0px 0px;
-  z-index: 10;
+  background-color: transparent; // Remove background color
+  z-index: 20;
   cursor: pointer;
 }
 
 .header-logo {
   width: 3rem;
   height: 3rem;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
-.header-title {
-  @include font-small;
+.header-project-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 1px;
+  height: 26.5px;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.project-name {
+  font-family: 'SF Mono', monospace;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 100%;
+  text-align: right;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: $color-white;
 }
 
-.header-project-name {
-  @include font-small;
+.project-separator {
+  width: 12.6px;
+  height: 26.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
   color: $color-white;
+}
+
+.project-season {
+  width: 27px;
+  height: 10px;
+  font-family: 'SF Mono', monospace;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 100%;
+  display: flex;
+  align-items: flex-end;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $color-white;
+}
+
+.header.menu-open {
+  background-color: $color-background;
 }
