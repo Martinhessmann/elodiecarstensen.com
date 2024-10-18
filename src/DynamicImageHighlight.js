@@ -57,4 +57,10 @@ const DynamicImageHighlight = ({ image, highlightData, nodeData }) => {
   );
 };
 
+DynamicImageHighlight.defaultProps = {
+  image: '',
+  highlightData: null,
+  nodeData: [],
+};
+
 export default DynamicImageHighlight;

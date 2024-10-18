@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import DynamicImageHighlight from './DynamicImageHighlight';
+import { getAssetUrl } from './assetUtils';
+import data from './data.json';
 
 const Gallery = ({ project, onLogoClick }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -10,6 +12,14 @@ const Gallery = ({ project, onLogoClick }) => {
   };
 
   if (!project) return null;
+
+  const projects = data.projects.map(project => ({
+    ...project,
+    images: project.images.map(image => ({
+      ...image,
+      src: getAssetUrl(`images/${image.src}`)
+    }))
+  }));
 
   return (
     <div className="h-screen overflow-y-scroll" onScroll={handleScroll}>
