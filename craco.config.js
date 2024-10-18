@@ -10,7 +10,9 @@ module.exports = {
   webpack: {
     configure: (webpackConfig) => {
       const fileLoaderRule = webpackConfig.module.rules.find(rule => rule.test && rule.test.test('.svg'));
-      fileLoaderRule.exclude = /\.svg$/;
+      if (fileLoaderRule) {
+        fileLoaderRule.exclude = /\.svg$/;
+      }
 
       webpackConfig.module.rules.push({
         test: /\.svg$/,

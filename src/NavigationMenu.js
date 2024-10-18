@@ -1,30 +1,41 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import data from './data.json';
 
-const NavigationMenu = ({ isOpen, onClose, onSelectProject, projects }) => {
+const NavigationMenu = ({ isOpen, onClose, onSelectProject }) => {
+  const menuVariants = {
+    closed: { x: '-100%' },
+    open: { x: 0 },
+  };
+
   return (
-    <motion.div
+    <motion.nav
       className="fixed inset-y-0 left-0 w-64 bg-black text-white p-5 z-20"
-      initial={{ x: '-100%' }}
-      animate={{ x: isOpen ? 0 : '-100%' }}
-      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        width: '16rem', // 64px
+      }}
+      initial="closed"
+      animate={isOpen ? "open" : "closed"}
+      variants={menuVariants}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
     >
-      <button onClick={onClose} className="absolute top-5 right-5">X</button>
-      <h2 className="text-xl mb-5">Projects</h2>
-      {projects.map((project) => (
-        <div
-          key={project.id}
-          className="mb-3 cursor-pointer hover:text-gray-300"
-          onClick={() => {
-            onSelectProject(project.id);
-            onClose();
-          }}
-        >
-          <h3>{project.name}</h3>
-          <p className="text-sm text-gray-400">{project.images.length} images</p>
-        </div>
-      ))}
-    </motion.div>
+      <button className="absolute top-5 right-5" onClick={onClose}>X</button>
+      <ul className="list-none p-0 mt-16"> {/* Add margin-top to account for header */}
+        {data.projects.map((project) => (
+          <li
+            key={project.id}
+            className="mb-3 cursor-pointer hover:text-gray-300"
+            onClick={() => onSelectProject(project.id)}
+          >
+            <h3>{project.name}</h3>
+          </li>
+        ))}
+      </ul>
+    </motion.nav>
   );
 };
 

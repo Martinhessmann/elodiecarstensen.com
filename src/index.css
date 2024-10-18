@@ -1,8 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Your custom styles here */
+/* Your custom styles go here */
 
 @font-face {
     font-family: 'SF Mono';
@@ -72,10 +68,15 @@ body, html {
 
 .font-mono {
   font-family: 'SF Mono', monospace;
+  letter-spacing: 0.05em;
 }
 
 .font-normal {
   font-weight: normal;
+}
+
+.tracking-wider {
+  letter-spacing: 0.1em;
 }
 
 /* Add more utility classes as needed */

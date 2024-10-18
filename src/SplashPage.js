@@ -1,48 +1,47 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { images } from './assetUtils';
+import { getAssetUrl } from './assetUtils';
+import './SplashPage.css';
 
 const SplashPage = ({ onEnter }) => {
+  const logoUrl = getAssetUrl('logo.svg');
+  const splashUrl = getAssetUrl('splash.jpg');
   const navigate = useNavigate();
-  const landscapeRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (landscapeRef.current) {
-        landscapeRef.current.style.transform = `translateX(-${window.scrollX}px)`;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    onEnter();
   }, []);
 
   const handleEnter = () => {
-    onEnter();
     navigate('/gallery');
   };
 
   return (
-    <div className="relative w-full h-screen overflow-x-scroll overflow-y-hidden">
-      <div
-        ref={landscapeRef}
-        className="absolute top-0 left-0 w-[300vw] h-full bg-cover bg-center"
-        style={{ backgroundImage: `url(${images.splash})` }}
-      ></div>
-      <div className="absolute top-0 left-0 w-full h-full bg-white bg-opacity-20 backdrop-blur-lg">
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4/5 h-3/5 bg-transparent" style={{ boxShadow: '0 0 0 1000px rgba(255,255,255,0.2)' }}></div>
-      </div>
-      <div className="absolute top-5 left-1/2 transform -translate-x-1/2 text-2xl text-white">
-        <img src={images.logo} alt="Logo" />
-      </div>
-      <div className="absolute bottom-12 right-12 text-right text-white">
-        <p>Welcome to the future</p>
-        <button
-          onClick={handleEnter}
-          className="mt-5 px-5 py-2 bg-transparent border border-white text-white hover:bg-white hover:text-black transition-colors cursor-pointer"
-        >
-          ENTER
-        </button>
+    <div className="relative h-screen w-full overflow-x-auto">
+      <div className="absolute w-[300vw] h-full" style={{ backgroundImage: `url(${splashUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="relative h-full w-screen">
+          <img src={logoUrl} alt="Elodie Carstensen Logo" className="absolute top-8 left-1/2 transform -translate-x-1/2 w-16" />
+          <h1 className="absolute top-24 left-1/2 transform -translate-x-1/2 text-white text-3xl font-mono tracking-wider">ELODIE CARSTENSEN</h1>
+
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-[70vh] border border-white">
+            <img src={splashUrl} alt="Model" className="w-full h-full object-cover object-top" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 text-white text-xs font-mono bg-black bg-opacity-50">
+              <p>
+                STEP INTO A WORLD WHERE VULNERABILITY BECOMES ARMOR AND FLUIDITY DEFIES SOCIETAL CONSTRUCTS. ELODIE CARSTENSEN INVITES YOU TO EXPLORE ABSENCE OF PROMISED SAFETY, A SPACE WHERE CREATURES, ARTIFACTS, AND DESIGNS COALESCE, EACH PIECE CHALLENGING THE CONVENTIONS OF IDENTITY AND STRENGTH.
+              </p>
+            </div>
+          </div>
+
+          <motion.button
+            onClick={handleEnter}
+            className="splash-enter-button"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            ENTER /
+          </motion.button>
+        </div>
       </div>
     </div>
   );

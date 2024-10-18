@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import SplashPage from './SplashPage';
 import Gallery from './Gallery';
 import NavigationMenu from './NavigationMenu';
+import Header from './Header';
 import data from './data.json';
 
 const App = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [currentProject, setCurrentProject] = useState(null);
   const [projects, setProjects] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     setProjects(data.projects);
@@ -23,28 +25,31 @@ const App = () => {
     setShowMenu(false);
   };
 
+  const showHeader = location.pathname !== '/';
+
   return (
-    <Router>
-      <div className="app">
-        <NavigationMenu
-          isOpen={showMenu}
-          onClose={toggleMenu}
-          onSelectProject={handleProjectSelect}
-          projects={projects}
-        />
+    <div className="app" style={{ position: 'relative' }}>
+      {showHeader && <Header onLogoClick={toggleMenu} />}
+      <NavigationMenu
+        isOpen={showMenu}
+        onClose={toggleMenu}
+        onSelectProject={handleProjectSelect}
+      />
+      <main className={showHeader ? "main-content with-header" : "main-content"}>
         <Routes>
           <Route path="/" element={
-            <SplashPage onEnter={() => handleProjectSelect(projects[0]?.id)} />
+            <SplashPage
+              onEnter={() => handleProjectSelect(projects[0]?.id)}
+            />
           } />
           <Route path="/gallery" element={
             <Gallery
               project={currentProject}
-              onLogoClick={toggleMenu}
             />
           } />
         </Routes>
-      </div>
-    </Router>
+      </main>
+    </div>
   );
 };
 
