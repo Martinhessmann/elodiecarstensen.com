@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import DynamicImageHighlight from './DynamicImageHighlight';
 import { getAssetUrl } from './assetUtils';
 import data from './data.json';
+import './Gallery.css';
 
 const Gallery = ({ project, onLogoClick }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -13,22 +14,23 @@ const Gallery = ({ project, onLogoClick }) => {
 
   if (!project) return null;
 
-  const projects = data.projects.map(project => ({
+  // Update this part to use getAssetUrl for constructing image paths
+  const projectWithCorrectImagePaths = {
     ...project,
     images: project.images.map(image => ({
       ...image,
-      src: getAssetUrl(`images/${image.src}`)
+      src: getAssetUrl(`${image.src}`)
     }))
-  }));
+  };
 
   return (
-    <div className="h-screen overflow-y-scroll" onScroll={handleScroll}>
-      <div className="sticky top-0 z-10 flex justify-between items-center p-5 bg-black bg-opacity-50 text-white">
-        <div onClick={onLogoClick} className="cursor-pointer">ELODIE CARSTENSEN</div>
+    <div className="gallery" onScroll={handleScroll}>
+      <div className="gallery-header">
+        <div onClick={onLogoClick} className="gallery-logo">ELODIE CARSTENSEN</div>
         <div>{project.name}</div>
       </div>
-      {project.images.map((image, index) => (
-        <div key={image.id} className="h-screen">
+      {projectWithCorrectImagePaths.images.map((image, index) => (
+        <div key={image.id} className="gallery-image-container">
           <DynamicImageHighlight
             image={image.src}
             highlightData={image.highlight}
@@ -36,11 +38,11 @@ const Gallery = ({ project, onLogoClick }) => {
           />
         </div>
       ))}
-      <div className="fixed right-5 top-1/2 transform -translate-y-1/2">
-        {project.images.map((_, index) => (
+      <div className="gallery-navigation">
+        {projectWithCorrectImagePaths.images.map((_, index) => (
           <div
             key={index}
-            className={`w-2 h-2 my-2 rounded-full ${index === currentIndex ? 'bg-white' : 'bg-gray-500'}`}
+            className={`gallery-nav-dot ${index === currentIndex ? 'active' : ''}`}
           ></div>
         ))}
       </div>

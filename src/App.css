@@ -1,0 +1,12 @@
+.app {
+  position: relative;
+}
+
+.main-content {
+  /* Add any necessary styles for the main content area */
+}
+
+.main-content.with-header {
+  padding-top: 5rem; /* Adjust based on your header height */
+}
+

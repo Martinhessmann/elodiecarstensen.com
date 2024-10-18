@@ -5,6 +5,7 @@ import Gallery from './Gallery';
 import NavigationMenu from './NavigationMenu';
 import Header from './Header';
 import data from './data.json';
+import './App.css';
 
 const App = () => {
   const [showMenu, setShowMenu] = useState(false);
