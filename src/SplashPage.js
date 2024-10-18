@@ -17,11 +17,9 @@ const SplashPage = ({ onEnter }) => {
   return (
     <div className="splash-container">
       <div className="splash-scroll-container">
-        <div className="splash-background">
-          <div
-            className="splash-background-image"
-            style={{ backgroundImage: `url(${splashUrl})` }}
-          ></div>
+        <div className="splash-background"
+          style={{ backgroundImage: `url(${splashUrl})` }}
+        >
         </div>
       </div>
       <div className="splash-glass-effect"></div>

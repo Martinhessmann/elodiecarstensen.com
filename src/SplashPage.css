@@ -10,7 +10,9 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  overflow-x: scroll;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
 }
@@ -20,11 +22,10 @@
 }
 
 .splash-background {
-  position: absolute;
-  height: 100%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  display: inline-block;
+  background-size: cover;
+  background-position: cover;
+  background-repeat: no-repeat;
 }
 
 .splash-background::before {
@@ -35,14 +36,18 @@
   height: 100vh;
 }
 
-.splash-background-image {
+.splash-content {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center;
+  pointer-events: none; /* This allows clicks to pass through to the scroll container */
+}
+
+/* Add pointer-events back to the children of splash-content */
+.splash-content .splash-enter-button{
+  pointer-events: auto;
 }
 
 .splash-glass-effect {
@@ -52,17 +57,7 @@
   background: rgba(217, 217, 217, 0.01);
   border: 0.5px solid #FFFFFF;
   backdrop-filter: blur(7.5px);
-}
-
-.splash-content {
-  position: relative;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10% 5%;
-  box-sizing: border-box;
+  pointer-events: none;
 }
 
 .splash-logo-name {
