@@ -20,7 +20,9 @@ const App = () => {
     }
   }, []);
 
-  const toggleMenu = () => setShowMenu(!showMenu);
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
 
   const handleProjectSelect = (projectId) => {
     const selected = projects.find(p => p.id === projectId);
@@ -38,24 +40,21 @@ const App = () => {
 
   return (
     <div className="app">
-      {showHeader && (
-        <Header
-          onLogoClick={toggleMenu}
-          onHeaderClick={handleHeaderClick}
-          project={currentProject}
-          isMenuOpen={showMenu}
-        />
-      )}
+      <Header
+        onLogoClick={toggleMenu}
+        onTitleClick={toggleMenu}
+        project={currentProject}
+        isMenuOpen={showMenu}
+      />
       {showMenu && (
         <NavigationMenu
           isOpen={showMenu}
-          onClose={toggleMenu}
           onSelectProject={handleProjectSelect}
           projects={projects}
           currentProject={currentProject}
         />
       )}
-      <main className={showHeader ? "main-content with-header" : "main-content"}>
+      <main className={`main-content ${showHeader ? 'with-header' : ''}`}>
         <Routes>
           <Route path="/" element={
             <SplashPage

@@ -6,38 +6,44 @@
   left: 0;
   right: 0;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 14px;
+  padding: 8px 32px;
   height: 76px;
-  background-color: transparent; // Remove background color
+  background-color: transparent;
   z-index: 20;
-  cursor: pointer;
 }
 
 .header-logo {
-  width: 3rem;
-  height: 3rem;
-  transition: opacity 0.3s ease;
-
-  &:hover {
-    opacity: 0.7;
-  }
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
 }
 
 .header-project-title {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
-  padding: 0px;
-  gap: 1px;
-  height: 26.5px;
-  transition: opacity 0.3s ease;
+  cursor: pointer;
+  transition: margin-right 0.3s ease;
 
-  &:hover {
-    opacity: 0.7;
+  .project-circle {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: $color-white;
+    margin-left: 0;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.3s ease, transform 0.3s ease, margin-left 0.3s ease;
+  }
+
+  &.menu-open {
+
+    .project-circle {
+      opacity: 1;
+      transform: scale(1);
+      margin-left: 1rem;
+    }
   }
 }
 

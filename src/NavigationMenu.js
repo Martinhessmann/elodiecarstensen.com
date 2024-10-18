@@ -1,9 +1,10 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ReactComponent as CloseIcon } from './assets/close-icon.svg';
+import { motion } from 'framer-motion';
 import './NavigationMenu.scss';
 
-const NavigationMenu = ({ isOpen, onClose, onSelectProject, projects, currentProject }) => {
+const NavigationMenu = ({ isOpen, onSelectProject, projects, currentProject }) => {
+  const otherProjects = projects.filter(project => project.id !== currentProject?.id);
+
   return (
     <motion.div
       className={`navigation-menu ${isOpen ? 'open' : ''}`}
@@ -13,11 +14,11 @@ const NavigationMenu = ({ isOpen, onClose, onSelectProject, projects, currentPro
     >
       <nav className="navigation-content">
         <ul className="navigation-project-list">
-          {projects.map((project, index) => (
+          {otherProjects.map((project) => (
             <li
               key={project.id}
-              className={`navigation-project-item ${project.id === currentProject?.id ? 'active' : ''}`}
-              onClick={() => project.id !== currentProject?.id && onSelectProject(project.id)}
+              className="navigation-project-item"
+              onClick={() => onSelectProject(project.id)}
             >
               <div className="project-title">
                 <span className="project-name">{project.name}</span>
@@ -28,24 +29,11 @@ const NavigationMenu = ({ isOpen, onClose, onSelectProject, projects, currentPro
                   </>
                 )}
               </div>
-              <AnimatePresence>
-                {(isOpen || project.id !== currentProject?.id) && (
-                  <motion.div
-                    className="project-circle"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    exit={{ scale: 0 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                )}
-              </AnimatePresence>
+              <div className="project-circle" />
             </li>
           ))}
         </ul>
       </nav>
-      <button className="navigation-close-button" onClick={onClose}>
-        <CloseIcon />
-      </button>
     </motion.div>
   );
 };
