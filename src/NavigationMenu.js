@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import data from './data.json';
-import './NavigationMenu.css';
+import './NavigationMenu.scss';
 
 const NavigationMenu = ({ isOpen, onClose, onSelectProject }) => {
   const menuVariants = {

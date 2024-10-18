@@ -1,0 +1,28 @@
+// Colors
+$color-background: #091115;
+$color-white: #FFFFFF;
+$color-black: #000000;
+$color-gray: #6b7280;
+
+// Typography
+@mixin font-tiny {
+  font-family: 'SF Mono', monospace;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 9px;
+  line-height: 100%;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@mixin font-small {
+  font-family: 'SF Mono', monospace;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+// You can add more mixins for other text styles as needed

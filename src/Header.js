@@ -1,14 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { getAssetUrl } from './assetUtils';
-import './Header.css';
+import './Header.scss';
 
-const Header = ({ onLogoClick }) => {
+const Header = ({ onLogoClick, projectName }) => {
   const logoUrl = getAssetUrl('logo.svg');
 
   return (
     <motion.header
       className="header"
+      onClick={onLogoClick}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 120, damping: 20 }}
@@ -17,9 +18,8 @@ const Header = ({ onLogoClick }) => {
         src={logoUrl}
         alt="Elodie Carstensen Logo"
         className="header-logo"
-        onClick={onLogoClick}
       />
-      <h1 className="header-title">ELODIE CARSTENSEN</h1>
+      {projectName && <div className="header-project-name">{projectName}</div>}
     </motion.header>
   );
 };

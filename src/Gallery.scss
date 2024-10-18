@@ -1,6 +1,14 @@
+@import 'styles/variables';
+
 .gallery {
+  position: absolute;
   height: 100vh;
-  overflow-y: scroll;
+  left: 0;
+  right: 0;
+  top: 0;
+  background: $color-background;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .gallery-header {
@@ -21,24 +29,28 @@
 
 .gallery-image-container {
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .gallery-navigation {
   position: fixed;
-  right: 1.25rem;
+  right: 1rem;
   top: 50%;
   transform: translateY(-50%);
 }
 
 .gallery-nav-dot {
-  width: 0.5rem;
-  height: 0.5rem;
+  width: 8px;
+  height: 8px;
   margin: 0.5rem 0;
   border-radius: 50%;
-  background-color: #6b7280;
-}
+  background-color: rgba($color-white, 0.3);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 
-.gallery-nav-dot.active {
-  background-color: white;
+  &.active {
+    background-color: $color-white;
+  }
 }
-

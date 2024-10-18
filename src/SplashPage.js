@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { getAssetUrl } from './assetUtils';
-import './SplashPage.css';
+import './SplashPage.scss';
 
 const SplashPage = ({ onEnter }) => {
   const logoUrl = getAssetUrl('logo.svg');

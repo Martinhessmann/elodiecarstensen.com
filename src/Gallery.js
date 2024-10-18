@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import DynamicImageHighlight from './DynamicImageHighlight';
 import { getAssetUrl } from './assetUtils';
-import data from './data.json';
-import './Gallery.css';
+import './Gallery.scss';
 
-const Gallery = ({ project, onLogoClick }) => {
+const Gallery = ({ project }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleScroll = (e) => {
@@ -14,7 +13,6 @@ const Gallery = ({ project, onLogoClick }) => {
 
   if (!project) return null;
 
-  // Update this part to use getAssetUrl for constructing image paths
   const projectWithCorrectImagePaths = {
     ...project,
     images: project.images.map(image => ({
@@ -25,10 +23,6 @@ const Gallery = ({ project, onLogoClick }) => {
 
   return (
     <div className="gallery" onScroll={handleScroll}>
-      <div className="gallery-header">
-        <div onClick={onLogoClick} className="gallery-logo">ELODIE CARSTENSEN</div>
-        <div>{project.name}</div>
-      </div>
       {projectWithCorrectImagePaths.images.map((image, index) => (
         <div key={image.id} className="gallery-image-container">
           <DynamicImageHighlight

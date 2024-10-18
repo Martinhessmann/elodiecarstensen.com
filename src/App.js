@@ -5,7 +5,7 @@ import Gallery from './Gallery';
 import NavigationMenu from './NavigationMenu';
 import Header from './Header';
 import data from './data.json';
-import './App.css';
+import './App.scss';
 
 const App = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -29,8 +29,13 @@ const App = () => {
   const showHeader = location.pathname !== '/';
 
   return (
-    <div className="app" style={{ position: 'relative' }}>
-      {showHeader && <Header onLogoClick={toggleMenu} />}
+    <div className="app">
+      {showHeader && (
+        <Header
+          onLogoClick={toggleMenu}
+          projectName={currentProject?.name}
+        />
+      )}
       <NavigationMenu
         isOpen={showMenu}
         onClose={toggleMenu}
