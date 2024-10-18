@@ -21,18 +21,6 @@ const SplashPage = ({ onEnter }) => {
 
   return (
     <div className="splash-container">
-      <svg width="0" height="0" style={{ position: 'absolute' }}>
-        <defs>
-          <mask id="splash-mask">
-            <rect width="100%" height="100%" fill="black" />
-            <rect x="calc(50% - 45.865px)" y="20%" width="91.73px" height="60%" fill="white" />
-          </mask>
-        </defs>
-      </svg>
-
-      <div className="splash-background"
-        style={{ backgroundImage: `url(${splashUrl})` }}
-      />
       <div className={`splash-glass-effect ${isEntering ? 'entering' : ''}`} />
       <div className="splash-content">
         <div className="splash-logo-name">
@@ -50,6 +38,11 @@ const SplashPage = ({ onEnter }) => {
         >
           Enter
         </motion.button>
+      </div>
+      <div className="splash-scroll-container">
+        <div className="splash-background"
+          style={{ backgroundImage: `url(${splashUrl})` }}
+        />
       </div>
     </div>
   );
