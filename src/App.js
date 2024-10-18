@@ -40,13 +40,15 @@ const App = () => {
 
   return (
     <div className="app">
-      <Header
-        onLogoClick={toggleMenu}
-        onTitleClick={toggleMenu}
-        project={currentProject}
-        isMenuOpen={showMenu}
-      />
-      {showMenu && (
+      {showHeader && (
+        <Header
+          onLogoClick={toggleMenu}
+          onTitleClick={toggleMenu}
+          project={currentProject}
+          isMenuOpen={showMenu}
+        />
+      )}
+      {showMenu && showHeader && (
         <NavigationMenu
           isOpen={showMenu}
           onSelectProject={handleProjectSelect}

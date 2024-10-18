@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { getAssetUrl } from './assetUtils';
 import './SplashPage.scss';
@@ -9,9 +9,14 @@ const SplashPage = ({ onEnter }) => {
   const splashUrl = getAssetUrl('splash.jpg');
   const navigate = useNavigate();
 
+  const [isEntering, setIsEntering] = useState(false);
+
   const handleEnter = () => {
-    onEnter();
-    navigate('/gallery');
+    setIsEntering(true);
+    setTimeout(() => {
+      onEnter();
+      navigate('/gallery');
+    }, 500); // Adjust this timing to match the animation duration
   };
 
   return (
@@ -22,7 +27,7 @@ const SplashPage = ({ onEnter }) => {
         >
         </div>
       </div>
-      <div className="splash-glass-effect"></div>
+      <div className={`splash-glass-effect ${isEntering ? 'entering' : ''}`}></div>
       <div className="splash-content">
         <div className="splash-logo-name">
           <img src={logoUrl} alt="Logo" className="splash-logo" />

@@ -4,7 +4,6 @@
   position: relative;
   width: 100%;
   height: 100vh;
-  background: #091115;
   overflow: hidden;
 }
 
@@ -28,6 +27,7 @@
   background-size: cover;
   background-position: cover;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 .splash-background::before {
@@ -57,14 +57,48 @@
   pointer-events: auto;
 }
 
+.splash-mask-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.splash-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  clip-path: inset(20% 0% 20% 50%);
+  transition: clip-path 0.5s ease-in-out;
+}
+
+.splash-mask.entering {
+  clip-path: inset(0% 0% 0% 100%);
+}
+
 .splash-glass-effect {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background: rgba(217, 217, 217, 0.01);
   border: 0.5px solid #FFFFFF;
   backdrop-filter: blur(7.5px);
   pointer-events: none;
+  -webkit-mask-box-image: url('../public/assets/images/splash-mask.svg') 30 stretch;
+  mask-border: url('../public/assets/images/splash-mask.svg') 30 stretch;
+}
+
+.splash-glass-effect.entering {
+  -webkit-mask-box-image: none;
+  mask-border: none;
 }
 
 .splash-logo-name {
@@ -82,6 +116,7 @@
 .splash-title {
   @include font-small;
   text-align: center;
+  color: $color-white;
 }
 
 .splash-intro-text {
@@ -89,6 +124,7 @@
   max-width: 200px;
   text-align: right;
   align-self: flex-end;
+  color: $color-white;
 }
 
 .splash-enter-button {
@@ -100,6 +136,7 @@
   display: flex;
   align-items: center;
   gap: 2px;
+  color: $color-white;
 }
 
 .splash-enter-button::after {
