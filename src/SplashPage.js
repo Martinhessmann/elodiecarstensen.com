@@ -22,26 +22,43 @@ const SplashPage = ({ onEnter }) => {
 
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
-    if (!scrollContainer) return;
+    if (!scrollContainer) {
+      console.error('Scroll container not found');
+      return;
+    }
 
-    const snapPoints = [9.4, 18.9, 32.5, 37.3, 49.8, 63, 69.6, 89.5].map(
+    console.log('Scroll container width:', scrollContainer.scrollWidth);
+    console.log('Viewport width:', scrollContainer.clientWidth);
+
+    // Update these percentages to match the visual snap points
+    const snapPoints = [19, 27, 36.5, 41, 50, 59, 64.5, 80].map(
       percentage => (percentage / 100) * scrollContainer.scrollWidth
     );
+
+    console.log('Calculated snap points:', snapPoints);
 
     // Scroll to the first snap point on load
     const scrollToFirstSnapPoint = () => {
       const firstSnapPoint = snapPoints[0];
-      scrollContainer.scrollLeft = firstSnapPoint - scrollContainer.clientWidth / 2;
+      const targetScrollLeft = Math.max(0, firstSnapPoint - 100); // Subtract a small offset to ensure visibility
+      console.log('Attempting to scroll to:', targetScrollLeft);
+      scrollContainer.scrollLeft = targetScrollLeft;
+      console.log('Actual scroll position after attempt:', scrollContainer.scrollLeft);
     };
 
     // Call the function after a short delay to ensure the container is fully rendered
-    setTimeout(scrollToFirstSnapPoint, 100);
+    setTimeout(() => {
+      console.log('Executing scrollToFirstSnapPoint after delay');
+      scrollToFirstSnapPoint();
+    }, 100);
 
     let isScrolling = false;
     let scrollTimeout;
     let isDragging = false;
     let startX, startScrollLeft;
     let isSnapping = false;
+    let lastScrollPosition = 0;
+    let scrollCount = 0;
 
     const getClosestSnapPoint = (scrollPosition) => {
       const containerCenter = scrollPosition + scrollContainer.clientWidth / 2;
@@ -73,6 +90,11 @@ const SplashPage = ({ onEnter }) => {
     };
 
     const handleScroll = () => {
+      const currentPosition = scrollContainer.scrollLeft;
+      console.log(`Scroll event ${scrollCount}: position ${currentPosition}, delta: ${currentPosition - lastScrollPosition}`);
+      lastScrollPosition = currentPosition;
+      scrollCount++;
+
       if (isScrolling) {
         clearTimeout(scrollTimeout);
       }
@@ -80,6 +102,7 @@ const SplashPage = ({ onEnter }) => {
 
       scrollTimeout = setTimeout(() => {
         isScrolling = false;
+        console.log(`Scroll ended at position: ${scrollContainer.scrollLeft}`);
         if (!isDragging && !isSnapping) {
           const closestSnapPoint = getClosestSnapPoint(scrollContainer.scrollLeft);
           const currentPosition = scrollContainer.scrollLeft;
@@ -88,6 +111,7 @@ const SplashPage = ({ onEnter }) => {
 
           if (Math.abs(distance) > 10) {
             isSnapping = true;
+            console.log(`Snapping from ${currentPosition} to ${targetPosition}`);
             smoothScrollTo(targetPosition, 300); // 300ms duration for the snap
           }
         }
@@ -98,6 +122,7 @@ const SplashPage = ({ onEnter }) => {
       isDragging = true;
       startX = e.pageX - scrollContainer.offsetLeft;
       startScrollLeft = scrollContainer.scrollLeft;
+      console.log('Mouse down, drag started');
     };
 
     const handleMouseMove = (e) => {
@@ -106,10 +131,12 @@ const SplashPage = ({ onEnter }) => {
       const x = e.pageX - scrollContainer.offsetLeft;
       const walk = (x - startX) * 2;
       scrollContainer.scrollLeft = startScrollLeft - walk;
+      console.log(`Mouse move, new scroll position: ${scrollContainer.scrollLeft}`);
     };
 
     const handleMouseUp = () => {
       isDragging = false;
+      console.log('Mouse up, drag ended');
     };
 
     scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
@@ -125,12 +152,13 @@ const SplashPage = ({ onEnter }) => {
       scrollContainer.removeEventListener('mouseup', handleMouseUp);
       scrollContainer.removeEventListener('mouseleave', handleMouseUp);
       clearTimeout(scrollTimeout);
+      console.log('Component unmounting, final scroll position:', scrollContainer.scrollLeft);
     };
   }, []);
 
   return (
     <div className="splash-container">
-      <div className={`splash-glass-effect ${isEntering ? 'entering' : ''}`} />
+      <div className="splash-glass-effect" />
       <div className="splash-content">
         <div className="splash-logo-name">
           <img src={logoUrl} alt="Logo" className="splash-logo" />
