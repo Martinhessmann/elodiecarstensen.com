@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { getAssetUrl } from './assetUtils';
+import enterCursor from './assets/enter.svg';
 import './SplashPage.scss';
 
 const SplashPage = ({ onEnter }) => {
@@ -18,6 +19,13 @@ const SplashPage = ({ onEnter }) => {
       onEnter();
       navigate('/gallery');
     }, 500);
+  };
+
+  const handleContainerClick = (e) => {
+    // Only trigger if the click is directly on the container
+    if (e.target === e.currentTarget) {
+      handleEnter();
+    }
   };
 
   useEffect(() => {
@@ -157,7 +165,11 @@ const SplashPage = ({ onEnter }) => {
   }, []);
 
   return (
-    <div className="splash-container">
+    <div
+      className="splash-container"
+      style={{ '--enter-cursor': `url(${enterCursor})` }}
+      onClick={handleContainerClick}
+    >
       <div className="splash-glass-effect" />
       <div className="splash-content">
         <div className="splash-logo-name">
@@ -176,7 +188,10 @@ const SplashPage = ({ onEnter }) => {
           Enter
         </motion.button>
       </div>
-      <div className="splash-scroll-container" ref={scrollContainerRef}>
+      <div
+        className="splash-scroll-container"
+        ref={scrollContainerRef}
+      >
         <div className="splash-background"
           style={{ backgroundImage: `url(${splashUrl})` }}
         >
