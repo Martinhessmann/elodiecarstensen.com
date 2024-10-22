@@ -14,72 +14,93 @@
   z-index: 20;
 }
 
+.header-logo-container {
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: rgba($color-white, 0.1);
+  }
+}
+
 .header-logo {
   width: 2rem;
   height: 2rem;
+}
+
+.header-project-menu {
+  position: relative;
   cursor: pointer;
 }
 
-.header-project-title {
+.current-project,
+.project-option {
   display: flex;
   align-items: center;
-  cursor: pointer;
-  transition: margin-right 0.3s ease;
+  justify-content: flex-end;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+  text-align: right;
+  white-space: nowrap;
+  min-width: max-content;
+}
 
-  .project-circle {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: $color-white;
-    margin-left: 0;
-    opacity: 0;
-    transform: scale(0);
-    transition: opacity 0.3s ease, transform 0.3s ease, margin-left 0.3s ease;
+.project-option {
+  &:hover {
+    background-color: rgba($color-white, 0.1);
+  }
+}
+
+.project-options {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  backdrop-filter: blur(10px);
+  border-radius: 4px;
+  padding: 4px 8px;
+  min-width: 100%;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+
+  .header-project-menu:hover & {
+    max-height: 300px; // Adjust this value based on your needs
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+.project-option {
+  transform: translateY(-30px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+
+  .header-project-menu:hover & {
+    transform: translateY(0);
+    opacity: 1;
   }
 
-  &.menu-open {
-
-    .project-circle {
-      opacity: 1;
-      transform: scale(1);
-      margin-left: 1rem;
+  @for $i from 1 through 5 {
+    &:nth-child(#{$i}) {
+      transition-delay: #{$i * 0.05}s;
     }
   }
 }
 
-.project-name {
-  font-family: 'SF Mono', monospace;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 100%;
-  text-align: right;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+.project-name,
+.project-season {
+  @include font-tiny;
   color: $color-white;
 }
 
 .project-separator {
-  width: 12.6px;
-  height: 26.5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  color: $color-white;
-}
-
-.project-season {
-  width: 27px;
-  height: 10px;
-  font-family: 'SF Mono', monospace;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 100%;
-  display: flex;
-  align-items: flex-end;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  margin: 0 4px;
   color: $color-white;
 }

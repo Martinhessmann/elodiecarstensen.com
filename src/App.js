@@ -36,16 +36,15 @@ function App() {
     setShowMenu(false);
   };
 
-  const showHeader = location.pathname !== '/';
+  const showHeader = location.pathname !== '/' && currentProject !== null;
 
   return (
     <div className="app" style={{ backgroundColor: currentProject?.themeColor || '#091115' }}>
       {showHeader && (
         <Header
-          onLogoClick={() => handleProjectSelect(projects[0]?.id)}
-          onTitleClick={toggleMenu}
           project={currentProject}
-          isMenuOpen={showMenu}
+          projects={projects}
+          onProjectSelect={handleProjectSelect}
         />
       )}
       {showMenu && showHeader && (
