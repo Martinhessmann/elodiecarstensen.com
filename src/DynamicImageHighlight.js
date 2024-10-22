@@ -106,7 +106,10 @@ const DynamicImageHighlight = ({ highlightData, nodeData, showNodes, isScrolling
   };
 
   return (
-    <div className={`dynamic-image-highlight ${isScrolling ? 'fade-out' : ''} ${animate ? 'animate' : ''}`} ref={containerRef}>
+    <div
+      className={`dynamic-image-highlight ${isScrolling ? 'fade-out' : ''} ${animate ? 'animate' : ''}`}
+      ref={containerRef}
+    >
       {highlightData && (
         <div
           className="frame-rectangle"
