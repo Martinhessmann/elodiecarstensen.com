@@ -132,31 +132,19 @@ const DynamicImageHighlight = React.memo(({ highlightData, nodeData, showNodes, 
     <div
       ref={containerRef}
       className={`dynamic-image-highlight ${animate ? 'animate' : ''}`}
-      style={{
+      style={highlightData ? {
         '--highlight-x': `${highlightData.x * 100}%`,
         '--highlight-y': `${highlightData.y * 100}%`,
         '--highlight-width': `${highlightData.width * 100}%`,
         '--highlight-height': `${highlightData.height * 100}%`,
-      }}
+      } : {}}
     >
-      {highlightData && (
-        <div
-          className="frame-rectangle"
-          style={{
-            left: `${highlightData.x * 100}%`,
-            top: `${highlightData.y * 100}%`,
-            width: `${highlightData.width * 100}%`,
-            height: `${highlightData.height * 100}%`,
-          }}
-        />
-      )}
       {highlightData && highlightData.text && (
         <div
           className="frame-label"
           style={{
             left: `${highlightData.x * 100}%`,
             top: `${highlightData.y * 100}%`,
-            // The color is now handled by CSS
           }}
         >
           {highlightData.text}
@@ -172,14 +160,14 @@ const DynamicImageHighlight = React.memo(({ highlightData, nodeData, showNodes, 
             height: '100%',
             pointerEvents: 'none',
           }}>
-            {nodesWithPositions.map((node, index) => {
+            {nodeData && nodeData.map((node, index) => {
               console.log(`Rendering node line ${index}`, node);
               return (
                 <path
                   key={index}
                   d={createPath(
                     { x: node.x, y: node.y },
-                    { x: node.labelX, y: node.labelY }
+                    { x: node.labelX || node.x, y: node.labelY || node.y }
                   )}
                   className="node-line"
                   style={{
@@ -190,15 +178,15 @@ const DynamicImageHighlight = React.memo(({ highlightData, nodeData, showNodes, 
               );
             })}
           </svg>
-          {nodesWithPositions.map((node, index) => {
+          {nodeData && nodeData.map((node, index) => {
             console.log(`Rendering node ${index}`, node);
             return (
               <React.Fragment key={index}>
                 <div
                   className="node-label"
                   style={{
-                    left: `${node.labelX * 100}%`,
-                    top: `${node.labelY * 100}%`,
+                    left: `${(node.labelX || node.x) * 100}%`,
+                    top: `${(node.labelY || node.y) * 100}%`,
                     animationDelay: `${index * 0.2 + 0.6}s`
                   }}
                 >

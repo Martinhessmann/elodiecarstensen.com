@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { getAssetUrl } from './assetUtils';
+import DynamicImageHighlight from './DynamicImageHighlight';
 import './ContactPage.scss';
 
 const ContactPage = ({ data }) => {
@@ -31,14 +32,34 @@ const ContactPage = ({ data }) => {
     }
   };
 
+  const nodeData = [
+    {
+      x: 0.2,
+      y: 0.3,
+      label: 'INQUIRIES'
+    },
+    {
+      x: 0.516,
+      y: 0.471,
+      label: 'IMPRINT'
+    },
+    {
+      x: 0.8,
+      y: 0.7,
+      label: 'SIGN UP FOR MORE INFO'
+    }
+  ];
+
   return (
     <div className="contact-page" style={{ backgroundImage: `url(${getAssetUrl(data.backgroundImage)})` }}>
+      <DynamicImageHighlight
+        nodeData={nodeData}
+        showNodes={true}
+        isScrolling={false}
+        shouldAnimate={true}
+      />
       <div className="contact-content">
-        <div className="contact-box imprint" style={{
-          left: `${data.annotations.find(a => a.type === 'imprint').x * 100}%`,
-          top: `${data.annotations.find(a => a.type === 'imprint').y * 100}%`,
-        }}>
-          <div className="contact-label">IMPRINT</div>
+        <div className="contact-box imprint">
           <div className="contact-info">
             <p>{data.imprint.name}</p>
             {data.imprint.address.map((line, index) => (
@@ -47,39 +68,28 @@ const ContactPage = ({ data }) => {
           </div>
         </div>
 
-        <div className="contact-box inquiries" style={{
-          left: `${data.annotations.find(a => a.type === 'inquiries').x * 100}%`,
-          top: `${data.annotations.find(a => a.type === 'inquiries').y * 100}%`,
-        }}>
-          <div className="contact-label">{data.inquiries.label}</div>
+        <div className="contact-box inquiries">
           <div className="contact-info">
             <a href={`mailto:${data.inquiries.email}`}>{data.inquiries.email}</a>
           </div>
         </div>
 
-        <div className="contact-box newsletter-form" style={{
-          left: `${data.annotations.find(a => a.type === 'newsletter').x * 100}%`,
-          bottom: '20px',
-          top: 'auto',
-        }}>
-          <div className="contact-label">{data.newsletter.label}</div>
-          <div className="contact-info">
-            <form onSubmit={handleSubmit}>
-              <div className="input-group">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder={data.newsletter.placeholder}
-                  required
-                />
-                <button type="submit" className="send-button">
-                  {data.newsletter.buttonText}
-                </button>
-              </div>
-              {message && <div className={`form-message ${isSuccess ? 'success' : 'error'}`}>{message}</div>}
-            </form>
-          </div>
+        <div className="contact-box newsletter-form">
+          <form onSubmit={handleSubmit}>
+            <div className="input-group">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder={data.newsletter.placeholder}
+                required
+              />
+              <button type="submit" className="send-button">
+                {data.newsletter.buttonText}
+              </button>
+            </div>
+            {message && <div className={`form-message ${isSuccess ? 'success' : 'error'}`}>{message}</div>}
+          </form>
         </div>
       </div>
     </div>
