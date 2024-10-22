@@ -1,0 +1,76 @@
+@import 'styles/variables';
+
+.dynamic-image-highlight {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.frame-rectangle {
+  position: absolute;
+  border: 0.266667px solid $color-white;
+  pointer-events: none;
+  filter: drop-shadow(0px 0.523999px 5.76399px rgba(131, 213, 233, 0.25));
+}
+
+.frame-label,
+.node-label {
+  position: absolute;
+  font-family: 'SF Mono', monospace;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.frame-label {
+  padding: 4px;
+  background: $color-white;
+  font-size: 11px;
+  line-height: 80%;
+  color: $color-black;
+  transform: translate(0, -100%);
+}
+
+.node-label {
+  font-size: 9px;
+  line-height: 100%;
+  color: $color-white;
+  opacity: 0.5;
+  transform: translate(-50%, -50%);
+  border: 0.25px solid $color-white;
+  padding: 2px 4px;
+}
+
+.node-line {
+  position: absolute;
+  border-style: solid;
+  border-color: $color-white;
+  pointer-events: none;
+}
+
+.node-dot {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background-color: $color-white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.node-point {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: #00FF33;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}

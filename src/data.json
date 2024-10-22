@@ -9,15 +9,18 @@
           "id": "aos1",
           "src": "absence-of-promised-safety/01_FAUNUS.jpg",
           "highlight": {
-            "x": 0.2,
-            "y": 0.3,
-            "width": 0.4,
-            "height": 0.2,
-            "text": "Exploring vulnerability as strength"
+            "x": 0.2584,
+            "y": 0.2674,
+            "width": 0.5120,
+            "height": 0.4430,
+            "text": "FAUNUS_DRESS",
+            "status": "Custom made on request"
           },
           "nodes": [
-            { "x": 0.5, "y": 0.5, "label": "Custom fabric" },
-            { "x": 0.7, "y": 0.3, "label": "Helix structure" }
+            { "x": 0.3054, "y": 0.0940, "label": "white/fuchsia/yellow" },
+            { "x": 0.5000, "y": 0.5616, "label": "100% Silk, heavy Satin" },
+            { "x": 0.6821, "y": 0.2230, "label": "Custom fabric" },
+            { "x": 0.8435, "y": 0.5000, "label": "Unique design" }
           ]
         },
         {
@@ -28,7 +31,8 @@
             "y": 0.4,
             "width": 0.3,
             "height": 0.3,
-            "text": "Interplay of light and shadow"
+            "text": "GINA_DRESS",
+            "status": "Custom made on request"
           },
           "nodes": [
             { "x": 0.6, "y": 0.2, "label": "Reflective material" },
@@ -43,7 +47,8 @@
             "y": 0.5,
             "width": 0.3,
             "height": 0.2,
-            "text": "Nature-inspired textures"
+            "text": "EDEN_DRESS",
+            "status": "Custom made on request"
           },
           "nodes": [
             { "x": 0.2, "y": 0.6, "label": "Biomimetic patterns" },
@@ -58,7 +63,8 @@
             "y": 0.2,
             "width": 0.4,
             "height": 0.3,
-            "text": "Fusion of technology and tradition"
+            "text": "MITRA_DRESS",
+            "status": "Custom made on request"
           },
           "nodes": [
             { "x": 0.3, "y": 0.7, "label": "Smart textiles" },
@@ -73,7 +79,8 @@
             "y": 0.6,
             "width": 0.5,
             "height": 0.3,
-            "text": "Exploring granular textures"
+            "text": "GRANA_DRESS",
+            "status": "Custom made on request"
           },
           "nodes": [
             { "x": 0.4, "y": 0.3, "label": "Micro-textures" },
@@ -88,7 +95,8 @@
             "y": 0.4,
             "width": 0.4,
             "height": 0.4,
-            "text": "Neoclassical influences in modern design"
+            "text": "NEO_DRESS",
+            "status": "Custom made on request"
           },
           "nodes": [
             { "x": 0.2, "y": 0.2, "label": "Contemporary silhouettes" },
@@ -103,7 +111,8 @@
             "y": 0.3,
             "width": 0.3,
             "height": 0.5,
-            "text": "Fluid forms inspired by nature"
+            "text": "LIMAX_DRESS",
+            "status": "Custom made on request"
           },
           "nodes": [
             { "x": 0.6, "y": 0.2, "label": "Organic shapes" },
@@ -118,7 +127,8 @@
             "y": 0.5,
             "width": 0.4,
             "height": 0.3,
-            "text": "Exploring duality in design"
+            "text": "TAIA_DRESS",
+            "status": "Custom made on request"
           },
           "nodes": [
             { "x": 0.2, "y": 0.4, "label": "Contrasting textures" },
@@ -133,7 +143,8 @@
             "y": 0.2,
             "width": 0.5,
             "height": 0.4,
-            "text": "Spiral structures in fashion"
+            "text": "HELIX_DRESS",
+            "status": "Custom made on request"
           },
           "nodes": [
             { "x": 0.5, "y": 0.7, "label": "Dynamic movement" },
@@ -155,7 +166,8 @@
             "y": 0.2,
             "width": 0.5,
             "height": 0.4,
-            "text": "Nocturnal butterfly inspiration"
+            "text": "NIGHTSHIMMER_DRESS",
+            "status": "Custom made on request"
           },
           "nodes": [
             { "x": 0.3, "y": 0.6, "label": "Wing texture" },
@@ -177,7 +189,8 @@
             "y": 0.3,
             "width": 0.2,
             "height": 0.5,
-            "text": "Fluid dynamics in fabric"
+            "text": "ALLUVIAL_DRESS",
+            "status": "Custom made on request"
           },
           "nodes": [
             { "x": 0.2, "y": 0.7, "label": "Flow patterns" },
@@ -198,11 +211,36 @@
             "y": 0.5,
             "width": 0.3,
             "height": 0.3,
-            "text": "Intersection of form and space"
+            "text": "CONTACT",
+            "status": "Custom made on request"
           },
           "nodes": [
             { "x": 0.2, "y": 0.3, "label": "Negative space" },
             { "x": 0.8, "y": 0.7, "label": "Tactile surface" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "example-project",
+      "name": "Example Project",
+      "season": "SS25",
+      "images": [
+        {
+          "id": "example1",
+          "src": "example/image.png",
+          "highlight": {
+            "x": 0.2584,
+            "y": 0.2674,
+            "width": 0.5120,
+            "height": 0.4430,
+            "text": "HIGHLIGHT LABEL"
+          },
+          "nodes": [
+            { "x": 0.3054, "y": 0.0940, "label": "Node 4" },
+            { "x": 0.5000, "y": 0.5616, "label": "Node 3" },
+            { "x": 0.6821, "y": 0.2230, "label": "Node 2" },
+            { "x": 0.8435, "y": 0.5000, "label": "Node 1" }
           ]
         }
       ]

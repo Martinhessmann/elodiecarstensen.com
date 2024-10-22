@@ -1,66 +1,183 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import './DynamicImageHighlight.scss';
 
 const DynamicImageHighlight = ({ image, highlightData, nodeData }) => {
-  const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+  const containerRef = useRef(null);
+  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
-    const handleResize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
+    const updateSize = () => {
+      if (containerRef.current) {
+        setContainerSize({
+          width: containerRef.current.offsetWidth,
+          height: containerRef.current.offsetHeight
+        });
+      }
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    updateSize();
+    window.addEventListener('resize', updateSize);
+    return () => window.removeEventListener('resize', updateSize);
   }, []);
 
-  const calculateHighlightPosition = () => {
-    if (!highlightData) return {};
+  const findOptimalPosition = (label, sourceX, sourceY, index, allNodes) => {
+    const padding = 0.05; // 5% padding from the edges
+    const labelWidth = 0.15;
+    const labelHeight = 0.05;
 
-    const { x = 0, y = 0, width = 0, height = 0 } = highlightData;
+    const isInsideHighlight = (x, y) => {
+      return x >= highlightData.x && x <= highlightData.x + highlightData.width &&
+        y >= highlightData.y && y <= highlightData.y + highlightData.height;
+    };
+
+    const getPositionsOutsideHighlight = () => {
+      const positions = [];
+      const directions = [
+        { dx: -1, dy: -1 }, { dx: 0, dy: -1 }, { dx: 1, dy: -1 },
+        { dx: -1, dy: 0 }, { dx: 1, dy: 0 },
+        { dx: -1, dy: 1 }, { dx: 0, dy: 1 }, { dx: 1, dy: 1 }
+      ];
+
+      for (let dir of directions) {
+        let x = sourceX + dir.dx * (0.2 + Math.random() * 0.1); // Spread out more
+        let y = sourceY + dir.dy * (0.2 + Math.random() * 0.1);
+
+        if (!isInsideHighlight(x, y) && !isOutsideViewport({ x, y })) {
+          positions.push({ x, y });
+        }
+      }
+
+      return positions;
+    };
+
+    const isOverlapping = (pos, otherLabels) => {
+      return otherLabels.some(other =>
+        Math.abs(pos.x - other.x) < labelWidth &&
+        Math.abs(pos.y - other.y) < labelHeight
+      );
+    };
+
+    const isOutsideViewport = (pos) => {
+      return pos.x - labelWidth / 2 < padding || pos.x + labelWidth / 2 > 1 - padding ||
+        pos.y - labelHeight / 2 < padding || pos.y + labelHeight / 2 > 1 - padding;
+    };
+
+    const otherLabels = allNodes
+      .slice(0, index)
+      .map(node => ({ x: node.labelX, y: node.labelY }));
+
+    const positions = getPositionsOutsideHighlight();
+
+    for (let pos of positions) {
+      if (!isOverlapping(pos, otherLabels) && !isOutsideViewport(pos)) {
+        return pos;
+      }
+    }
+
+    // Fallback position
     return {
-      left: `${x * windowSize.width}px`,
-      top: `${y * windowSize.height}px`,
-      width: `${width * windowSize.width}px`,
-      height: `${height * windowSize.height}px`,
+      x: Math.random() < 0.5 ? padding : 1 - padding - labelWidth,
+      y: Math.max(padding, Math.min(1 - padding - labelHeight, sourceY))
     };
   };
 
+  const getAbsolutePosition = (relativeX, relativeY) => {
+    if (!highlightData) return { x: relativeX, y: relativeY };
+    return {
+      x: highlightData.x + (relativeX * highlightData.width),
+      y: highlightData.y + (relativeY * highlightData.height)
+    };
+  };
+
+  const calculateNodePositions = (nodes) => {
+    return nodes.map((node, index, array) => {
+      const absolutePos = getAbsolutePosition(node.x, node.y);
+      const { x, y } = findOptimalPosition(
+        node.label,
+        absolutePos.x,
+        absolutePos.y,
+        index,
+        array.slice(0, index).map(n => ({
+          ...n,
+          labelX: n.labelX || n.x,
+          labelY: n.labelY || n.y
+        }))
+      );
+      return { ...node, absoluteX: absolutePos.x, absoluteY: absolutePos.y, labelX: x, labelY: y };
+    });
+  };
+
+  const nodesWithPositions = nodeData ? calculateNodePositions(nodeData) : [];
+
   return (
-    <div className="relative w-full h-screen">
-      <img src={image} alt="Gallery image" className="w-full h-full object-cover" />
+    <div className="dynamic-image-highlight" ref={containerRef}>
+      <img src={image} alt="Gallery item" className="gallery-image" />
       {highlightData && (
         <div
-          className="absolute border-2 border-white"
-          style={calculateHighlightPosition()}
-        >
-          <p className="text-white p-2">{highlightData.text || ''}</p>
-        </div>
-      )}
-      {nodeData && nodeData.map((node, index) => (
-        <div
-          key={index}
-          className="absolute w-2 h-2 bg-white rounded-full"
+          className="frame-rectangle"
           style={{
-            left: `${(node.x || 0) * windowSize.width}px`,
-            top: `${(node.y || 0) * windowSize.height}px`,
+            left: `${highlightData.x * 100}%`,
+            top: `${highlightData.y * 100}%`,
+            width: `${highlightData.width * 100}%`,
+            height: `${highlightData.height * 100}%`,
+          }}
+        />
+      )}
+      {highlightData && highlightData.text && (
+        <div
+          className="frame-label"
+          style={{
+            left: `${highlightData.x * 100}%`,
+            top: `${highlightData.y * 100}%`,
           }}
         >
-          <div className="absolute left-full ml-2 text-white">{node.label || ''}</div>
+          {highlightData.text}
         </div>
-      ))}
+      )}
+      {nodesWithPositions.map((node, index) => {
+        const isLeft = node.labelX < node.absoluteX;
+        const isTop = node.labelY < node.absoluteY;
+        return (
+          <React.Fragment key={index}>
+            <div
+              className="node-line"
+              style={{
+                left: `${node.absoluteX * 100}%`,
+                top: `${node.absoluteY * 100}%`,
+                width: `${Math.abs(node.labelX - node.absoluteX) * 100}%`,
+                height: `${Math.abs(node.labelY - node.absoluteY) * 100}%`,
+                borderLeft: isLeft ? '0.25px solid white' : 'none',
+                borderRight: !isLeft ? '0.25px solid white' : 'none',
+                borderTop: isTop ? '0.25px solid white' : 'none',
+                borderBottom: !isTop ? '0.25px solid white' : 'none',
+              }}
+            >
+              <div className="node-dot" style={{
+                [isLeft ? 'right' : 'left']: '0',
+                [isTop ? 'bottom' : 'top']: '0',
+              }} />
+            </div>
+            <div
+              className="node-label"
+              style={{
+                left: `${node.labelX * 100}%`,
+                top: `${node.labelY * 100}%`
+              }}
+            >
+              {node.label}
+            </div>
+            <div
+              className="node-point"
+              style={{
+                left: `${node.absoluteX * 100}%`,
+                top: `${node.absoluteY * 100}%`
+              }}
+            />
+          </React.Fragment>
+        );
+      })}
     </div>
   );
-};
-
-DynamicImageHighlight.defaultProps = {
-  image: '',
-  highlightData: null,
-  nodeData: [],
 };
 
 export default DynamicImageHighlight;
