@@ -32,31 +32,23 @@ const ContactPage = ({ data }) => {
     }
   };
 
-  const nodeData = [
-    {
-      x: 0.2,
-      y: 0.3,
-      label: 'INQUIRIES'
-    },
-    {
-      x: 0.516,
-      y: 0.471,
-      label: 'IMPRINT'
-    },
-    {
-      x: 0.8,
-      y: 0.7,
-      label: 'SIGN UP FOR MORE INFO'
-    }
-  ];
+  // Create a dummy highlightData object for the contact page
+  const dummyHighlightData = {
+    x: 0,
+    y: 0,
+    width: 1,
+    height: 1,
+    text: ''
+  };
 
   return (
     <div className="contact-page" style={{ backgroundImage: `url(${getAssetUrl(data.backgroundImage)})` }}>
       <DynamicImageHighlight
-        nodeData={nodeData}
+        nodeData={data.annotations}
         showNodes={true}
         isScrolling={false}
         shouldAnimate={true}
+        highlightData={dummyHighlightData}
       />
       <div className="contact-content">
         <div className="contact-box imprint">

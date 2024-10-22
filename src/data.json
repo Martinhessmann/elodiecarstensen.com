@@ -496,25 +496,19 @@
     },
     "annotations": [
       {
-        "type": "imprint",
-        "x": 0.05,
-        "y": 0.05,
-        "width": 0.3,
-        "height": 0.2
+        "x": 0.516,
+        "y": 0.471,
+        "label": "IMPRINT"
       },
       {
-        "type": "inquiries",
-        "x": 0.05,
+        "x": 0.2,
         "y": 0.3,
-        "width": 0.4,
-        "height": 0.1
+        "label": "INQUIRIES"
       },
       {
-        "type": "newsletter",
-        "x": 0.6,
-        "y": 0.8,
-        "width": 0.35,
-        "height": 0.15
+        "x": 0.8,
+        "y": 0.7,
+        "label": "SIGN UP FOR MORE INFO"
       }
     ]
   }
