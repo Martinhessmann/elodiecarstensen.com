@@ -4,174 +4,162 @@
       "id": "absence-of-promised-safety",
       "name": "ABSENCE OF PROMISED SAFETY",
       "season": "SS25",
+      "themeColor": "#091115",
       "images": [
         {
           "id": "aos1",
           "src": "absence-of-promised-safety/01_FAUNUS.jpg",
           "highlight": {
-            "x": 0.2584,
-            "y": 0.2674,
-            "width": 0.5120,
-            "height": 0.4430,
+            "x": 0.35,
+            "y": 0.25,
+            "width": 0.3,
+            "height": 0.6,
             "text": "FAUNUS_DRESS",
             "status": "Custom made on request"
           },
           "nodes": [
-            { "x": 0.3054, "y": 0.0940, "label": "white/fuchsia/yellow" },
-            { "x": 0.5000, "y": 0.5616, "label": "100% Silk, heavy Satin" },
-            { "x": 0.6821, "y": 0.2230, "label": "Custom fabric" },
-            { "x": 0.8435, "y": 0.5000, "label": "Unique design" }
+            { "x": 0.42, "y": 0.35, "label": "100% sandwashed silk" },
+            { "x": 0.48, "y": 0.45, "label": "6 large tin buttons" },
+            { "x": 0.44, "y": 0.55, "label": "Custom cufflink option" },
+            { "x": 0.46, "y": 0.65, "label": "White/fuchsia/yellow ice dye" }
           ]
         },
         {
           "id": "aos2",
           "src": "absence-of-promised-safety/02_GINA.jpg",
           "highlight": {
-            "x": 0.3,
-            "y": 0.4,
+            "x": 0.35,
+            "y": 0.25,
             "width": 0.3,
-            "height": 0.3,
+            "height": 0.5,
             "text": "GINA_DRESS",
             "status": "Custom made on request"
           },
           "nodes": [
-            { "x": 0.6, "y": 0.2, "label": "Reflective material" },
-            { "x": 0.8, "y": 0.7, "label": "Organic form" }
+            { "x": 0.42, "y": 0.35, "label": "100% sandwashed silk" },
+            { "x": 0.48, "y": 0.45, "label": "Oversized sweater silhouette" },
+            { "x": 0.44, "y": 0.55, "label": "White/fuchsia/yellow ice dye" }
           ]
         },
         {
           "id": "aos3",
           "src": "absence-of-promised-safety/03_EDEN.jpg",
           "highlight": {
-            "x": 0.4,
-            "y": 0.5,
-            "width": 0.3,
-            "height": 0.2,
+            "x": 0.38,
+            "y": 0.28,
+            "width": 0.28,
+            "height": 0.45,
             "text": "EDEN_DRESS",
             "status": "Custom made on request"
           },
           "nodes": [
-            { "x": 0.2, "y": 0.6, "label": "Biomimetic patterns" },
-            { "x": 0.7, "y": 0.4, "label": "Sustainable materials" }
+            { "x": 0.42, "y": 0.35, "label": "100% sandwashed silk" },
+            { "x": 0.48, "y": 0.45, "label": "Oversized t-shirt pattern" },
+            { "x": 0.44, "y": 0.55, "label": "White/fuchsia/yellow ice dye" }
           ]
         },
         {
           "id": "aos4",
           "src": "absence-of-promised-safety/04_MITRA.jpg",
           "highlight": {
-            "x": 0.5,
-            "y": 0.2,
-            "width": 0.4,
-            "height": 0.3,
+            "x": 0.35,
+            "y": 0.3,
+            "width": 0.3,
+            "height": 0.6,
             "text": "MITRA_DRESS",
             "status": "Custom made on request"
           },
           "nodes": [
-            { "x": 0.3, "y": 0.7, "label": "Smart textiles" },
-            { "x": 0.8, "y": 0.5, "label": "Cultural motifs" }
+            { "x": 0.42, "y": 0.35, "label": "100% silk crepe satin" },
+            { "x": 0.48, "y": 0.45, "label": "55 tin button closures" },
+            { "x": 0.44, "y": 0.55, "label": "White/fuchsia/yellow ice dye" }
           ]
         },
         {
           "id": "aos5",
           "src": "absence-of-promised-safety/05_GRANA.jpg",
           "highlight": {
-            "x": 0.2,
-            "y": 0.6,
-            "width": 0.5,
-            "height": 0.3,
+            "x": 0.32,
+            "y": 0.2,
+            "width": 0.36,
+            "height": 0.7,
             "text": "GRANA_DRESS",
             "status": "Custom made on request"
           },
           "nodes": [
-            { "x": 0.4, "y": 0.3, "label": "Micro-textures" },
-            { "x": 0.7, "y": 0.8, "label": "Tactile surfaces" }
+            { "x": 0.42, "y": 0.3, "label": "100% silk pongee" },
+            { "x": 0.48, "y": 0.4, "label": "Built-in corset top" },
+            { "x": 0.44, "y": 0.5, "label": "White/fuchsia/yellow ice dye" }
           ]
         },
         {
           "id": "aos6",
           "src": "absence-of-promised-safety/06_NEO.jpg",
           "highlight": {
-            "x": 0.3,
-            "y": 0.4,
-            "width": 0.4,
-            "height": 0.4,
+            "x": 0.35,
+            "y": 0.25,
+            "width": 0.3,
+            "height": 0.65,
             "text": "NEO_DRESS",
             "status": "Custom made on request"
           },
           "nodes": [
-            { "x": 0.2, "y": 0.2, "label": "Contemporary silhouettes" },
-            { "x": 0.8, "y": 0.6, "label": "Classical elements" }
-          ]
-        },
-        {
-          "id": "aos7",
-          "src": "absence-of-promised-safety/08_LIMAX.jpg",
-          "highlight": {
-            "x": 0.4,
-            "y": 0.3,
-            "width": 0.3,
-            "height": 0.5,
-            "text": "LIMAX_DRESS",
-            "status": "Custom made on request"
-          },
-          "nodes": [
-            { "x": 0.6, "y": 0.2, "label": "Organic shapes" },
-            { "x": 0.3, "y": 0.7, "label": "Biomimicry in design" }
+            { "x": 0.42, "y": 0.35, "label": "100% silk organza" },
+            { "x": 0.48, "y": 0.45, "label": "12.7mm button closures" },
+            { "x": 0.44, "y": 0.55, "label": "Godet train construction" },
+            { "x": 0.46, "y": 0.65, "label": "White/fuchsia/yellow ice dye" }
           ]
         },
         {
           "id": "aos8",
-          "src": "absence-of-promised-safety/09_TAIA.jpg",
+          "src": "absence-of-promised-safety/08_LIMAX.jpg",
           "highlight": {
-            "x": 0.5,
-            "y": 0.5,
-            "width": 0.4,
-            "height": 0.3,
-            "text": "TAIA_DRESS",
+            "x": 0.35,
+            "y": 0.4,
+            "width": 0.3,
+            "height": 0.5,
+            "text": "LIMAX_PANTS",
             "status": "Custom made on request"
           },
           "nodes": [
-            { "x": 0.2, "y": 0.4, "label": "Contrasting textures" },
-            { "x": 0.7, "y": 0.6, "label": "Balanced asymmetry" }
+            { "x": 0.42, "y": 0.45, "label": "100% silk crepe satin" },
+            { "x": 0.48, "y": 0.55, "label": "176 hand-poured tin buttons" },
+            { "x": 0.44, "y": 0.65, "label": "French seams 5mm" }
           ]
         },
         {
           "id": "aos9",
+          "src": "absence-of-promised-safety/09_TAIA.jpg",
+          "highlight": {
+            "x": 0.35,
+            "y": 0.3,
+            "width": 0.3,
+            "height": 0.4,
+            "text": "TAIA_DRESS",
+            "status": "Custom made on request"
+          },
+          "nodes": [
+            { "x": 0.42, "y": 0.35, "label": "100% silk crepe satin" },
+            { "x": 0.48, "y": 0.45, "label": "120 hand-welded tin buttons" },
+            { "x": 0.44, "y": 0.55, "label": "White/fuchsia/yellow ice dye" }
+          ]
+        },
+        {
+          "id": "aos10",
           "src": "absence-of-promised-safety/10_HELIX.jpg",
           "highlight": {
             "x": 0.3,
-            "y": 0.2,
-            "width": 0.5,
+            "y": 0.15,
+            "width": 0.4,
             "height": 0.4,
-            "text": "HELIX_DRESS",
+            "text": "HELIX_TOP",
             "status": "Custom made on request"
           },
           "nodes": [
-            { "x": 0.5, "y": 0.7, "label": "Dynamic movement" },
-            { "x": 0.8, "y": 0.3, "label": "Geometric patterns" }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "des-nachtmahrs-schmetterlinge",
-      "name": "DES NACHTMAHR'S SCHMETTERLINGE",
-      "season": "SS24",
-      "images": [
-        {
-          "id": "dns1",
-          "src": "/assets/images/des-nachtmahrs-schmetterlinge/image1.jpg",
-          "highlight": {
-            "x": 0.1,
-            "y": 0.2,
-            "width": 0.5,
-            "height": 0.4,
-            "text": "NIGHTSHIMMER_DRESS",
-            "status": "Custom made on request"
-          },
-          "nodes": [
-            { "x": 0.3, "y": 0.6, "label": "Wing texture" },
-            { "x": 0.7, "y": 0.4, "label": "Iridescent effect" }
+            { "x": 0.35, "y": 0.18, "label": "7 structured wings per side" },
+            { "x": 0.45, "y": 0.25, "label": "100% silk organza" },
+            { "x": 0.4, "y": 0.35, "label": "8.2mm metal boning" },
+            { "x": 0.5, "y": 0.3, "label": "White/fuchsia/yellow ice dye" }
           ]
         }
       ]
@@ -180,68 +168,307 @@
       "id": "alluvial",
       "name": "ALLUVIAL",
       "season": "SS23",
+      "themeColor": "#AB765A",
       "images": [
         {
           "id": "al1",
-          "src": "/assets/images/alluvial/image1.jpg",
+          "src": "alluvial/01_RUNA.jpg",
           "highlight": {
             "x": 0.4,
             "y": 0.3,
             "width": 0.2,
             "height": 0.5,
-            "text": "ALLUVIAL_DRESS",
+            "text": "RUNA_DRESS",
             "status": "Custom made on request"
           },
           "nodes": [
             { "x": 0.2, "y": 0.7, "label": "Flow patterns" },
             { "x": 0.8, "y": 0.5, "label": "Translucent layers" }
           ]
+        },
+        {
+          "id": "al2",
+          "src": "alluvial/02_ANDREA.jpg",
+          "highlight": {
+            "x": 0.4,
+            "y": 0.3,
+            "width": 0.2,
+            "height": 0.5,
+            "text": "ANDREA_DRESS",
+            "status": "Custom made on request"
+          },
+          "nodes": []
+        },
+        {
+          "id": "al3",
+          "src": "alluvial/03_REBECCA.jpg",
+          "highlight": {
+            "x": 0.4,
+            "y": 0.3,
+            "width": 0.2,
+            "height": 0.5,
+            "text": "REBECCA_DRESS",
+            "status": "Custom made on request"
+          },
+          "nodes": []
+        },
+        {
+          "id": "al4",
+          "src": "alluvial/04_THALEA.jpg",
+          "highlight": {
+            "x": 0.4,
+            "y": 0.3,
+            "width": 0.2,
+            "height": 0.5,
+            "text": "THALEA_DRESS",
+            "status": "Custom made on request"
+          },
+          "nodes": []
+        },
+        {
+          "id": "al5",
+          "src": "alluvial/05_VIRGINIA.jpg",
+          "highlight": {
+            "x": 0.4,
+            "y": 0.3,
+            "width": 0.2,
+            "height": 0.5,
+            "text": "VIRGINIA_DRESS",
+            "status": "Custom made on request"
+          },
+          "nodes": []
+        },
+        {
+          "id": "al6",
+          "src": "alluvial/06_SARA.jpg",
+          "highlight": {
+            "x": 0.4,
+            "y": 0.3,
+            "width": 0.2,
+            "height": 0.5,
+            "text": "SARA_DRESS",
+            "status": "Custom made on request"
+          },
+          "nodes": []
+        },
+        {
+          "id": "al7",
+          "src": "alluvial/07_JULIA.jpg",
+          "highlight": {
+            "x": 0.4,
+            "y": 0.3,
+            "width": 0.2,
+            "height": 0.5,
+            "text": "JULIA_DRESS",
+            "status": "Custom made on request"
+          },
+          "nodes": []
+        },
+        {
+          "id": "al8",
+          "src": "alluvial/08_CORNELIA.jpg",
+          "highlight": {
+            "x": 0.4,
+            "y": 0.3,
+            "width": 0.2,
+            "height": 0.5,
+            "text": "CORNELIA_DRESS",
+            "status": "Custom made on request"
+          },
+          "nodes": []
+        },
+        {
+          "id": "al9",
+          "src": "alluvial/09_CARO.jpg",
+          "highlight": {
+            "x": 0.4,
+            "y": 0.3,
+            "width": 0.2,
+            "height": 0.5,
+            "text": "CARO_DRESS",
+            "status": "Custom made on request"
+          },
+          "nodes": []
         }
       ]
     },
     {
-      "id": "contact",
-      "name": "Contact",
+      "id": "des-nachtmahrs-schmetterlinge",
+      "name": "DES NACHTMAHR'S SCHMETTERLINGE",
+      "season": "SS24",
+      "themeColor": "#584B39",
       "images": [
         {
-          "id": "ct1",
-          "src": "/assets/images/contact/image1.jpg",
+          "id": "dns1",
+          "src": "des-nachtmahrs-schmetterlinge/01_GNOSSIENNE.jpg",
           "highlight": {
-            "x": 0.5,
-            "y": 0.5,
-            "width": 0.3,
-            "height": 0.3,
-            "text": "CONTACT",
+            "x": 0.1,
+            "y": 0.2,
+            "width": 0.5,
+            "height": 0.4,
+            "text": "GNOSSIENNE_DRESS",
             "status": "Custom made on request"
           },
           "nodes": [
-            { "x": 0.2, "y": 0.3, "label": "Negative space" },
-            { "x": 0.8, "y": 0.7, "label": "Tactile surface" }
+            { "x": 0.3, "y": 0.6, "label": "Wing texture" },
+            { "x": 0.7, "y": 0.4, "label": "Iridescent effect" }
           ]
-        }
-      ]
-    },
-    {
-      "id": "example-project",
-      "name": "Example Project",
-      "season": "SS25",
-      "images": [
+        },
         {
-          "id": "example1",
-          "src": "example/image.png",
+          "id": "dns2",
+          "src": "des-nachtmahrs-schmetterlinge/02_MINEOMIA.jpg",
           "highlight": {
-            "x": 0.2584,
-            "y": 0.2674,
-            "width": 0.5120,
-            "height": 0.4430,
-            "text": "HIGHLIGHT LABEL"
+            "x": 0.1,
+            "y": 0.2,
+            "width": 0.5,
+            "height": 0.4,
+            "text": "MINEOMIA_DRESS",
+            "status": "Custom made on request"
           },
-          "nodes": [
-            { "x": 0.3054, "y": 0.0940, "label": "Node 4" },
-            { "x": 0.5000, "y": 0.5616, "label": "Node 3" },
-            { "x": 0.6821, "y": 0.2230, "label": "Node 2" },
-            { "x": 0.8435, "y": 0.5000, "label": "Node 1" }
-          ]
+          "nodes": []
+        },
+        {
+          "id": "dns3",
+          "src": "des-nachtmahrs-schmetterlinge/03_AVENOIR.jpg",
+          "highlight": {
+            "x": 0.1,
+            "y": 0.2,
+            "width": 0.5,
+            "height": 0.4,
+            "text": "AVENOIR_DRESS",
+            "status": "Custom made on request"
+          },
+          "nodes": []
+        },
+        {
+          "id": "dns4",
+          "src": "des-nachtmahrs-schmetterlinge/04_NUDUS_TOLLENS.jpg",
+          "highlight": {
+            "x": 0.1,
+            "y": 0.2,
+            "width": 0.5,
+            "height": 0.4,
+            "text": "NUDUS_TOLLENS_DRESS",
+            "status": "Custom made on request"
+          },
+          "nodes": []
+        },
+        {
+          "id": "dns5",
+          "src": "des-nachtmahrs-schmetterlinge/05_JOUSKA.jpg",
+          "highlight": {
+            "x": 0.1,
+            "y": 0.2,
+            "width": 0.5,
+            "height": 0.4,
+            "text": "JOUSKA_DRESS",
+            "status": "Custom made on request"
+          },
+          "nodes": []
+        },
+        {
+          "id": "dns6",
+          "src": "des-nachtmahrs-schmetterlinge/06_FATA_ORGANA.jpg",
+          "highlight": {
+            "x": 0.1,
+            "y": 0.2,
+            "width": 0.5,
+            "height": 0.4,
+            "text": "FATA_ORGANA_DRESS",
+            "status": "Custom made on request"
+          },
+          "nodes": []
+        },
+        {
+          "id": "dns7",
+          "src": "des-nachtmahrs-schmetterlinge/07_MONACHOPSIS.jpg",
+          "highlight": {
+            "x": 0.1,
+            "y": 0.2,
+            "width": 0.5,
+            "height": 0.4,
+            "text": "MONACHOPSIS_DRESS",
+            "status": "Custom made on request"
+          },
+          "nodes": []
+        },
+        {
+          "id": "dns8",
+          "src": "des-nachtmahrs-schmetterlinge/08_ADRONITIS.jpg",
+          "highlight": {
+            "x": 0.1,
+            "y": 0.2,
+            "width": 0.5,
+            "height": 0.4,
+            "text": "ADRONITIS_DRESS",
+            "status": "Custom made on request"
+          },
+          "nodes": []
+        },
+        {
+          "id": "dns9",
+          "src": "des-nachtmahrs-schmetterlinge/09_KAIROSCLEROSIS.jpg",
+          "highlight": {
+            "x": 0.1,
+            "y": 0.2,
+            "width": 0.5,
+            "height": 0.4,
+            "text": "KAIROSCLEROSIS_DRESS",
+            "status": "Custom made on request"
+          },
+          "nodes": []
+        },
+        {
+          "id": "dns10",
+          "src": "des-nachtmahrs-schmetterlinge/10_ANECDOCHE.jpg",
+          "highlight": {
+            "x": 0.1,
+            "y": 0.2,
+            "width": 0.5,
+            "height": 0.4,
+            "text": "ANECDOCHE_DRESS",
+            "status": "Custom made on request"
+          },
+          "nodes": []
+        },
+        {
+          "id": "dns11",
+          "src": "des-nachtmahrs-schmetterlinge/11_SONDER.jpg",
+          "highlight": {
+            "x": 0.1,
+            "y": 0.2,
+            "width": 0.5,
+            "height": 0.4,
+            "text": "SONDER_DRESS",
+            "status": "Custom made on request"
+          },
+          "nodes": []
+        },
+        {
+          "id": "dns12",
+          "src": "des-nachtmahrs-schmetterlinge/12_RIGOR_SAMSA.jpg",
+          "highlight": {
+            "x": 0.1,
+            "y": 0.2,
+            "width": 0.5,
+            "height": 0.4,
+            "text": "RIGOR_SAMSA_DRESS",
+            "status": "Custom made on request"
+          },
+          "nodes": []
+        },
+        {
+          "id": "dns13",
+          "src": "des-nachtmahrs-schmetterlinge/13_LIBEROSIS.jpg",
+          "highlight": {
+            "x": 0.1,
+            "y": 0.2,
+            "width": 0.5,
+            "height": 0.4,
+            "text": "LIBEROSIS_DRESS",
+            "status": "Custom made on request"
+          },
+          "nodes": []
         }
       ]
     }

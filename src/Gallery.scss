@@ -29,9 +29,9 @@
 }
 
 .image-container {
-  width: 80vh; // This maintains the 4:5 aspect ratio (1080:1350) within 100vh
+  width: 67.5vh; // This maintains the 27:40 aspect ratio (1080:1600) within 100vh
   height: 100vh;
-  position: relative; // This is important
+  position: relative;
   overflow: hidden;
 }
 

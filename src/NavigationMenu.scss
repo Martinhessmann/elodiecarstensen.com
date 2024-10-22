@@ -5,13 +5,20 @@
   top: 62px;
   right: 0;
   height: auto;
-  backdrop-filter: blur(10px);
   color: $color-white;
-  z-index: 10;
+  z-index: 30;
   display: flex;
   flex-direction: column;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  transform: translateY(-50%);
+  transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+  opacity: 0;
+
+  &.open {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .navigation-content {
@@ -70,8 +77,8 @@
 }
 
 .project-circle {
-  width: 8px;
-  height: 8px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background-color: rgba($color-white, 0.3);
   margin-left: 1rem;

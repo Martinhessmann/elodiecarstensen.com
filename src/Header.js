@@ -1,10 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link, useNavigate } from 'react-router-dom';
 import { getAssetUrl } from './assetUtils';
 import './Header.scss';
 
-const Header = ({ onLogoClick, onTitleClick, project, isMenuOpen }) => {
+const Header = ({ onTitleClick, project, isMenuOpen }) => {
   const logoUrl = getAssetUrl('logo.svg');
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    navigate('/');
+  };
 
   return (
     <motion.header
@@ -17,7 +23,7 @@ const Header = ({ onLogoClick, onTitleClick, project, isMenuOpen }) => {
         src={logoUrl}
         alt="Elodie Carstensen Logo"
         className="header-logo"
-        onClick={onLogoClick}
+        onClick={handleLogoClick}
       />
       {project && (
         <div className={`header-project-title ${isMenuOpen ? 'menu-open' : ''}`} onClick={onTitleClick}>
