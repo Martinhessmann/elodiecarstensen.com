@@ -18,7 +18,7 @@
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
   -webkit-overflow-scrolling: touch;
-  pointer-events: none; // Allow clicks to pass through
+  pointer-events: all; // Allow clicks to pass through
 }
 
 .splash-scroll-container::-webkit-scrollbar {
@@ -150,23 +150,23 @@
   color: $color-white;
 }
 
-.splash-enter-button {
-  @include font-tiny;
-  align-self: center;
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: none; // Hide by default
-  align-items: center;
-  gap: 2px;
-  color: $color-white;
-}
+// .splash-enter-button {
+//   @include font-tiny;
+//   align-self: center;
+//   background: none;
+//   border: none;
+//   cursor: pointer;
+//   display: none; // Hide by default
+//   align-items: center;
+//   gap: 2px;
+//   color: $color-white;
+// }
 
-.splash-enter-button::after {
-  content: '/';
-  font-size: 26px;
-  line-height: 1;
-}
+// .splash-enter-button::after {
+//   content: '/';
+//   font-size: 26px;
+//   line-height: 1;
+// }
 
 .snap-points {
   position: absolute;

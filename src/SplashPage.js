@@ -1,31 +1,17 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAssetUrl } from './assetUtils';
 import enterCursor from './assets/enter.svg';
 import './SplashPage.scss';
 
-const SplashPage = ({ onEnter }) => {
+const SplashPage = () => {
   const logoUrl = getAssetUrl('logo.svg');
   const splashUrl = getAssetUrl('splash.jpg');
   const navigate = useNavigate();
   const scrollContainerRef = useRef(null);
 
-  const [isEntering, setIsEntering] = useState(false);
-
-  const handleEnter = () => {
-    setIsEntering(true);
-    setTimeout(() => {
-      onEnter();
-      navigate('/gallery');
-    }, 500);
-  };
-
-  const handleContainerClick = (e) => {
-    // Only trigger if the click is directly on the container
-    if (e.target === e.currentTarget) {
-      handleEnter();
-    }
+  const handleContainerClick = () => {
+    navigate('/gallery');
   };
 
   useEffect(() => {
@@ -168,7 +154,6 @@ const SplashPage = ({ onEnter }) => {
     <div
       className="splash-container"
       style={{ '--enter-cursor': `url(${enterCursor})` }}
-      onClick={handleContainerClick}
     >
       <div className="splash-glass-effect" />
       <div className="splash-content">
@@ -179,18 +164,11 @@ const SplashPage = ({ onEnter }) => {
         <p className="splash-intro-text">
           STEP INTO A WORLD WHERE VULNERABILITY BECOMES ARMOR AND FLUIDITY DEFIES SOCIETAL CONSTRUCTS. ELODIE CARSTENSEN INVITES YOU TO EXPLORE ABSENCE OF PROMISED SAFETY, A SPACE WHERE CREATURES, ARTIFACTS, AND DESIGNS COALESCE, EACH PIECE CHALLENGING THE CONVENTIONS OF IDENTITY AND STRENGTH.
         </p>
-        <motion.button
-          className="splash-enter-button"
-          onClick={handleEnter}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Enter
-        </motion.button>
       </div>
       <div
         className="splash-scroll-container"
         ref={scrollContainerRef}
+        onClick={handleContainerClick}
       >
         <div className="splash-background"
           style={{ backgroundImage: `url(${splashUrl})` }}
