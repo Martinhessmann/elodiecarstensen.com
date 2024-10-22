@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './DynamicImageHighlight.scss';
 
-const DynamicImageHighlight = ({ image, highlightData, nodeData }) => {
+const DynamicImageHighlight = ({ image, highlightData, nodeData, showNodes }) => {
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
 
@@ -24,6 +24,7 @@ const DynamicImageHighlight = ({ image, highlightData, nodeData }) => {
     const padding = 0.05; // 5% padding from the edges
     const labelWidth = 0.15;
     const labelHeight = 0.05;
+    const minVerticalDistance = 16 / containerSize.height; // Convert 16px to percentage of container height
 
     const isInsideHighlight = (x, y) => {
       return x >= highlightData.x && x <= highlightData.x + highlightData.width &&
@@ -33,14 +34,19 @@ const DynamicImageHighlight = ({ image, highlightData, nodeData }) => {
     const getPositionsOutsideHighlight = () => {
       const positions = [];
       const directions = [
-        { dx: -1, dy: -1 }, { dx: 0, dy: -1 }, { dx: 1, dy: -1 },
-        { dx: -1, dy: 0 }, { dx: 1, dy: 0 },
-        { dx: -1, dy: 1 }, { dx: 0, dy: 1 }, { dx: 1, dy: 1 }
+        { dx: -1, dy: 1 }, { dx: 0, dy: 1 }, { dx: 1, dy: 1 }, // Bottom positions first
+        { dx: -1, dy: 0 }, { dx: 1, dy: 0 }, // Then sides
+        { dx: -1, dy: -1 }, { dx: 0, dy: -1 }, { dx: 1, dy: -1 } // Top positions last
       ];
 
       for (let dir of directions) {
-        let x = sourceX + dir.dx * (0.2 + Math.random() * 0.1); // Spread out more
+        let x = sourceX + dir.dx * (0.2 + Math.random() * 0.1);
         let y = sourceY + dir.dy * (0.2 + Math.random() * 0.1);
+
+        // Prefer lower positions
+        if (dir.dy === 1) {
+          y = Math.min(y + 0.2, 1 - padding - labelHeight); // Push down, but not outside viewport
+        }
 
         if (!isInsideHighlight(x, y) && !isOutsideViewport({ x, y })) {
           positions.push({ x, y });
@@ -53,7 +59,7 @@ const DynamicImageHighlight = ({ image, highlightData, nodeData }) => {
     const isOverlapping = (pos, otherLabels) => {
       return otherLabels.some(other =>
         Math.abs(pos.x - other.x) < labelWidth &&
-        Math.abs(pos.y - other.y) < labelHeight
+        Math.abs(pos.y - other.y) < minVerticalDistance
       );
     };
 
@@ -68,16 +74,47 @@ const DynamicImageHighlight = ({ image, highlightData, nodeData }) => {
 
     const positions = getPositionsOutsideHighlight();
 
+    // Sort positions by their distance from existing labels
+    positions.sort((a, b) => {
+      const aMinDist = Math.min(...otherLabels.map(label => Math.abs(a.y - label.y)));
+      const bMinDist = Math.min(...otherLabels.map(label => Math.abs(b.y - label.y)));
+      return bMinDist - aMinDist; // Sort in descending order of distance
+    });
+
     for (let pos of positions) {
       if (!isOverlapping(pos, otherLabels) && !isOutsideViewport(pos)) {
         return pos;
       }
     }
 
-    // Fallback position
+    // If no suitable position is found, try to adjust the y-coordinate
+    for (let pos of positions) {
+      let adjustedY = pos.y;
+      let direction = 1;
+      let attempts = 0;
+      while (attempts < 10) { // Limit attempts to prevent infinite loop
+        if (!isOverlapping({ x: pos.x, y: adjustedY }, otherLabels) && !isOutsideViewport({ x: pos.x, y: adjustedY })) {
+          return { x: pos.x, y: adjustedY };
+        }
+        adjustedY += direction * minVerticalDistance;
+        direction *= -1; // Alternate between moving up and down
+        attempts++;
+      }
+    }
+
+    // Fallback position: prefer bottom and avoid same Y values
+    const usedYValues = otherLabels.map(label => label.y);
+    let fallbackY = Math.min(1 - padding - labelHeight, sourceY + 0.2);
+    while (usedYValues.some(y => Math.abs(y - fallbackY) < minVerticalDistance)) {
+      fallbackY -= minVerticalDistance;
+      if (fallbackY < padding) {
+        fallbackY = 1 - padding - labelHeight;
+      }
+    }
+
     return {
       x: Math.random() < 0.5 ? padding : 1 - padding - labelWidth,
-      y: Math.max(padding, Math.min(1 - padding - labelHeight, sourceY))
+      y: fallbackY
     };
   };
 
@@ -154,47 +191,54 @@ const DynamicImageHighlight = ({ image, highlightData, nodeData }) => {
           {highlightData.text}
         </div>
       )}
-      <svg className="node-lines-svg" style={{
-        position: 'absolute',
-        left: 0,
-        top: 0,
-        width: '100%',
-        height: '100%',
-        pointerEvents: 'none',
-      }}>
-        {nodesWithPositions.map((node, index) => (
-          <path
-            key={index}
-            d={createPath(
-              { x: node.absoluteX, y: node.absoluteY },
-              { x: node.labelX, y: node.labelY }
-            )}
-            stroke="white"
-            strokeWidth="0.25"
-            fill="none"
-          />
-        ))}
-      </svg>
-      {nodesWithPositions.map((node, index) => (
-        <React.Fragment key={index}>
-          <div
-            className="node-label"
-            style={{
-              left: `${node.labelX * 100}%`,
-              top: `${node.labelY * 100}%`
-            }}
-          >
-            {node.label}
-          </div>
-          <div
-            className="node-point"
-            style={{
-              left: `${node.absoluteX * 100}%`,
-              top: `${node.absoluteY * 100}%`
-            }}
-          />
-        </React.Fragment>
-      ))}
+      {showNodes && (
+        <>
+          <svg className="node-lines-svg" style={{
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            width: '100%',
+            height: '100%',
+            pointerEvents: 'none',
+          }}>
+            {nodesWithPositions.map((node, index) => (
+              <path
+                key={index}
+                d={createPath(
+                  { x: node.absoluteX, y: node.absoluteY },
+                  { x: node.labelX, y: node.labelY }
+                )}
+                className="node-line"
+                style={{
+                  animationDelay: `${index * 0.2 + 0.2}s`
+                }}
+              />
+            ))}
+          </svg>
+          {nodesWithPositions.map((node, index) => (
+            <React.Fragment key={index}>
+              <div
+                className="node-label"
+                style={{
+                  left: `${node.labelX * 100}%`,
+                  top: `${node.labelY * 100}%`,
+                  animationDelay: `${index * 0.2 + 0.6}s`
+                }}
+              >
+                {node.label}
+              </div>
+              <div
+                className="node-point"
+                style={{
+                  left: `${node.absoluteX * 100}%`,
+                  top: `${node.absoluteY * 100}%`,
+                  animationDelay: `${index * 0.2}s`
+                }}
+              />
+            </React.Fragment>
+          ))}
+        </>
+      )}
     </div>
   );
 };

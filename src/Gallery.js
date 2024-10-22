@@ -5,6 +5,7 @@ import './Gallery.scss';
 
 const Gallery = ({ project }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [showNodes, setShowNodes] = useState(true);
   const scrollContainerRef = useRef(null);
   const galleryContentRef = useRef(null);
 
@@ -19,6 +20,8 @@ const Gallery = ({ project }) => {
     const handleScroll = () => {
       const newIndex = Math.round(scrollContainer.scrollTop / window.innerHeight);
       setCurrentIndex(newIndex);
+      setShowNodes(false);
+      setTimeout(() => setShowNodes(true), 500);
     };
 
     const smoothScrollTo = (target, duration) => {
@@ -83,6 +86,7 @@ const Gallery = ({ project }) => {
               image={image.src}
               highlightData={image.highlight}
               nodeData={image.nodes}
+              showNodes={showNodes}
             />
           </div>
         ))}
