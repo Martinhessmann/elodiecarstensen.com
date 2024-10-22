@@ -2,8 +2,20 @@ import React, { useState, useRef, useEffect } from 'react';
 import DynamicImageHighlight from './DynamicImageHighlight';
 import { getAssetUrl } from './assetUtils';
 import './Gallery.scss';
+import { useParams } from 'react-router-dom';
 
-const Gallery = ({ project }) => {
+const Gallery = ({ projects, currentProject, setCurrentProject }) => {
+  const { projectId } = useParams();
+
+  useEffect(() => {
+    if (!currentProject || currentProject.id !== projectId) {
+      const project = projects.find(p => p.id === projectId);
+      if (project) {
+        setCurrentProject(project);
+      }
+    }
+  }, [projectId, currentProject, projects, setCurrentProject]);
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showNodes, setShowNodes] = useState(true);
   const [isScrolling, setIsScrolling] = useState(false);
@@ -12,7 +24,7 @@ const Gallery = ({ project }) => {
 
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
-    if (!scrollContainer || !project) return;
+    if (!scrollContainer || !currentProject) return;
 
     // Reset scroll position and trigger animation when project changes
     scrollContainer.scrollTop = 0;
@@ -49,7 +61,7 @@ const Gallery = ({ project }) => {
       scrollContainer.removeEventListener('scroll', handleScroll);
       clearTimeout(scrollTimeout);
     };
-  }, [project]);
+  }, [currentProject]);
 
   const handleDotClick = (index) => {
     const scrollContainer = scrollContainerRef.current;
@@ -61,13 +73,13 @@ const Gallery = ({ project }) => {
     }
   };
 
-  if (!project || !project.images) {
-    return <div className="gallery-container">No images available</div>;
+  if (!currentProject || !currentProject.images) {
+    return <div className="gallery-container">Loading...</div>;
   }
 
   const projectWithCorrectImagePaths = {
-    ...project,
-    images: project.images.map(image => ({
+    ...currentProject,
+    images: currentProject.images.map(image => ({
       ...image,
       src: getAssetUrl(`${image.src}`)
     }))
@@ -85,7 +97,7 @@ const Gallery = ({ project }) => {
               nodeData={image.nodes}
               showNodes={showNodes && index === currentIndex}
               isScrolling={isScrolling}
-              themeColor={project.themeColor}
+              themeColor={currentProject.themeColor}
               shouldAnimate={shouldAnimate}
             />
           </div>

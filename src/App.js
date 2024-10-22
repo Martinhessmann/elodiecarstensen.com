@@ -16,13 +16,26 @@ function App() {
     const allProjects = [...data.projects, data.contact];
     setProjects(allProjects);
 
-    // Set the current project based on the current route
-    if (location.pathname === '/contact') {
-      setCurrentProject(data.contact);
-    } else if (location.pathname === '/gallery') {
-      // If we're on the gallery page, set the first project as current if not already set
-      setCurrentProject(prev => prev || allProjects.find(p => p.id !== 'contact'));
-    }
+    // Function to set the current project based on the URL
+    const setCurrentProjectFromUrl = () => {
+      const projectId = location.pathname.split('/').pop();
+      if (projectId === 'contact') {
+        setCurrentProject(data.contact);
+      } else if (projectId !== '' && projectId !== 'gallery') {
+        const project = allProjects.find(p => p.id === projectId);
+        if (project) {
+          setCurrentProject(project);
+        } else {
+          // If no matching project is found, set the first project as current
+          setCurrentProject(allProjects.find(p => p.id !== 'contact') || null);
+        }
+      } else if (allProjects.length > 0) {
+        // Set the first non-contact project as default
+        setCurrentProject(allProjects.find(p => p.id !== 'contact') || null);
+      }
+    };
+
+    setCurrentProjectFromUrl();
   }, [location.pathname]);
 
   useEffect(() => {
@@ -52,10 +65,16 @@ function App() {
           <Route path="/" element={<SplashPage onEnter={() => handleProjectSelect(projects[0]?.id)} />} />
           <Route
             path="/gallery"
+            element={projects.length > 0 ? <Navigate to={`/gallery/${projects[0]?.id}`} replace /> : null}
+          />
+          <Route
+            path="/gallery/:projectId"
             element={
-              currentProject && currentProject.id !== 'contact'
-                ? <Gallery project={currentProject} />
-                : <Navigate to="/" replace />
+              <Gallery
+                projects={projects}
+                currentProject={currentProject}
+                setCurrentProject={setCurrentProject}
+              />
             }
           />
           <Route path="/contact" element={<ContactPage data={data.contact} />} />

@@ -8,7 +8,7 @@ const Header = ({ project, projects, onProjectSelect }) => {
   const logoUrl = getAssetUrl('logo.svg');
   const navigate = useNavigate();
   const location = useLocation();
-  const [isHovering, setIsHovering] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogoClick = () => {
     navigate('/');
@@ -16,11 +16,11 @@ const Header = ({ project, projects, onProjectSelect }) => {
 
   const handleProjectClick = (projectId) => {
     onProjectSelect(projectId);
-    setIsHovering(false);
+    setIsMenuOpen(false); // Close the menu when a project is selected
     if (projectId === 'contact') {
       navigate('/contact');
     } else {
-      navigate('/gallery');
+      navigate(`/gallery/${projectId}`);
     }
   };
 
@@ -43,9 +43,9 @@ const Header = ({ project, projects, onProjectSelect }) => {
       </div>
       {project && (
         <div
-          className="header-project-menu"
-          onMouseEnter={() => setIsHovering(true)}
-          onMouseLeave={() => setIsHovering(false)}
+          className={`header-project-menu ${isMenuOpen ? 'open' : ''}`}
+          onMouseEnter={() => setIsMenuOpen(true)}
+          onMouseLeave={() => setIsMenuOpen(false)}
         >
           <div className={`current-project ${isContactActive && project.id === 'contact' ? 'active' : ''}`}>
             <span className="project-name">{project.name}</span>
@@ -56,7 +56,7 @@ const Header = ({ project, projects, onProjectSelect }) => {
               </>
             )}
           </div>
-          <div className="project-options">
+          <div className={`project-options ${isMenuOpen ? 'open' : ''}`}>
             {projects.filter(p => p.id !== project.id).map(p => (
               <div
                 key={p.id}

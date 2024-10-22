@@ -73,7 +73,7 @@
   transform: translateY(-10px);
   pointer-events: none;
 
-  .header-project-menu:hover & {
+  &.open {
     max-height: 300px; // Adjust this value based on your needs
     opacity: 1;
     transform: translateY(0);
@@ -86,7 +86,7 @@
   opacity: 0;
   transition: transform 0.3s ease, opacity 0.3s ease;
 
-  .header-project-menu:hover & {
+  .project-options.open & {
     transform: translateY(0);
     opacity: 1;
   }

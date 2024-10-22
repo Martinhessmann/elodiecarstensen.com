@@ -12,10 +12,7 @@ const SplashPage = () => {
 
   const handleContainerClick = () => {
     console.log("Attempting to navigate to /gallery");
-    // Try using replace instead of push
-    navigate('/gallery', { replace: true });
-    // If the above doesn't work, try this:
-    // window.location.href = '/gallery';
+    navigate('/gallery');
   };
 
   useEffect(() => {
