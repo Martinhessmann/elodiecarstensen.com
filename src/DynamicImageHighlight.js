@@ -56,13 +56,6 @@ const DynamicImageHighlight = ({ image, highlightData, nodeData, showNodes }) =>
       return positions;
     };
 
-    const isOverlapping = (pos, otherLabels) => {
-      return otherLabels.some(other =>
-        Math.abs(pos.x - other.x) < labelWidth &&
-        Math.abs(pos.y - other.y) < minVerticalDistance
-      );
-    };
-
     const isOutsideViewport = (pos) => {
       return pos.x - labelWidth / 2 < padding || pos.x + labelWidth / 2 > 1 - padding ||
         pos.y - labelHeight / 2 < padding || pos.y + labelHeight / 2 > 1 - padding;
@@ -72,17 +65,23 @@ const DynamicImageHighlight = ({ image, highlightData, nodeData, showNodes }) =>
       .slice(0, index)
       .map(node => ({ x: node.labelX, y: node.labelY }));
 
+    const usedYValues = new Set(otherLabels.map(label => Math.round(label.y * 1000) / 1000));
+
     const positions = getPositionsOutsideHighlight();
 
-    // Sort positions by their distance from existing labels
+    // Sort positions, prioritizing lower positions
     positions.sort((a, b) => {
-      const aMinDist = Math.min(...otherLabels.map(label => Math.abs(a.y - label.y)));
-      const bMinDist = Math.min(...otherLabels.map(label => Math.abs(b.y - label.y)));
-      return bMinDist - aMinDist; // Sort in descending order of distance
+      // Prioritize positions below the source point
+      if (a.y > sourceY && b.y <= sourceY) return -1;
+      if (b.y > sourceY && a.y <= sourceY) return 1;
+
+      // If both are below or both are above, prefer the one closer to the bottom
+      return b.y - a.y;
     });
 
     for (let pos of positions) {
-      if (!isOverlapping(pos, otherLabels) && !isOutsideViewport(pos)) {
+      const roundedY = Math.round(pos.y * 1000) / 1000;
+      if (!usedYValues.has(roundedY) && !isOutsideViewport(pos) && !isInsideHighlight(pos.x, pos.y)) {
         return pos;
       }
     }
@@ -90,25 +89,28 @@ const DynamicImageHighlight = ({ image, highlightData, nodeData, showNodes }) =>
     // If no suitable position is found, try to adjust the y-coordinate
     for (let pos of positions) {
       let adjustedY = pos.y;
-      let direction = 1;
+      let direction = 1; // Start by moving down
       let attempts = 0;
-      while (attempts < 10) { // Limit attempts to prevent infinite loop
-        if (!isOverlapping({ x: pos.x, y: adjustedY }, otherLabels) && !isOutsideViewport({ x: pos.x, y: adjustedY })) {
+      while (attempts < 20) {
+        const roundedY = Math.round(adjustedY * 1000) / 1000;
+        if (!usedYValues.has(roundedY) && !isOutsideViewport({ x: pos.x, y: adjustedY }) && !isInsideHighlight(pos.x, adjustedY)) {
           return { x: pos.x, y: adjustedY };
         }
         adjustedY += direction * minVerticalDistance;
-        direction *= -1; // Alternate between moving up and down
+        if (adjustedY > 1 - padding - labelHeight || adjustedY < padding) {
+          direction *= -1; // Change direction if we hit the top or bottom
+        }
         attempts++;
       }
     }
 
-    // Fallback position: prefer bottom and avoid same Y values
-    const usedYValues = otherLabels.map(label => label.y);
-    let fallbackY = Math.min(1 - padding - labelHeight, sourceY + 0.2);
-    while (usedYValues.some(y => Math.abs(y - fallbackY) < minVerticalDistance)) {
+    // Fallback position: prefer bottom
+    let fallbackY = 1 - padding - labelHeight;
+    while (usedYValues.has(Math.round(fallbackY * 1000) / 1000) || isOutsideViewport({ x: padding, y: fallbackY })) {
       fallbackY -= minVerticalDistance;
       if (fallbackY < padding) {
         fallbackY = 1 - padding - labelHeight;
+        break;
       }
     }
 
@@ -147,6 +149,11 @@ const DynamicImageHighlight = ({ image, highlightData, nodeData, showNodes }) =>
   const nodesWithPositions = nodeData ? calculateNodePositions(nodeData) : [];
 
   const createPath = (start, end) => {
+    // Check if containerSize is valid
+    if (containerSize.width === 0 || containerSize.height === 0) {
+      return ''; // Return an empty path if container size is not yet available
+    }
+
     // Normalize coordinates
     const normalizeX = x => x * containerSize.width;
     const normalizeY = y => y * containerSize.height;

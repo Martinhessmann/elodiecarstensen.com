@@ -9,6 +9,29 @@ const Gallery = ({ project }) => {
   const scrollContainerRef = useRef(null);
   const galleryContentRef = useRef(null);
 
+  const smoothScrollTo = (target, duration) => {
+    const scrollContainer = scrollContainerRef.current;
+    if (!scrollContainer) return;
+
+    const start = scrollContainer.scrollTop;
+    const distance = target - start;
+    let startTime = null;
+
+    const animation = (currentTime) => {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+      const ease = t => t < .5 ? 2 * t * t : -1 + (4 - 2 * t) * t; // easeInOutQuad
+      scrollContainer.scrollTop = start + distance * ease(progress);
+
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animation);
+      }
+    };
+
+    requestAnimationFrame(animation);
+  };
+
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
     const galleryContent = galleryContentRef.current;
@@ -22,26 +45,6 @@ const Gallery = ({ project }) => {
       setCurrentIndex(newIndex);
       setShowNodes(false);
       setTimeout(() => setShowNodes(true), 500);
-    };
-
-    const smoothScrollTo = (target, duration) => {
-      const start = scrollContainer.scrollTop;
-      const distance = target - start;
-      let startTime = null;
-
-      const animation = (currentTime) => {
-        if (startTime === null) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const progress = Math.min(timeElapsed / duration, 1);
-        const ease = t => t < .5 ? 2 * t * t : -1 + (4 - 2 * t) * t; // easeInOutQuad
-        scrollContainer.scrollTop = start + distance * ease(progress);
-
-        if (timeElapsed < duration) {
-          requestAnimationFrame(animation);
-        }
-      };
-
-      requestAnimationFrame(animation);
     };
 
     const handleScrollEnd = () => {
@@ -66,6 +69,11 @@ const Gallery = ({ project }) => {
       clearTimeout(scrollTimeout);
     };
   }, [project]);
+
+  const handleDotClick = (index) => {
+    const targetScrollTop = index * window.innerHeight;
+    smoothScrollTo(targetScrollTop, 300);
+  };
 
   if (!project) return null;
 
@@ -92,11 +100,15 @@ const Gallery = ({ project }) => {
         ))}
       </div>
       <div className="gallery-navigation">
-        {projectWithCorrectImagePaths.images.map((_, index) => (
+        {projectWithCorrectImagePaths.images.map((image, index) => (
           <div
             key={index}
-            className={`gallery-nav-dot ${index === currentIndex ? 'active' : ''}`}
-          ></div>
+            className={`gallery-nav-item ${index === currentIndex ? 'active' : ''}`}
+            onClick={() => handleDotClick(index)}
+          >
+            <div className="gallery-nav-label">{image.highlight.text}</div>
+            <div className="gallery-nav-dot"></div>
+          </div>
         ))}
       </div>
     </div>
