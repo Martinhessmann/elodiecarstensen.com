@@ -109,6 +109,26 @@ const DynamicImageHighlight = ({ image, highlightData, nodeData }) => {
 
   const nodesWithPositions = nodeData ? calculateNodePositions(nodeData) : [];
 
+  const createPath = (start, end) => {
+    // Normalize coordinates
+    const normalizeX = x => x * containerSize.width;
+    const normalizeY = y => y * containerSize.height;
+
+    // Determine if the path should bend horizontally or vertically
+    const isHorizontalBend = Math.abs(end.x - start.x) > Math.abs(end.y - start.y);
+
+    let bendPoint;
+    if (isHorizontalBend) {
+      // Horizontal bend
+      bendPoint = { x: end.x, y: start.y };
+    } else {
+      // Vertical bend
+      bendPoint = { x: start.x, y: end.y };
+    }
+
+    return `M${normalizeX(start.x)},${normalizeY(start.y)} L${normalizeX(bendPoint.x)},${normalizeY(bendPoint.y)} L${normalizeX(end.x)},${normalizeY(end.y)}`;
+  };
+
   return (
     <div className="dynamic-image-highlight" ref={containerRef}>
       <img src={image} alt="Gallery item" className="gallery-image" />
@@ -134,48 +154,47 @@ const DynamicImageHighlight = ({ image, highlightData, nodeData }) => {
           {highlightData.text}
         </div>
       )}
-      {nodesWithPositions.map((node, index) => {
-        const isLeft = node.labelX < node.absoluteX;
-        const isTop = node.labelY < node.absoluteY;
-        return (
-          <React.Fragment key={index}>
-            <div
-              className="node-line"
-              style={{
-                left: `${node.absoluteX * 100}%`,
-                top: `${node.absoluteY * 100}%`,
-                width: `${Math.abs(node.labelX - node.absoluteX) * 100}%`,
-                height: `${Math.abs(node.labelY - node.absoluteY) * 100}%`,
-                borderLeft: isLeft ? '0.25px solid white' : 'none',
-                borderRight: !isLeft ? '0.25px solid white' : 'none',
-                borderTop: isTop ? '0.25px solid white' : 'none',
-                borderBottom: !isTop ? '0.25px solid white' : 'none',
-              }}
-            >
-              <div className="node-dot" style={{
-                [isLeft ? 'right' : 'left']: '0',
-                [isTop ? 'bottom' : 'top']: '0',
-              }} />
-            </div>
-            <div
-              className="node-label"
-              style={{
-                left: `${node.labelX * 100}%`,
-                top: `${node.labelY * 100}%`
-              }}
-            >
-              {node.label}
-            </div>
-            <div
-              className="node-point"
-              style={{
-                left: `${node.absoluteX * 100}%`,
-                top: `${node.absoluteY * 100}%`
-              }}
-            />
-          </React.Fragment>
-        );
-      })}
+      <svg className="node-lines-svg" style={{
+        position: 'absolute',
+        left: 0,
+        top: 0,
+        width: '100%',
+        height: '100%',
+        pointerEvents: 'none',
+      }}>
+        {nodesWithPositions.map((node, index) => (
+          <path
+            key={index}
+            d={createPath(
+              { x: node.absoluteX, y: node.absoluteY },
+              { x: node.labelX, y: node.labelY }
+            )}
+            stroke="white"
+            strokeWidth="0.25"
+            fill="none"
+          />
+        ))}
+      </svg>
+      {nodesWithPositions.map((node, index) => (
+        <React.Fragment key={index}>
+          <div
+            className="node-label"
+            style={{
+              left: `${node.labelX * 100}%`,
+              top: `${node.labelY * 100}%`
+            }}
+          >
+            {node.label}
+          </div>
+          <div
+            className="node-point"
+            style={{
+              left: `${node.absoluteX * 100}%`,
+              top: `${node.absoluteY * 100}%`
+            }}
+          />
+        </React.Fragment>
+      ))}
     </div>
   );
 };
