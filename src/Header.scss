@@ -46,10 +46,7 @@
   text-align: right;
   white-space: nowrap;
   min-width: max-content;
-
-  &.active {
-    background-color: rgba($color-white, 0.2);
-  }
+  min-height: 34px;
 }
 
 .project-option {
@@ -62,7 +59,6 @@
   position: absolute;
   top: 100%;
   right: 0;
-  backdrop-filter: blur(10px);
   border-radius: 4px;
   padding: 4px 8px;
   min-width: 100%;

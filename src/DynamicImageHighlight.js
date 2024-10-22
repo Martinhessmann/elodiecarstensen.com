@@ -1,18 +1,23 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import './DynamicImageHighlight.scss';
 
-const DynamicImageHighlight = ({ highlightData, nodeData, showNodes, isScrolling, themeColor, shouldAnimate }) => {
+const DynamicImageHighlight = React.memo(({ highlightData, nodeData, showNodes, isScrolling, shouldAnimate }) => {
+  console.log('DynamicImageHighlight render', { highlightData, nodeData, showNodes, isScrolling, shouldAnimate });
+
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
+    console.log('Container size effect');
     const updateSize = () => {
       if (containerRef.current) {
-        setContainerSize({
+        const newSize = {
           width: containerRef.current.offsetWidth,
           height: containerRef.current.offsetHeight
-        });
+        };
+        console.log('New container size:', newSize);
+        setContainerSize(newSize);
       }
     };
 
@@ -22,14 +27,19 @@ const DynamicImageHighlight = ({ highlightData, nodeData, showNodes, isScrolling
   }, []);
 
   useEffect(() => {
+    console.log('Animation effect', { shouldAnimate });
     if (shouldAnimate) {
       setAnimate(true);
-      const timer = setTimeout(() => setAnimate(false), 2000); // Adjust time as needed
+      const timer = setTimeout(() => {
+        console.log('Animation timeout');
+        setAnimate(false);
+      }, 2000);
       return () => clearTimeout(timer);
     }
   }, [shouldAnimate]);
 
-  const forceDirectedPlacement = (nodes, iterations = 50) => {
+  const forceDirectedPlacement = useCallback((nodes, iterations = 50) => {
+    console.log('Starting force-directed placement', { nodes, iterations });
     const labelWidth = 0.15;
     const labelHeight = 0.05;
     const repulsionForce = 0.01;
@@ -76,23 +86,31 @@ const DynamicImageHighlight = ({ highlightData, nodeData, showNodes, isScrolling
       });
     }
 
+    console.log('Finished force-directed placement', nodes);
     return nodes;
-  };
+  }, []);
 
-  const calculateNodePositions = (nodes) => {
+  const calculateNodePositions = useCallback((nodes) => {
+    console.log('Calculating node positions', nodes);
     const nodesWithInitialPositions = nodes.map(node => ({
       ...node,
       labelX: node.x + (Math.random() - 0.5) * 0.4,
       labelY: node.y + (Math.random() - 0.5) * 0.4
     }));
 
-    return forceDirectedPlacement(nodesWithInitialPositions);
-  };
+    const result = forceDirectedPlacement(nodesWithInitialPositions);
+    console.log('Calculated node positions', result);
+    return result;
+  }, [forceDirectedPlacement]);
 
-  const nodesWithPositions = nodeData ? calculateNodePositions(nodeData) : [];
+  const nodesWithPositions = useMemo(() => {
+    if (!showNodes || !nodeData) return [];
+    return calculateNodePositions(nodeData);
+  }, [showNodes, nodeData, calculateNodePositions]);
 
-  const createPath = (start, end) => {
+  const createPath = useCallback((start, end) => {
     if (containerSize.width === 0 || containerSize.height === 0) {
+      console.log('Container size is zero, skipping path creation');
       return '';
     }
 
@@ -102,13 +120,24 @@ const DynamicImageHighlight = ({ highlightData, nodeData, showNodes, isScrolling
     const isHorizontalBend = Math.abs(end.x - start.x) > Math.abs(end.y - start.y);
     const bendPoint = isHorizontalBend ? { x: end.x, y: start.y } : { x: start.x, y: end.y };
 
-    return `M${normalizeX(start.x)},${normalizeY(start.y)} L${normalizeX(bendPoint.x)},${normalizeY(bendPoint.y)} L${normalizeX(end.x)},${normalizeY(end.y)}`;
-  };
+    const path = `M${normalizeX(start.x)},${normalizeY(start.y)} L${normalizeX(bendPoint.x)},${normalizeY(bendPoint.y)} L${normalizeX(end.x)},${normalizeY(end.y)}`;
+
+    console.log('Created path', { start, end, path });
+    return path;
+  }, [containerSize]);
+
+  console.log('Rendering component', { animate, showNodes, isScrolling, containerSize });
 
   return (
     <div
-      className={`dynamic-image-highlight ${isScrolling ? 'fade-out' : ''} ${animate ? 'animate' : ''}`}
       ref={containerRef}
+      className={`dynamic-image-highlight ${animate ? 'animate' : ''}`}
+      style={{
+        '--highlight-x': `${highlightData.x * 100}%`,
+        '--highlight-y': `${highlightData.y * 100}%`,
+        '--highlight-width': `${highlightData.width * 100}%`,
+        '--highlight-height': `${highlightData.height * 100}%`,
+      }}
     >
       {highlightData && (
         <div
@@ -127,7 +156,7 @@ const DynamicImageHighlight = ({ highlightData, nodeData, showNodes, isScrolling
           style={{
             left: `${highlightData.x * 100}%`,
             top: `${highlightData.y * 100}%`,
-            color: themeColor,
+            // The color is now handled by CSS
           }}
         >
           {highlightData.text}
@@ -143,49 +172,54 @@ const DynamicImageHighlight = ({ highlightData, nodeData, showNodes, isScrolling
             height: '100%',
             pointerEvents: 'none',
           }}>
-            {nodesWithPositions.map((node, index) => (
-              <path
-                key={index}
-                d={createPath(
-                  { x: node.x, y: node.y },
-                  { x: node.labelX, y: node.labelY }
-                )}
-                className="node-line"
-                style={{
-                  animationDelay: `${index * 0.2 + 0.2}s`,
-                  stroke: 'white',
-                }}
-              />
-            ))}
+            {nodesWithPositions.map((node, index) => {
+              console.log(`Rendering node line ${index}`, node);
+              return (
+                <path
+                  key={index}
+                  d={createPath(
+                    { x: node.x, y: node.y },
+                    { x: node.labelX, y: node.labelY }
+                  )}
+                  className="node-line"
+                  style={{
+                    animationDelay: `${index * 0.2 + 0.2}s`,
+                    stroke: 'white',
+                  }}
+                />
+              );
+            })}
           </svg>
-          {nodesWithPositions.map((node, index) => (
-            <React.Fragment key={index}>
-              <div
-                className="node-label"
-                style={{
-                  left: `${node.labelX * 100}%`,
-                  top: `${node.labelY * 100}%`,
-                  animationDelay: `${index * 0.2 + 0.6}s`,
-                  backgroundColor: themeColor,
-                }}
-              >
-                {node.label}
-              </div>
-              <div
-                className="node-point"
-                style={{
-                  left: `${node.x * 100}%`,
-                  top: `${node.y * 100}%`,
-                  animationDelay: `${index * 0.2}s`,
-                  backgroundColor: 'white',
-                }}
-              />
-            </React.Fragment>
-          ))}
+          {nodesWithPositions.map((node, index) => {
+            console.log(`Rendering node ${index}`, node);
+            return (
+              <React.Fragment key={index}>
+                <div
+                  className="node-label"
+                  style={{
+                    left: `${node.labelX * 100}%`,
+                    top: `${node.labelY * 100}%`,
+                    animationDelay: `${index * 0.2 + 0.6}s`
+                  }}
+                >
+                  {node.label}
+                </div>
+                <div
+                  className="node-point"
+                  style={{
+                    left: `${node.x * 100}%`,
+                    top: `${node.y * 100}%`,
+                    animationDelay: `${index * 0.2}s`,
+                    backgroundColor: 'white',
+                  }}
+                />
+              </React.Fragment>
+            );
+          })}
         </>
       )}
     </div>
   );
-};
+});
 
 export default DynamicImageHighlight;
