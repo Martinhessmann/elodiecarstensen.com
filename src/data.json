@@ -472,5 +472,50 @@
         }
       ]
     }
-  ]
+  ],
+  "contact": {
+    "id": "contact",
+    "name": "CONTACT",
+    "backgroundImage": "contact.jpg",
+    "themeColor": "#000000",
+    "imprint": {
+      "name": "Elodie Carstensen",
+      "address": [
+        "Kadinerstr.20a",
+        "10243-B"
+      ]
+    },
+    "inquiries": {
+      "email": "info@elodiecarstensen.com",
+      "label": "INQUIRIES"
+    },
+    "newsletter": {
+      "label": "SIGN UP TO ACCESS MORE INFO",
+      "placeholder": "Enter your email",
+      "buttonText": "Subscribe"
+    },
+    "annotations": [
+      {
+        "type": "imprint",
+        "x": 0.05,
+        "y": 0.05,
+        "width": 0.3,
+        "height": 0.2
+      },
+      {
+        "type": "inquiries",
+        "x": 0.05,
+        "y": 0.3,
+        "width": 0.4,
+        "height": 0.1
+      },
+      {
+        "type": "newsletter",
+        "x": 0.6,
+        "y": 0.8,
+        "width": 0.35,
+        "height": 0.15
+      }
+    ]
+  }
 }

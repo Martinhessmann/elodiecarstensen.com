@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './DynamicImageHighlight.scss';
 
-const DynamicImageHighlight = ({ highlightData, nodeData, showNodes, isScrolling, themeColor }) => {
+const DynamicImageHighlight = ({ highlightData, nodeData, showNodes, isScrolling, themeColor, shouldAnimate }) => {
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
+  const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
     const updateSize = () => {
@@ -19,6 +20,14 @@ const DynamicImageHighlight = ({ highlightData, nodeData, showNodes, isScrolling
     window.addEventListener('resize', updateSize);
     return () => window.removeEventListener('resize', updateSize);
   }, []);
+
+  useEffect(() => {
+    if (shouldAnimate) {
+      setAnimate(true);
+      const timer = setTimeout(() => setAnimate(false), 2000); // Adjust time as needed
+      return () => clearTimeout(timer);
+    }
+  }, [shouldAnimate]);
 
   const forceDirectedPlacement = (nodes, iterations = 50) => {
     const labelWidth = 0.15;
@@ -97,7 +106,7 @@ const DynamicImageHighlight = ({ highlightData, nodeData, showNodes, isScrolling
   };
 
   return (
-    <div className={`dynamic-image-highlight ${isScrolling ? 'fade-out' : ''}`} ref={containerRef}>
+    <div className={`dynamic-image-highlight ${isScrolling ? 'fade-out' : ''} ${animate ? 'animate' : ''}`} ref={containerRef}>
       {highlightData && (
         <div
           className="frame-rectangle"

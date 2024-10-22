@@ -7,23 +7,24 @@ const Gallery = ({ project }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showNodes, setShowNodes] = useState(true);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [shouldAnimate, setShouldAnimate] = useState(true);
   const scrollContainerRef = useRef(null);
 
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
     if (!scrollContainer || !project) return;
 
-    // Reset scroll position when project changes
+    // Reset scroll position and trigger animation when project changes
     scrollContainer.scrollTop = 0;
     setCurrentIndex(0);
+    setShouldAnimate(true);
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const index = parseInt(entry.target.dataset.index, 10);
           setCurrentIndex(index);
-          setShowNodes(false);
-          setTimeout(() => setShowNodes(true), 500);
+          setShouldAnimate(true);
         }
       });
     }, { threshold: 0.5 });
@@ -37,6 +38,7 @@ const Gallery = ({ project }) => {
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
         setIsScrolling(false);
+        setShouldAnimate(true);
       }, 150);
     };
 
@@ -47,7 +49,7 @@ const Gallery = ({ project }) => {
       scrollContainer.removeEventListener('scroll', handleScroll);
       clearTimeout(scrollTimeout);
     };
-  }, [project]); // Add project to the dependency array
+  }, [project]);
 
   const handleDotClick = (index) => {
     const scrollContainer = scrollContainerRef.current;
@@ -59,7 +61,9 @@ const Gallery = ({ project }) => {
     }
   };
 
-  if (!project) return null;
+  if (!project || !project.images) {
+    return <div className="gallery-container">No images available</div>;
+  }
 
   const projectWithCorrectImagePaths = {
     ...project,
@@ -82,6 +86,7 @@ const Gallery = ({ project }) => {
               showNodes={showNodes && index === currentIndex}
               isScrolling={isScrolling}
               themeColor={project.themeColor}
+              shouldAnimate={shouldAnimate}
             />
           </div>
         </div>

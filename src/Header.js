@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { getAssetUrl } from './assetUtils';
 import './Header.scss';
 
 const Header = ({ project, projects, onProjectSelect }) => {
   const logoUrl = getAssetUrl('logo.svg');
   const navigate = useNavigate();
+  const location = useLocation();
   const [isHovering, setIsHovering] = useState(false);
 
   const handleLogoClick = () => {
@@ -16,7 +17,14 @@ const Header = ({ project, projects, onProjectSelect }) => {
   const handleProjectClick = (projectId) => {
     onProjectSelect(projectId);
     setIsHovering(false);
+    if (projectId === 'contact') {
+      navigate('/contact');
+    } else {
+      navigate('/gallery');
+    }
   };
+
+  const isContactActive = location.pathname === '/contact';
 
   return (
     <motion.header
@@ -39,7 +47,7 @@ const Header = ({ project, projects, onProjectSelect }) => {
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
         >
-          <div className="current-project">
+          <div className={`current-project ${isContactActive && project.id === 'contact' ? 'active' : ''}`}>
             <span className="project-name">{project.name}</span>
             {project.season && (
               <>
@@ -50,7 +58,11 @@ const Header = ({ project, projects, onProjectSelect }) => {
           </div>
           <div className="project-options">
             {projects.filter(p => p.id !== project.id).map(p => (
-              <div key={p.id} className="project-option" onClick={() => handleProjectClick(p.id)}>
+              <div
+                key={p.id}
+                className={`project-option ${isContactActive && p.id === 'contact' ? 'active' : ''}`}
+                onClick={() => handleProjectClick(p.id)}
+              >
                 <span className="project-name">{p.name}</span>
                 {p.season && (
                   <>
