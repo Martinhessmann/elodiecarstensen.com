@@ -19,8 +19,9 @@ function App() {
     // Set the current project based on the current route
     if (location.pathname === '/contact') {
       setCurrentProject(data.contact);
-    } else if (location.pathname === '/gallery' && allProjects.length > 0) {
-      setCurrentProject(allProjects[0]);
+    } else if (location.pathname === '/gallery') {
+      // If we're on the gallery page, set the first project as current if not already set
+      setCurrentProject(prev => prev || allProjects.find(p => p.id !== 'contact'));
     }
   }, [location.pathname]);
 
@@ -54,7 +55,7 @@ function App() {
             element={
               currentProject && currentProject.id !== 'contact'
                 ? <Gallery project={currentProject} />
-                : <Navigate to="/contact" replace />
+                : <Navigate to="/" replace />
             }
           />
           <Route path="/contact" element={<ContactPage data={data.contact} />} />

@@ -153,7 +153,7 @@ const DynamicImageHighlight = ({ highlightData, nodeData, showNodes, isScrolling
                 className="node-line"
                 style={{
                   animationDelay: `${index * 0.2 + 0.2}s`,
-                  stroke: themeColor,
+                  stroke: 'white',
                 }}
               />
             ))}
@@ -177,7 +177,7 @@ const DynamicImageHighlight = ({ highlightData, nodeData, showNodes, isScrolling
                   left: `${node.x * 100}%`,
                   top: `${node.y * 100}%`,
                   animationDelay: `${index * 0.2}s`,
-                  backgroundColor: themeColor,
+                  backgroundColor: 'white',
                 }}
               />
             </React.Fragment>

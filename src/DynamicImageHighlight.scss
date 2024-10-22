@@ -13,16 +13,6 @@
     opacity: 0;
   }
 
-  &:not(.animate) {
-    .frame-rectangle,
-    .frame-label,
-    .node-line,
-    .node-label,
-    .node-point {
-      animation-play-state: paused;
-    }
-  }
-
   &.animate {
     .frame-rectangle { animation: drawFrame 1s ease-out forwards; }
     .frame-label { animation: fadeIn 0.5s ease-out 0.5s forwards; }

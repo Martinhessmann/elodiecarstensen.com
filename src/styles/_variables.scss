@@ -7,6 +7,7 @@ $color-gray: #6b7280;
 $color-theme-aops: #091115;
 $color-theme-des-nachtmahr: #584B39;
 $color-theme-alluvial: #AB765A;
+$background-color: $color-dark;
 
 // Typography
 @mixin font-tiny {
@@ -28,6 +29,3 @@ $color-theme-alluvial: #AB765A;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-
-// You can add more mixins for other text styles as needed
-
