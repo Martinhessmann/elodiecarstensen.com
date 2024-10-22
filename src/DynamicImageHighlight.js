@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './DynamicImageHighlight.scss';
 
-const DynamicImageHighlight = ({ image, highlightData, nodeData, showNodes }) => {
+const DynamicImageHighlight = ({ highlightData, nodeData, showNodes }) => {
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
 
@@ -175,7 +175,6 @@ const DynamicImageHighlight = ({ image, highlightData, nodeData, showNodes }) =>
 
   return (
     <div className="dynamic-image-highlight" ref={containerRef}>
-      <img src={image} alt="Gallery item" className="gallery-image" />
       {highlightData && (
         <div
           className="frame-rectangle"

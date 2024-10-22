@@ -7,72 +7,38 @@ const Gallery = ({ project }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showNodes, setShowNodes] = useState(true);
   const scrollContainerRef = useRef(null);
-  const galleryContentRef = useRef(null);
-
-  const smoothScrollTo = (target, duration) => {
-    const scrollContainer = scrollContainerRef.current;
-    if (!scrollContainer) return;
-
-    const start = scrollContainer.scrollTop;
-    const distance = target - start;
-    let startTime = null;
-
-    const animation = (currentTime) => {
-      if (startTime === null) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const progress = Math.min(timeElapsed / duration, 1);
-      const ease = t => t < .5 ? 2 * t * t : -1 + (4 - 2 * t) * t; // easeInOutQuad
-      scrollContainer.scrollTop = start + distance * ease(progress);
-
-      if (timeElapsed < duration) {
-        requestAnimationFrame(animation);
-      }
-    };
-
-    requestAnimationFrame(animation);
-  };
 
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
-    const galleryContent = galleryContentRef.current;
-    if (!scrollContainer || !galleryContent || !project) return;
+    if (!scrollContainer || !project) return;
 
-    // Set the height of the gallery content
-    galleryContent.style.height = `${project.images.length * 100}vh`;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const index = parseInt(entry.target.dataset.index, 10);
+          setCurrentIndex(index);
+          setShowNodes(false);
+          setTimeout(() => setShowNodes(true), 500);
+        }
+      });
+    }, { threshold: 0.5 });
 
-    const handleScroll = () => {
-      const newIndex = Math.round(scrollContainer.scrollTop / window.innerHeight);
-      setCurrentIndex(newIndex);
-      setShowNodes(false);
-      setTimeout(() => setShowNodes(true), 500);
-    };
-
-    const handleScrollEnd = () => {
-      const targetIndex = Math.round(scrollContainer.scrollTop / window.innerHeight);
-      const targetScrollTop = targetIndex * window.innerHeight;
-      if (Math.abs(scrollContainer.scrollTop - targetScrollTop) > 10) {
-        smoothScrollTo(targetScrollTop, 300);
-      }
-    };
-
-    let scrollTimeout;
-    const handleScrollWithDebounce = () => {
-      handleScroll();
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(handleScrollEnd, 150);
-    };
-
-    scrollContainer.addEventListener('scroll', handleScrollWithDebounce, { passive: true });
+    const slides = scrollContainer.querySelectorAll('.gallery-slide');
+    slides.forEach(slide => observer.observe(slide));
 
     return () => {
-      scrollContainer.removeEventListener('scroll', handleScrollWithDebounce);
-      clearTimeout(scrollTimeout);
+      slides.forEach(slide => observer.unobserve(slide));
     };
   }, [project]);
 
   const handleDotClick = (index) => {
-    const targetScrollTop = index * window.innerHeight;
-    smoothScrollTo(targetScrollTop, 300);
+    const scrollContainer = scrollContainerRef.current;
+    if (scrollContainer) {
+      scrollContainer.scrollTo({
+        top: index * window.innerHeight,
+        behavior: 'smooth'
+      });
+    }
   };
 
   if (!project) return null;
@@ -87,18 +53,19 @@ const Gallery = ({ project }) => {
 
   return (
     <div className="gallery-container" ref={scrollContainerRef}>
-      <div className="gallery-content" ref={galleryContentRef}>
-        {projectWithCorrectImagePaths.images.map((image, index) => (
-          <div key={image.id} className="gallery-image-container">
+      {projectWithCorrectImagePaths.images.map((image, index) => (
+        <div key={image.id} className="gallery-slide" data-index={index}>
+          <div className="image-container">
+            <img src={image.src} alt={`Gallery item ${index + 1}`} className="gallery-image" />
             <DynamicImageHighlight
               image={image.src}
               highlightData={image.highlight}
               nodeData={image.nodes}
-              showNodes={showNodes}
+              showNodes={showNodes && index === currentIndex}
             />
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
       <div className="gallery-navigation">
         {projectWithCorrectImagePaths.images.map((image, index) => (
           <div
