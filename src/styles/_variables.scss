@@ -3,6 +3,11 @@ $color-dark: #091115;
 $color-white: #FFFFFF;
 $color-gray: #6b7280;
 
+// Project theme colors
+$color-theme-aops: #091115;
+$color-theme-des-nachtmahr: #584B39;
+$color-theme-alluvial: #AB765A;
+
 // Typography
 @mixin font-tiny {
   font-family: 'SF Mono', monospace;
@@ -25,3 +30,4 @@ $color-gray: #6b7280;
 }
 
 // You can add more mixins for other text styles as needed
+

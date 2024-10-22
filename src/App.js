@@ -20,6 +20,12 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    if (currentProject) {
+      document.documentElement.style.setProperty('--project-theme-color', currentProject.themeColor);
+    }
+  }, [currentProject]);
+
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
