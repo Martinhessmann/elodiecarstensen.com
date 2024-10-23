@@ -62,7 +62,10 @@
   background-color: rgba($color-dark, 0.7);
   backdrop-filter: blur(4px);
   white-space: nowrap;
-  z-index: 10; // Ensure labels appear above other elements but below frame label
+  z-index: 10;
+  max-width: 200px; // Increased max-width
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .node-line {

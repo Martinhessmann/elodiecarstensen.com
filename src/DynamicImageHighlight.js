@@ -3,7 +3,7 @@ import './DynamicImageHighlight.scss';
 
 const generateLabelOffset = (node, highlightData, index, totalNodes) => {
   const angle = (index / totalNodes) * 2 * Math.PI;
-  const distance = 0.15; // Base distance
+  const distance = 0.15; // Increased base distance
 
   let offsetX = Math.cos(angle) * distance;
   let offsetY = Math.sin(angle) * distance;
@@ -18,8 +18,10 @@ const generateLabelOffset = (node, highlightData, index, totalNodes) => {
   else offsetY = (node.y < highlightData.y + highlightData.height / 2) ? -Math.abs(offsetY) - 0.05 : Math.abs(offsetY) + 0.05;
 
   // Avoid overlap with frame label
-  if (node.y < highlightData.y && node.x >= highlightData.x && node.x <= highlightData.x + highlightData.width) {
-    offsetY -= 0.05; // Move label up a bit more
+  if (node.y > highlightData.y + highlightData.height &&
+    node.x >= highlightData.x &&
+    node.x <= highlightData.x + highlightData.width) {
+    offsetY += 0.05; // Move label up a bit more
   }
 
   return {
