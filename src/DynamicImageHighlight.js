@@ -59,6 +59,7 @@ const DynamicImageHighlight = React.memo(({ highlightData, nodeData, showNodes, 
   }, [shouldAnimate]);
 
   const nodesWithOffsets = useMemo(() => {
+    if (!nodeData || !Array.isArray(nodeData)) return [];
     return nodeData.map((node, index) => {
       const labelPosition = generateLabelOffset(node, highlightData, index, nodeData.length);
       return {
@@ -106,17 +107,12 @@ const DynamicImageHighlight = React.memo(({ highlightData, nodeData, showNodes, 
             width: `${highlightData.width * 100}%`,
             height: `${highlightData.height * 100}%`,
           }}
-        />
-      )}
-      {highlightData && highlightData.text && (
-        <div
-          className="frame-label"
-          style={{
-            left: `${highlightData.x * 100}%`,
-            top: `${highlightData.y * 100}%`,
-          }}
         >
-          {highlightData.text}
+          {highlightData.text && (
+            <div className="frame-label">
+              {highlightData.text}
+            </div>
+          )}
         </div>
       )}
       {showNodes && (

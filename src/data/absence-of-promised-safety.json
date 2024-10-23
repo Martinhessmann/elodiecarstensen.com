@@ -1,0 +1,284 @@
+{
+  "id": "absence-of-promised-safety",
+  "name": "ABSENCE OF PROMISED SAFETY",
+  "season": "SS25",
+  "themeColor": "#091115",
+  "images": [
+    {
+      "id": "aos1",
+      "src": "absence-of-promised-safety/01_FAUNUS.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.25,
+        "width": 0.36,
+        "height": 0.5,
+        "text": "FAUNUS_DRESS",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "100% sandwashed silk"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "6 large tin buttons"
+        },
+        {
+          "x": 0.4,
+          "y": 0.5,
+          "label": "Custom cufflink option"
+        },
+        {
+          "x": 0.5,
+          "y": 0.35,
+          "label": "White/fuchsia/yellow ice dye"
+        }
+      ]
+    },
+    {
+      "id": "aos2",
+      "src": "absence-of-promised-safety/02_GINA.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.25,
+        "width": 0.36,
+        "height": 0.5,
+        "text": "GINA_DRESS",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "100% sandwashed silk"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "Oversized sweater silhouette"
+        },
+        {
+          "x": 0.4,
+          "y": 0.5,
+          "label": "White/fuchsia/yellow ice dye"
+        }
+      ]
+    },
+    {
+      "id": "aos3",
+      "src": "absence-of-promised-safety/03_EDEN.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.25,
+        "width": 0.36,
+        "height": 0.45,
+        "text": "EDEN_DRESS",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "100% sandwashed silk"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "Oversized t-shirt pattern"
+        },
+        {
+          "x": 0.4,
+          "y": 0.5,
+          "label": "White/fuchsia/yellow ice dye"
+        }
+      ]
+    },
+    {
+      "id": "aos4",
+      "src": "absence-of-promised-safety/04_MITRA.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.25,
+        "width": 0.36,
+        "height": 0.6,
+        "text": "MITRA_DRESS",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "100% silk crepe satin"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "55 tin button closures"
+        },
+        {
+          "x": 0.4,
+          "y": 0.5,
+          "label": "White/fuchsia/yellow ice dye"
+        }
+      ]
+    },
+    {
+      "id": "aos5",
+      "src": "absence-of-promised-safety/05_GRANA.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.7,
+        "text": "GRANA_DRESS",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "100% silk pongee"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "Built-in corset top"
+        },
+        {
+          "x": 0.4,
+          "y": 0.5,
+          "label": "White/fuchsia/yellow ice dye"
+        }
+      ]
+    },
+    {
+      "id": "aos6",
+      "src": "absence-of-promised-safety/06_NEO.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.25,
+        "width": 0.36,
+        "height": 0.65,
+        "text": "NEO_GOWN",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "High-neck design"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "Fitted bodice with embellishments"
+        },
+        {
+          "x": 0.4,
+          "y": 0.5,
+          "label": "Pink to white gradient"
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "label": "Flowing silk train"
+        }
+      ]
+    },
+    {
+      "id": "aos8",
+      "src": "absence-of-promised-safety/08_LIMAX.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.35,
+        "width": 0.36,
+        "height": 0.5,
+        "text": "LIMAX_PANTS",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.4,
+          "label": "100% silk crepe satin"
+        },
+        {
+          "x": 0.45,
+          "y": 0.5,
+          "label": "176 hand-poured tin buttons"
+        },
+        {
+          "x": 0.4,
+          "y": 0.6,
+          "label": "White/fuchsia/yellow ice dye"
+        }
+      ]
+    },
+    {
+      "id": "aos9",
+      "src": "absence-of-promised-safety/09_TAIA.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.3,
+        "width": 0.36,
+        "height": 0.4,
+        "text": "TAIA_DRESS",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.35,
+          "label": "100% silk crepe satin"
+        },
+        {
+          "x": 0.45,
+          "y": 0.45,
+          "label": "120 hand-welded tin buttons"
+        },
+        {
+          "x": 0.4,
+          "y": 0.55,
+          "label": "White/fuchsia/yellow ice dye"
+        }
+      ]
+    },
+    {
+      "id": "aos10",
+      "src": "absence-of-promised-safety/10_HELIX.jpg",
+      "highlight": {
+        "x": 0.3,
+        "y": 0.15,
+        "width": 0.4,
+        "height": 0.4,
+        "text": "HELIX_TOP",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.18,
+          "label": "7 structured wings per side"
+        },
+        {
+          "x": 0.45,
+          "y": 0.25,
+          "label": "100% silk organza"
+        },
+        {
+          "x": 0.4,
+          "y": 0.35,
+          "label": "8.2mm metal boning"
+        },
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "label": "White/fuchsia/yellow ice dye"
+        }
+      ]
+    }
+  ]
+}

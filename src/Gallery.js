@@ -110,7 +110,7 @@ const Gallery = ({ projects, currentProject, setCurrentProject }) => {
             className={`gallery-nav-item ${index === currentIndex ? 'active' : ''}`}
             onClick={() => handleDotClick(index)}
           >
-            <div className="gallery-nav-label">{image.highlight.text}</div>
+            <div className="gallery-nav-label">{image.highlight?.text || `Image ${index + 1}`}</div>
             <div className="gallery-nav-dot"></div>
           </div>
         ))}

@@ -37,27 +37,21 @@
   filter: drop-shadow(0px 0.523999px 5.76399px rgba(131, 213, 233, 0.25));
 }
 
-.frame-label,
-.node-label {
-  position: absolute;
-  font-family: 'SF Mono', monospace;
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  pointer-events: none;
-}
-
 .frame-label {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translate(0, 100%);
   @include font-small;
   padding: 4px;
   background: $color-white;
   color: var(--theme-color);
-  transform: translate(0, -100%);
-  z-index: 20; // Ensure frame label appears above node labels
+  z-index: 20;
+  white-space: nowrap;
 }
 
 .node-label {
+  position: absolute;
   @include font-tiny;
   color: $color-white;
   opacity: 0;

@@ -1,0 +1,385 @@
+{
+  "id": "des-nachtmahrs-schmetterlinge",
+  "name": "DES NACHTMAHR'S SCHMETTERLINGE",
+  "season": "SS24",
+  "themeColor": "#584B39",
+  "images": [
+    {
+      "id": "dns1",
+      "src": "des-nachtmahrs-schmetterlinge/01_GNOSSIENNE.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.5,
+        "text": "GNOSSIENNE_DRESS",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.25,
+          "label": "Electric blue ruffle detail"
+        },
+        {
+          "x": 0.45,
+          "y": 0.35,
+          "label": "Structured pleated skirt"
+        },
+        {
+          "x": 0.4,
+          "y": 0.45,
+          "label": "Braided shoulder straps"
+        }
+      ]
+    },
+    {
+      "id": "dns2",
+      "src": "des-nachtmahrs-schmetterlinge/02_MINEOMIA.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.7,
+        "text": "MINEOMIA_DRESS",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "Red/white stripe pattern"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "Puff sleeve construction"
+        },
+        {
+          "x": 0.4,
+          "y": 0.5,
+          "label": "Pearl button detail"
+        }
+      ]
+    },
+    {
+      "id": "dns3",
+      "src": "des-nachtmahrs-schmetterlinge/03_AVENOIR.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.7,
+        "text": "AVENOIR_DRESS",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "Chainmail construction"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "Turquoise silk skirt"
+        },
+        {
+          "x": 0.4,
+          "y": 0.5,
+          "label": "Ruffled hem detail"
+        }
+      ]
+    },
+    {
+      "id": "dns4",
+      "src": "des-nachtmahrs-schmetterlinge/04_NUDUS_TOLLENS.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.6,
+        "text": "NUDUS_TOLLENS_DRESS",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "Royal blue tulle"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "Pink bow appliqués"
+        },
+        {
+          "x": 0.4,
+          "y": 0.5,
+          "label": "Gathered empire waist"
+        }
+      ]
+    },
+    {
+      "id": "dns5",
+      "src": "des-nachtmahrs-schmetterlinge/05_JOUSKA.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.7,
+        "text": "JOUSKA_ENSEMBLE",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "Pearl-embellished red shirt"
+        },
+        {
+          "x": 0.45,
+          "y": 0.5,
+          "label": "Silver print pattern"
+        },
+        {
+          "x": 0.4,
+          "y": 0.6,
+          "label": "Grey satin trousers"
+        }
+      ]
+    },
+    {
+      "id": "dns6",
+      "src": "des-nachtmahrs-schmetterlinge/06_FATA_ORGANA.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.6,
+        "text": "FATA_ORGANA_ENSEMBLE",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "Mint tulle crop top"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "High-slit satin skirt"
+        },
+        {
+          "x": 0.4,
+          "y": 0.5,
+          "label": "Metallic silver boots"
+        }
+      ]
+    },
+    {
+      "id": "dns7",
+      "src": "des-nachtmahrs-schmetterlinge/07_MONACHOPSIS.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.6,
+        "text": "MONACHOPSIS_BLAZER",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "Pinstripe tailoring"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "Red ruffle detail"
+        },
+        {
+          "x": 0.4,
+          "y": 0.5,
+          "label": "Crystal button closures"
+        }
+      ]
+    },
+    {
+      "id": "dns8",
+      "src": "des-nachtmahrs-schmetterlinge/08_ADRONITIS.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.7,
+        "text": "ADRONITIS_DRESS",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "Tiered cotton construction"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "Rose gold puff sleeves"
+        },
+        {
+          "x": 0.4,
+          "y": 0.5,
+          "label": "Pink silk bow detail"
+        }
+      ]
+    },
+    {
+      "id": "dns9",
+      "src": "des-nachtmahrs-schmetterlinge/09_KAIROSCLEROSIS.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.7,
+        "text": "KAIROSCLEROSIS_ENSEMBLE",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.25,
+          "label": "Lime green ruffled collar"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "Checkered pattern jumpsuit"
+        },
+        {
+          "x": 0.4,
+          "y": 0.6,
+          "label": "Yellow trim details"
+        }
+      ]
+    },
+    {
+      "id": "dns10",
+      "src": "des-nachtmahrs-schmetterlinge/10_ANECDOCHE.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.7,
+        "text": "ANECDOCHE_DRESS",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "Teal velvet bodice"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "Silver lace trim"
+        },
+        {
+          "x": 0.4,
+          "y": 0.6,
+          "label": "Blue combat boots"
+        }
+      ]
+    },
+    {
+      "id": "dns11",
+      "src": "des-nachtmahrs-schmetterlinge/11_SONDER.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.6,
+        "text": "SONDER_DRESS",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.25,
+          "label": "Pink tulle dress"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "Scalloped hem detail"
+        },
+        {
+          "x": 0.4,
+          "y": 0.6,
+          "label": "White mesh leg wraps"
+        }
+      ]
+    },
+    {
+      "id": "dns12",
+      "src": "des-nachtmahrs-schmetterlinge/12_RIGOR_SAMSA.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.7,
+        "text": "RIGOR_SAMSA_ENSEMBLE",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.25,
+          "label": "Blue spiked headpiece"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "Pink bodysuit"
+        },
+        {
+          "x": 0.4,
+          "y": 0.6,
+          "label": "Navy denim cutout dress"
+        }
+      ]
+    },
+    {
+      "id": "dns13",
+      "src": "des-nachtmahrs-schmetterlinge/13_LIBEROSIS.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.7,
+        "text": "LIBEROSIS_ENSEMBLE",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "Yellow cropped blazer"
+        },
+        {
+          "x": 0.45,
+          "y": 0.5,
+          "label": "Pink metallic shorts"
+        },
+        {
+          "x": 0.4,
+          "y": 0.7,
+          "label": "Gradient cowboy boots"
+        }
+      ]
+    }
+  ]
+}

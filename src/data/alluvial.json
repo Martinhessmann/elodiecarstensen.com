@@ -1,0 +1,269 @@
+{
+  "id": "alluvial",
+  "name": "ALLUVIAL",
+  "season": "SS23",
+  "themeColor": "#AB765A",
+  "images": [
+    {
+      "id": "al1",
+      "src": "alluvial/01_RUNA.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.7,
+        "text": "RUNA_DRESS",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "100% silk tulle"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "12mm hollow glass beads"
+        },
+        {
+          "x": 0.4,
+          "y": 0.5,
+          "label": "Polycarbonate boning corset"
+        }
+      ]
+    },
+    {
+      "id": "al2",
+      "src": "alluvial/02_ANDREA.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.6,
+        "text": "ANDREA_CAPE",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "100% silk organza"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "Layered ruffle construction"
+        },
+        {
+          "x": 0.4,
+          "y": 0.5,
+          "label": "Hand-cut pattern pieces"
+        }
+      ]
+    },
+    {
+      "id": "al3",
+      "src": "alluvial/03_REBECCA.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.7,
+        "text": "REBECCA_CAPE",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "100% silk organza"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "Crystal shoulder pieces"
+        },
+        {
+          "x": 0.4,
+          "y": 0.5,
+          "label": "Draped cape construction"
+        }
+      ]
+    },
+    {
+      "id": "al4",
+      "src": "alluvial/04_THALEA.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.6,
+        "text": "THALEA_DRESS",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "Sheer mesh base"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "Hand-applied crystal clusters"
+        },
+        {
+          "x": 0.4,
+          "y": 0.5,
+          "label": "Fitted silhouette"
+        }
+      ]
+    },
+    {
+      "id": "al5",
+      "src": "alluvial/05_VIRGINIA.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.6,
+        "text": "VIRGINIA_DRESS",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "Digital print black/grey/white"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "High-neck turtleneck design"
+        },
+        {
+          "x": 0.4,
+          "y": 0.5,
+          "label": "Fitted silhouette"
+        }
+      ]
+    },
+    {
+      "id": "al6",
+      "src": "alluvial/06_SARA.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.7,
+        "text": "SARA_GOWN",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "Structured puff sleeves"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "Mermaid silhouette"
+        },
+        {
+          "x": 0.4,
+          "y": 0.5,
+          "label": "Smoky grey tulle train"
+        }
+      ]
+    },
+    {
+      "id": "al7",
+      "src": "alluvial/07_JULIA.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.6,
+        "text": "JULIA_BODYSUIT",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "Ruffle shoulder detail"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "Crystal embellishments"
+        },
+        {
+          "x": 0.4,
+          "y": 0.5,
+          "label": "Grey tulle construction"
+        }
+      ]
+    },
+    {
+      "id": "al8",
+      "src": "alluvial/08_CORNELIA.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.6,
+        "text": "CORNELIA_JACKET",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "10% Silk, 60% Polyamid, 30% polyester"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "Digital print blue/grey/white"
+        },
+        {
+          "x": 0.4,
+          "y": 0.5,
+          "label": "12mm hollow glass buttons"
+        }
+      ]
+    },
+    {
+      "id": "al9",
+      "src": "alluvial/09_CARO.jpg",
+      "highlight": {
+        "x": 0.32,
+        "y": 0.2,
+        "width": 0.36,
+        "height": 0.6,
+        "text": "CARO_DRESS",
+        "status": "Custom made on request"
+      },
+      "nodes": [
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "Structured strapless bodice"
+        },
+        {
+          "x": 0.45,
+          "y": 0.4,
+          "label": "Draped tulle overlay"
+        },
+        {
+          "x": 0.4,
+          "y": 0.5,
+          "label": "Smoky grey gradient"
+        }
+      ]
+    }
+  ]
+}

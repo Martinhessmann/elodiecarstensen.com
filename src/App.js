@@ -4,39 +4,23 @@ import SplashPage from './SplashPage';
 import Gallery from './Gallery';
 import ContactPage from './ContactPage';
 import Header from './Header';
-import data from './data.json';
+import { loadProjects, loadContact } from './utils/dataLoader';
 import './App.scss';
 
 function App() {
   const [currentProject, setCurrentProject] = useState(null);
   const [projects, setProjects] = useState([]);
+  const [contact, setContact] = useState(null);
   const location = useLocation();
 
   useEffect(() => {
-    const allProjects = [...data.projects, data.contact];
-    setProjects(allProjects);
-
-    // Function to set the current project based on the URL
-    const setCurrentProjectFromUrl = () => {
-      const projectId = location.pathname.split('/').pop();
-      if (projectId === 'contact') {
-        setCurrentProject(data.contact);
-      } else if (projectId !== '' && projectId !== 'gallery') {
-        const project = allProjects.find(p => p.id === projectId);
-        if (project) {
-          setCurrentProject(project);
-        } else {
-          // If no matching project is found, set the first project as current
-          setCurrentProject(allProjects.find(p => p.id !== 'contact') || null);
-        }
-      } else if (allProjects.length > 0) {
-        // Set the first non-contact project as default
-        setCurrentProject(allProjects.find(p => p.id !== 'contact') || null);
-      }
+    const fetchData = async () => {
+      const projectsData = await loadProjects();
+      setProjects(projectsData);
+      setContact(loadContact());
     };
-
-    setCurrentProjectFromUrl();
-  }, [location.pathname]);
+    fetchData();
+  }, []);
 
   useEffect(() => {
     if (currentProject) {
@@ -77,7 +61,7 @@ function App() {
               />
             }
           />
-          <Route path="/contact" element={<ContactPage data={data.contact} />} />
+          <Route path="/contact" element={<ContactPage data={contact} />} />
         </Routes>
       </main>
     </div>

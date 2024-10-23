@@ -1,0 +1,39 @@
+{
+  "id": "contact",
+  "name": "CONTACT",
+  "backgroundImage": "contact.jpg",
+  "themeColor": "#000000",
+  "imprint": {
+    "name": "Elodie Carstensen",
+    "address": [
+      "Kadinerstr.20a",
+      "10243-B"
+    ]
+  },
+  "inquiries": {
+    "email": "info@elodiecarstensen.com",
+    "label": "INQUIRIES"
+  },
+  "newsletter": {
+    "label": "SIGN UP TO ACCESS MORE INFO",
+    "placeholder": "Enter your email",
+    "buttonText": "Subscribe"
+  },
+  "annotations": [
+    {
+      "x": 0.516,
+      "y": 0.471,
+      "label": "IMPRINT"
+    },
+    {
+      "x": 0.2,
+      "y": 0.3,
+      "label": "INQUIRIES"
+    },
+    {
+      "x": 0.8,
+      "y": 0.7,
+      "label": "SIGN UP FOR MORE INFO"
+    }
+  ]
+}
