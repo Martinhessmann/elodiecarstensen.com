@@ -19,16 +19,18 @@
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5vh 5vw;
 }
 
 .contact-box {
-  position: absolute;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 300px;
-  pointer-events: auto;
+  max-width: 90vw;
 }
 
 .contact-info {
@@ -52,21 +54,15 @@
 }
 
 .imprint {
-  left: 51.6%;
-  top: 47.1%;
-  transform: translate(-50%, -50%);
+  align-self: center;
 }
 
 .inquiries {
-  left: 20%;
-  top: 30%;
-  transform: translate(-50%, -50%);
+  align-self: flex-start;
 }
 
 .newsletter-form {
-  right: 20%;
-  bottom: 30%;
-  transform: translate(50%, 50%);
+  align-self: flex-end;
 
   .input-group {
     display: flex;
@@ -80,7 +76,8 @@
     border-bottom: 1px solid $color-white;
     color: $color-white;
     padding: 4px 0;
-    width: 200px;
+    width: 60vw;
+    max-width: 200px;
 
     &::placeholder {
       color: rgba($color-white, 0.6);

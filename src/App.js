@@ -36,7 +36,7 @@ function App() {
     setCurrentProject(selected);
   };
 
-  const showHeader = location.pathname !== '/' && currentProject !== null;
+  const showHeader = location.pathname !== '/' && (currentProject !== null || location.pathname === '/contact');
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -46,7 +46,7 @@ function App() {
     <div className="app" style={{ backgroundColor: currentProject?.themeColor || '#091115' }}>
       {showHeader && (
         <Header
-          project={currentProject}
+          project={currentProject || projects.find(p => p.id === 'contact')}
           projects={projects}
           onProjectSelect={handleProjectSelect}
         />

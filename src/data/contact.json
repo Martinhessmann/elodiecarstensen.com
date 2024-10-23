@@ -21,18 +21,18 @@
   },
   "annotations": [
     {
-      "x": 0.516,
-      "y": 0.471,
+      "x": 0.5,
+      "y": 0.1,
       "label": "IMPRINT"
     },
     {
-      "x": 0.2,
-      "y": 0.3,
+      "x": 0.1,
+      "y": 0.5,
       "label": "INQUIRIES"
     },
     {
-      "x": 0.8,
-      "y": 0.7,
+      "x": 0.9,
+      "y": 0.9,
       "label": "SIGN UP FOR MORE INFO"
     }
   ]
