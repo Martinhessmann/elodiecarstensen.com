@@ -16,5 +16,10 @@
     "name": "DES NACHTMAHR'S SCHMETTERLINGE",
     "season": "SS24",
     "themeColor": "#584B39"
+  },
+  {
+    "id": "contact",
+    "name": "CONTACT",
+    "themeColor": "#000000"
   }
 ]

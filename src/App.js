@@ -11,13 +11,16 @@ function App() {
   const [currentProject, setCurrentProject] = useState(null);
   const [projects, setProjects] = useState([]);
   const [contact, setContact] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       const projectsData = await loadProjects();
       setProjects(projectsData);
       setContact(loadContact());
+      setIsLoading(false);
     };
     fetchData();
   }, []);
@@ -34,6 +37,10 @@ function App() {
   };
 
   const showHeader = location.pathname !== '/' && currentProject !== null;
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="app" style={{ backgroundColor: currentProject?.themeColor || '#091115' }}>
@@ -61,7 +68,12 @@ function App() {
               />
             }
           />
-          <Route path="/contact" element={<ContactPage data={contact} />} />
+          <Route
+            path="/contact"
+            element={
+              <ContactPage data={projects.find(p => p.id === 'contact')} />
+            }
+          />
         </Routes>
       </main>
     </div>
