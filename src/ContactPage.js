@@ -32,12 +32,11 @@ const ContactPage = ({ data }) => {
     }
   };
 
-  // Create a dummy highlightData object for the contact page
-  const dummyHighlightData = {
-    x: 0,
-    y: 0,
-    width: 1,
-    height: 1,
+  const frameHighlightData = {
+    x: 0.33,
+    y: 0.2,
+    width: 0.34,
+    height: 0.6,
     text: ''
   };
 
@@ -48,10 +47,10 @@ const ContactPage = ({ data }) => {
         showNodes={true}
         isScrolling={false}
         shouldAnimate={true}
-        highlightData={dummyHighlightData}
+        highlightData={frameHighlightData}
       />
       <div className="contact-content">
-        <div className="contact-box imprint">
+        <div className="contact-box imprint" style={{ left: `calc(${data.annotations[0].x * 100}% + 15px)`, top: `calc(${data.annotations[0].y * 100}% + 20px)` }}>
           <div className="contact-info">
             <p>{data.imprint.name}</p>
             {data.imprint.address.map((line, index) => (
@@ -60,13 +59,13 @@ const ContactPage = ({ data }) => {
           </div>
         </div>
 
-        <div className="contact-box inquiries">
+        <div className="contact-box inquiries" style={{ left: `calc(${data.annotations[1].x * 100}% + 15px)`, top: `calc(${data.annotations[1].y * 100}% + 15px)` }}>
           <div className="contact-info">
             <a href={`mailto:${data.inquiries.email}`}>{data.inquiries.email}</a>
           </div>
         </div>
 
-        <div className="contact-box newsletter-form">
+        <div className="contact-box newsletter-form" style={{ left: `calc(${data.annotations[2].x * 100}% + 5px)`, top: `calc(${data.annotations[2].y * 100}% - 10px)` }}>
           <form onSubmit={handleSubmit}>
             <div className="input-group">
               <input

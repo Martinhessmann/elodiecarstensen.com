@@ -19,18 +19,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 5vh 5vw;
+  pointer-events: none;
 }
 
 .contact-box {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  max-width: 90vw;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  margin: 10px; // Add this line to create some space around the boxes
 }
 
 .contact-info {
