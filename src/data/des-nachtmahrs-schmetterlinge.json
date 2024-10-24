@@ -8,18 +8,18 @@
       "id": "dns1",
       "src": "des-nachtmahrs-schmetterlinge/01_GNOSSIENNE.jpg",
       "highlight": {
-        "x": 0.32,
-        "y": 0.2,
-        "width": 0.36,
-        "height": 0.5,
+        "x": 0.24,
+        "y": 0.24,
+        "width": 0.51,
+        "height": 0.33,
         "text": "GNOSSIENNE_DRESS",
         "status": "Custom made on request"
       },
       "nodes": [
         {
-          "x": 0.35,
+          "x": 0.37,
           "y": 0.25,
-          "label": "Electric blue ruffle detail"
+          "label": "layered blue nylon ruffles"
         },
         {
           "x": 0.45,
@@ -28,8 +28,8 @@
         },
         {
           "x": 0.4,
-          "y": 0.45,
-          "label": "Braided shoulder straps"
+          "y": 0.29,
+          "label": "hand braided shoulder straps"
         }
       ]
     },
