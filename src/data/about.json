@@ -1,0 +1,280 @@
+{
+  "id": "about",
+  "name": "ABOUT",
+  "backgroundImage": "contact.jpg",
+  "themeColor": "#000000",
+  "imprint": {
+    "name": "Elodie Carstensen",
+    "address": [
+      "Kadinerstr.20a",
+      "10243-B"
+    ]
+  },
+  "inquiries": {
+    "email": "info@elodiecarstensen.com",
+    "label": "INQUIRIES"
+  },
+  "newsletter": {
+    "label": "SIGN UP TO ACCESS MORE INFO",
+    "placeholder": "Enter your email",
+    "buttonText": "Subscribe"
+  },
+  "annotations": [
+    {
+      "x": 0.52,
+      "y": 0.48,
+      "label": "IMPRINT"
+    },
+    {
+      "x": 0.4,
+      "y": 0.3,
+      "label": "INQUIRIES"
+    },
+    {
+      "x": 0.63,
+      "y": 0.68,
+      "label": "SIGN UP FOR MORE INFO"
+    }
+  ],
+  "exhibitions": [
+    { "year": 2024, "events": [
+      { "title": "Echoes of Promised Safety", "type": "Solo Exhibition", "location": "Großer Wasserspeicher, Berlin" },
+      { "title": "Absence of Promised Safety", "type": "Group Exhibition", "location": "Arts&Wine24, Munich" },
+      { "title": "Des Nachtmahrs Schmetterlinge", "type": "Solo Exhibition", "location": "FreeWilly, Erlangen" }
+    ]},
+    { "year": 2023, "events": [
+      { "title": "Blauer Himmel Zuckerwatte", "type": "Solo Exhibition", "location": "Perlenvordiesau, Munich" },
+      { "title": "Einhellig", "type": "Group Exhibition", "location": "Art&Wine, Munich" }
+    ]},
+    { "year": 2021, "events": [
+      { "title": "Einhellig", "type": "Solo Exhibition", "location": "Perlenvordiesau, Munich" }
+    ]}
+  ],
+  "awards": [
+    {
+      "title": "VORN – The Berlin Fashion Hub",
+      "type": "Sustainable Fashion Award",
+      "year": 2023,
+      "description": "Selected as one of 10 awardees for the VORN Academy II Program",
+      "link": "https://vorn-hub.com/news/vorn-academy-ii-loom"
+    },
+    {
+      "title": "VORN Design Academy 'ADAPT'",
+      "type": "Jury Member",
+      "year": 2024,
+      "description": "Selected as jury for VORN Design Academy 'ADAPT' 2024",
+      "link": "https://vorn-hub.com/design-academy-adapt"
+    }
+  ],
+  "press_mentions": [
+    { "year": 2024, "mentions": [
+      {
+        "title": "Absence of Promised Safety for Berlin Showroom bei der Paris Fashion Week",
+        "date": "February 28, 2024",
+        "link": "https://www.vogue.de/mode/galerie/berlin-showroom-deutsche-labels-paris-fashion-week"
+      },
+      {
+        "title": "Des Nachtmahrs Schmetterlinge for Memento: A Glimpse Into A/W24-25",
+        "date": "February 26, 2024",
+        "link": "https://www.kaltblut-magazine.com"
+      },
+      {
+        "title": "Absence of Promised Safety @ Curatedbygirls",
+        "date": "2024",
+        "link": "https://www.curatedbygirls.com/alter-echoes/"
+      }
+    ]},
+    { "year": 2021, "mentions": [
+      {
+        "title": "Des Nachtmahrs Schmetterlinge worn by miss.ivanka.t on 'Gag der Podcast' anniversary at Schwuz",
+        "date": "October 6, 2021",
+        "link": "Unavailable"
+      },
+      {
+        "title": "Alluvial dress worn by Nikeata Thompson on Greentech Festival",
+        "date": "May 24, 2024",
+        "link": "https://www.nikeatathompson.com"
+      },
+      {
+        "title": "Alluvial Cover Story for Mob Journal #50 2022 by Paula Nietner",
+        "date": "April 13, 2022",
+        "link": "https://www.thisismob.shop"
+      },
+      {
+        "title": "Alluvial for 'Ari & Emily' by Alice Wonder & Hercules Terres",
+        "date": "February 17, 2021",
+        "link": "https://www.pap-magazine.com"
+      },
+      {
+        "title": "Alluvial for 'The Factory' by Bodo Ernle & Michael Mann",
+        "date": "January 12, 2021",
+        "link": "https://theforumist.com"
+      },
+      {
+        "title": "Alluvial for 'Gaia' by Alice Wonder & Hercules Terres",
+        "date": "October 4, 2020",
+        "link": "https://www.lofficiel.at"
+      },
+      {
+        "title": "Alluvial for 'Being There' by Beto Ruiz Alonso & Runa Ruckstuhl",
+        "date": "August 23, 2020",
+        "link": "https://www.contributormagazine.com"
+      },
+      {
+        "title": "Alluvial Story shot by Tomás Eyzaguirre",
+        "date": "April 14, 2020",
+        "link": "https://purplehazemag.com"
+      },
+      {
+        "title": "Alluvial for 'Rebirth' by Kirstie Coico & David Kavaler",
+        "date": "June 28, 2020",
+        "link": "https://www.kaltblut-magazine.com/rebirth-2/"
+      },
+      {
+        "title": "Alluvial for 'Self Empowerment' by Franz Becker & Sandra Hemmink",
+        "date": "June 25, 2020",
+        "link": "https://www.cap74024.com/self-empowerment/"
+      },
+      {
+        "title": "Alluvial for 'Crowns Project' by Marlen Stahlhuth & Larteyley von Hippel",
+        "date": "October 17, 2020",
+        "link": "https://www.marlenstahlhuth.com"
+      }
+    ]},
+    { "year": 2020, "mentions": [
+      {
+        "title": "Alluvial for 'Rebirth' by Kirstie Coico & David Kavaler",
+        "date": "June 28, 2020",
+        "link": "https://www.kaltblut-magazine.com/rebirth-2/"
+      },
+      {
+        "title": "Alluvial for 'Self Empowerment' by Franz Becker & Sandra Hemmink",
+        "date": "June 25, 2020",
+        "link": "https://www.cap74024.com/self-empowerment/"
+      },
+      {
+        "title": "Alluvial for 'Crowns Project' by Marlen Stahlhuth & Larteyley von Hippel",
+        "date": "October 17, 2020",
+        "link": "https://www.marlenstahlhuth.com"
+      }
+    ]},
+    { "year": 2022, "mentions": [
+      {
+        "title": "Mob Journal Issue #50",
+        "date": "2022",
+        "link": "https://www.thisismob.shop/fr/products/mob-journal-volume-twenty-two-issue-50"
+      },
+      {
+        "title": "Contributor Magazine 'Being There' Editorial",
+        "date": "2020",
+        "link": "https://contributormagazine.com/fashion-story-being-there-3/"
+      },
+      {
+        "title": "Crowns Project",
+        "date": "October 2020",
+        "link": "https://marlenstahlhuth.com/crownsproject#26"
+      },
+      {
+        "title": "Ari Emily Editorial in Pap Magazine",
+        "date": "2021",
+        "link": "https://www.pap-magazine.com/ari-emily/"
+      }
+    ]},
+    { "year": 2023, "mentions": [
+      {
+        "title": "Sirenx Music Video for siXren",
+        "date": "April 2023",
+        "link": "https://hypebae.com/2023/4/sixren-alien-diva-debut-album-hiphop"
+      },
+      {
+        "title": "Anima & Animus @ Experimental Film Festival",
+        "date": "February 12, 2022",
+        "link": "https://experimentalfilmfestival.com/2022/02/12/short-film-anima-animus-13min-germany-experimental/"
+      },
+      {
+        "title": "Tuneko Short Film & Immersive Performance",
+        "date": "May 2023",
+        "link": "https://fault-magazine.com/2023/05/marie-polo-presents-tuneko-a-sensorial-water-exploration-through-the-arts/"
+      },
+      {
+        "title": "Death Drive-In Performance in Berlin",
+        "date": "2023",
+        "link": "https://www.playfulmag.com/post/death-drive-in-a-guided-theater-through-capitalism-consumer-culture-and-our-nervous-system"
+      },
+      {
+        "title": "Rebirth Editorial in Kaltblut Magazine",
+        "date": "2020",
+        "link": "https://www.kaltblut-magazine.com/rebirth-2/"
+      },
+      {
+        "title": "Gaia Editorial in L'Officiel",
+        "date": "2020",
+        "link": "https://www.lofficiel.at/fashion/editorial-gaia"
+      }
+    ]},
+    { "year": 2024, "mentions": [
+      {
+        "title": "20 Years Electronic Beats Campaign",
+        "date": "2021",
+        "link": "https://www.telekom.com/en/media/media-information/archive/telekom-celebrates-20-years-of-electronic-beats-621956"
+      }
+    ]}
+  ],
+  "muses": [
+    { "name": "Ajsa Selimovic", "role": "Model", "instagram": "https://www.instagram.com/ajsa.movic/?hl=en" },
+    { "name": "Runa Ruckstuhl", "role": "Model and Photographer", "instagram": "https://www.instagram.com/runa.ruckstuhl/" },
+    { "name": "Tara Nome Doyle", "role": "Musician", "instagram": "Unavailable" },
+    { "name": "Aywing", "role": "Musician", "instagram": "Unavailable" },
+    { "name": "Mulay", "role": "Musician", "instagram": "https://www.instagram.com/mulaymusic/" },
+    { "name": "Fiti Fantome", "role": "Performer", "instagram": "Unavailable" },
+    { "name": "Sabina Moe", "role": "Performer", "instagram": "https://www.instagram.com/sabinamoe/" },
+    { "name": "AŸA", "role": "Artist", "instagram": "https://www.instagram.com/aya.loveu/" },
+    { "name": "Halla Farhat", "role": "Stylist", "instagram": "https://www.instagram.com/hallafarhat/" },
+    { "name": "Marie Polo", "role": "Director", "instagram": "https://www.instagram.com/marie_polo_/?hl=en" },
+    { "name": "Marie Zechiel", "role": "Movement Director", "instagram": "https://mariezechiel.com/portfolio/brace/" }
+  ],
+  "collaborators": [
+    { "name": "Marianna Simnett", "role": "Director", "project": ["Gorgon Opera", "The Severed Tail"], "instagram": "Unavailable" },
+    { "name": "Lenaïg Chatel", "role": "Photographer & Art Director", "project": ["Pump Magazine Editorial"], "instagram": "https://www.instagram.com/lenaigchatel/" },
+    { "name": "Tomás Eyzaguirre", "role": "Photographer & Director", "project": ["Des Nachtmahrs Schmetterlinge", "Alluvial"], "instagram": "Unavailable" },
+    { "name": "Bassam Allam", "role": "Photographer", "project": ["Fashion Shoot with Elodie"], "instagram": "Unavailable" },
+    { "name": "Beto Ruiz Alonso", "role": "Photographer", "project": ["Photographed Runa"], "instagram": "Unavailable" },
+    { "name": "Riley Davidson", "role": "Director", "project": ["Death Drive In", "Are You The Moon"], "instagram": "Unavailable" },
+    { "name": "Lauren Pringle", "role": "Director", "project": ["Anima & Animus", "3 & HOY"], "instagram": "Unavailable" },
+    { "name": "Florian Flausen", "role": "Instrumentalist", "project": ["Echoes of Promised Safety"], "instagram": "Unavailable" },
+    { "name": "Jeannel", "role": "Musician", "project": ["Echoes of Promised Safety"], "instagram": "Unavailable" },
+    { "name": "Cornelia Bölke", "role": "Spoken-Word Artist", "project": ["Echoes of Promised Safety"], "instagram": "Unavailable" },
+    { "name": "Lauri Lohi", "role": "Co-Director", "project": ["Death Drive In"], "instagram": "Unavailable" },
+    { "name": "Chris Voolstra", "role": "Soundscape Artist", "project": ["Des Nachtmahrs Schmetterlinge"], "instagram": "Unavailable" },
+    { "name": "Andre hMoghimi", "role": "Musician", "project": ["Des Nachtmahrs Schmetterlinge"], "instagram": "Unavailable" },
+    { "name": "Syn Thesis", "role": "Visual Artist", "project": ["Collaborative Projects"], "instagram": "https://www.instagram.com/syn__thesis/" },
+    { "name": "Anika Zachow", "role": "Photographer", "project": ["Latest Collection"], "instagram": "Unavailable" },
+    { "name": "Frédéric Hermann", "role": "Photographer", "project": ["Latest Collection"], "instagram": "Unavailable" },
+    { "name": "Sarah Mohamed Abdulaahi", "role": "Model", "project": ["Latest Collection"], "instagram": "Unavailable" },
+    { "name": "Mamadama Diaby", "role": "Model", "project": ["Latest Collection"], "instagram": "Unavailable" },
+    { "name": "Rafa Delgado", "role": "Makeup Artist", "project": ["Latest Collection"], "instagram": "Unavailable" },
+    { "name": "Béanne Da Costa", "role": "Hair Stylist", "project": ["Latest Collection"], "instagram": "Unavailable" },
+    { "name": "Gina Greving", "role": "Producer", "project": ["Latest Collection"], "instagram": "Unavailable" },
+    { "name": "Martin Hessmann", "role": "Producer", "project": ["Latest Collection"], "instagram": "Unavailable" },
+    { "name": "Carlos Sinclair", "role": "Social Media", "project": ["Latest Collection"], "instagram": "https://www.instagram.com/_carlossinclair/" },
+    { "name": "Alzac Mekacher", "role": "Model", "project": ["Des Nachtmahrs Schmetterlinge"], "instagram": "Unavailable" },
+    { "name": "Analu", "role": "Model", "project": ["Des Nachtmahrs Schmetterlinge"], "instagram": "Unavailable" },
+    { "name": "Artis Leonar", "role": "Model", "project": ["Des Nachtmahrs Schmetterlinge"], "instagram": "Unavailable" },
+    { "name": "Charlie Kamryn Hanouskova", "role": "Model", "project": ["Des Nachtmahrs Schmetterlinge"], "instagram": "Unavailable" },
+    { "name": "Fatou Ndure", "role": "Model", "project": ["Des Nachtmahrs Schmetterlinge"], "instagram": "https://www.instagram.com/izaio/" },
+    { "name": "Hélène Hang", "role": "Model", "project": ["Des Nachtmahrs Schmetterlinge"], "instagram": "https://www.instagram.com/izaio/" },
+    { "name": "Johnny Questions", "role": "Model", "project": ["Des Nachtmahrs Schmetterlinge"], "instagram": "Unavailable" },
+    { "name": "Kiani Del Valle", "role": "Model", "project": ["The Severed Tail"], "instagram": "https://www.instagram.com/kianidelvalle/" },
+    { "name": "Leonie Littkopf", "role": "Model", "project": ["Pump Magazine Editorial"], "instagram": "https://www.instagram.com/litkovskyy/" },
+    { "name": "Lev", "role": "Model", "project": ["Des Nachtmahrs Schmetterlinge"], "instagram": "Unavailable" },
+    { "name": "Mina Kim Witte", "role": "Model", "project": ["Des Nachtmahrs Schmetterlinge"], "instagram": "Unavailable" },
+    { "name": "Miriam", "role": "Model", "project": ["Crownsproject"], "instagram": "https://www.instagram.com/mirhaber/" },
+    { "name": "Monja", "role": "Model", "project": ["Morphing Muse"], "instagram": "https://www.instagram.com/morphingmuse/" },
+    { "name": "Pavao Smoljanovic", "role": "Model", "project": ["Des Nachtmahrs Schmetterlinge"], "instagram": "Unavailable" },
+    { "name": "Riley Davidson", "role": "Model", "project": ["Des Nachtmahrs Schmetterlinge"], "instagram": "Unavailable" },
+    { "name": "Smilla Herbst", "role": "Model", "project": ["Rebirth Editorial in Kaltblut Magazine"], "instagram": "https://www.instagram.com/izaio.modelmanagement/" },
+    { "name": "Tasha", "role": "Model", "project": ["Gaia – Mother África Editorial in L'Officiel"], "instagram": "https://www.instagram.com/tasha_malek/" },
+    { "name": "Tory", "role": "Model", "project": ["Photoshoot with Bassam Allam"], "instagram": "Unavailable" },
+    { "name": "Whitney Kiala", "role": "Model", "project": ["PLASTIC BAROCK Editorial in Mob Journal"], "instagram": "https://www.instagram.com/whitneykiala/" }
+  ]
+}

@@ -30,7 +30,7 @@
   max-width: 800px;
   height: 70vh;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(5px);
 }
 
@@ -39,10 +39,13 @@
   overflow-y: auto;
   padding: 20px;
   box-sizing: border-box;
+  font-family: 'Courier New', monospace;
+  @include font-tiny;
+  line-height: 1.6;
 }
 
 .about-section {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 
   &.nested {
     margin-left: 20px;
@@ -51,31 +54,77 @@
 
 .section-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
   cursor: pointer;
+  user-select: none;
+  margin-bottom: 8px;
+
+  &:hover {
+    .chevron {
+      opacity: 0.8;
+    }
+    .section-title {
+      text-decoration: underline;
+    }
+  }
+}
+
+.chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  transition: transform 0.3s ease;
+  font-size: 14px;
+  color: $color-white;
+
+  &.expanded {
+    transform: rotate(90deg);
+  }
 }
 
 .section-title {
-  @include font-small;
-}
-
-.section-toggle {
   @include font-tiny;
-  background: none;
-  border: none;
-  color: $color-white;
-  cursor: pointer;
 }
 
 .section-content {
-  @include font-tiny;
-  margin-left: 20px;
+  margin-left: 15px;
+  border-left: 1px dotted $color-white;
+  padding-left: 10px;
 }
 
-.about-info, .contact-info, .exhibitions-list, .awards-list, .press-list {
-  margin-bottom: 15px;
+.info-line {
+  margin-bottom: 5px;
+}
+
+.info-key {
+  color: $color-white;
+  margin-right: 5px;
+
+  a {
+    margin-left: 5px;
+  }
+}
+
+.info-value {
+  color: #999; // Medium grey color
+}
+
+.year-group {
+  margin-bottom: 20px;
+}
+
+.year {
+  @include font-tiny;
+  margin-bottom: 10px;
+}
+
+.year-content {
+  margin-left: 15px;
+  border-left: 1px dotted $color-white;
+  padding-left: 10px;
 }
 
 .newsletter-form {
@@ -106,14 +155,23 @@
     border: none;
     color: $color-white;
     cursor: pointer;
-    padding: 4px 0;
     margin-left: 8px;
-    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 9px;
+      height: 9px;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
 
 .form-message {
-  @include font-tiny;
   margin-top: 8px;
 
   &.success {
@@ -122,6 +180,37 @@
 
   &.error {
     color: #ff8585;
+  }
+}
+
+a {
+  color: $color-white;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.external-link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  margin-left: 4px;
+  background-color: $color-white;
+  border-radius: 6%;
+  width: 14px;
+  height: 14px;
+
+  svg {
+    width: 8px;
+    height: 7px;
+  }
+
+  path {
+    fill: var(--project-theme-color, $color-theme-aops);
   }
 }
 

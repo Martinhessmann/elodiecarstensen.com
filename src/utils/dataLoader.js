@@ -1,11 +1,11 @@
 import projectsData from '../data/projects.json';
-import contactData from '../data/contact.json';
+import aboutData from '../data/about.json';
 
 export const loadProjects = async () => {
   const projects = await Promise.all(
     projectsData.map(async (project) => {
-      if (project.id === 'contact') {
-        return { ...project, ...contactData };
+      if (project.id === 'about') {
+        return { ...project, ...aboutData };
       }
       const module = await import(`../data/${project.id}.json`);
       return module.default;
@@ -14,4 +14,4 @@ export const loadProjects = async () => {
   return projects;
 };
 
-export const loadContact = () => contactData;
+export const loadAbout = () => aboutData;

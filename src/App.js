@@ -44,7 +44,7 @@ function App() {
     <div className="app" style={{ backgroundColor: currentProject?.themeColor || '#091115' }}>
       {showHeader && (
         <Header
-          project={currentProject || projects.find(p => p.id === 'contact')}
+          project={currentProject || projects.find(p => p.id === 'about')}
           projects={projects}
           onProjectSelect={handleProjectSelect}
         />
@@ -69,7 +69,7 @@ function App() {
           <Route
             path="/about"
             element={
-              <AboutPage data={projects.find(p => p.id === 'contact')} />
+              <AboutPage data={projects.find(p => p.id === 'about')} />
             }
           />
         </Routes>

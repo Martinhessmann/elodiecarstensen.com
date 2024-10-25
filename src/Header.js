@@ -17,7 +17,7 @@ const Header = ({ project, projects, onProjectSelect }) => {
   const handleProjectClick = (projectId) => {
     onProjectSelect(projectId);
     setIsMenuOpen(false); // Close the menu when a project is selected
-    if (projectId === 'contact') {
+    if (projectId === 'about') {
       navigate('/about');
     } else {
       navigate(`/gallery/${projectId}`);
