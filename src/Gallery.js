@@ -7,6 +7,11 @@ import ContactPage from './ContactPage';
 
 const Gallery = ({ projects, currentProject, setCurrentProject }) => {
   const { projectId } = useParams();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const [shouldAnimate, setShouldAnimate] = useState(true);
+  const [showCredits, setShowCredits] = useState(false);
+  const scrollContainerRef = useRef(null);
 
   useEffect(() => {
     if (!currentProject || currentProject.id !== projectId) {
@@ -14,23 +19,16 @@ const Gallery = ({ projects, currentProject, setCurrentProject }) => {
       if (project) {
         setCurrentProject(project);
         setShowCredits(false); // Reset showCredits when project changes
+        setCurrentIndex(0); // Reset currentIndex when project changes
       }
     }
   }, [projectId, currentProject, projects, setCurrentProject]);
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [showNodes, setShowNodes] = useState(true);
-  const [isScrolling, setIsScrolling] = useState(false);
-  const [shouldAnimate, setShouldAnimate] = useState(true);
-  const [showCredits, setShowCredits] = useState(false);
-  const scrollContainerRef = useRef(null);
 
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
     if (!scrollContainer || !currentProject) return;
 
     scrollContainer.scrollTop = 0;
-    setCurrentIndex(0);
     setShouldAnimate(true);
 
     const observer = new IntersectionObserver((entries) => {
@@ -113,17 +111,15 @@ const Gallery = ({ projects, currentProject, setCurrentProject }) => {
               <div className="about-text">
                 {image.text}
                 <div className="credits-button-wrapper">
-                  <span className="credits-separator">*</span>
-                  <button className="credits-button" onClick={toggleCredits}>
+                  <span className={`credits-separator ${showCredits ? 'show' : ''}`}>*</span>
+                  <button className={`credits-button ${showCredits ? 'show' : ''}`} onClick={toggleCredits}>
                     {showCredits ? 'Hide Credits' : 'Show Credits'}
                   </button>
-                  <span className="credits-separator">*</span>
+                  <span className={`credits-separator ${showCredits ? 'show' : ''}`}>*</span>
                 </div>
-                {showCredits && (
-                  <div className="credits-content">
-                    {currentProject.credits.split('\n').map((line, index) => (
-                      <p key={index}>{line.split('/').join(' / ')}</p>
-                    ))}
+                {currentProject.credits && (
+                  <div className={`credits-content ${showCredits ? 'show' : ''}`}>
+                    {currentProject.credits}
                   </div>
                 )}
               </div>
@@ -132,7 +128,7 @@ const Gallery = ({ projects, currentProject, setCurrentProject }) => {
               image={image.src}
               highlightData={image.highlight}
               nodeData={image.nodes}
-              showNodes={showNodes && index === currentIndex}
+              showNodes={index === currentIndex}
               isScrolling={isScrolling}
               themeColor={currentProject.themeColor}
               shouldAnimate={shouldAnimate}

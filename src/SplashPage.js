@@ -162,9 +162,14 @@ const SplashPage = () => {
           <img src={logoUrl} alt="Logo" className="splash-logo" />
           <h1 className="splash-title">ELODIE CARSTENSEN</h1>
         </div>
-        <p className="splash-intro-text">
-          STEP INTO A WORLD WHERE VULNERABILITY BECOMES ARMOR AND FLUIDITY DEFIES SOCIETAL CONSTRUCTS. ELODIE CARSTENSEN INVITES YOU TO EXPLORE ABSENCE OF PROMISED SAFETY, A SPACE WHERE CREATURES, ARTIFACTS, AND DESIGNS COALESCE, EACH PIECE CHALLENGING THE CONVENTIONS OF IDENTITY AND STRENGTH.
-        </p>
+        <div className="splash-text-container">
+          <p className="splash-intro-text">
+            STEP INTO A WORLD WHERE VULNERABILITY BECOMES ARMOR AND FLUIDITY DEFIES SOCIETAL CONSTRUCTS. ELODIE CARSTENSEN INVITES YOU TO EXPLORE ABSENCE OF PROMISED SAFETY, A SPACE WHERE CREATURES, ARTIFACTS, AND DESIGNS COALESCE, EACH PIECE CHALLENGING THE CONVENTIONS OF IDENTITY AND STRENGTH.
+          </p>
+          <button className="splash-enter-button" onClick={handleContainerClick}>
+            ENTER <span className="slash-icon">/</span>
+          </button>
+        </div>
       </div>
       <div
         className="splash-scroll-container"

@@ -52,7 +52,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 5vh 10vw 15vh;
+  padding: 5vh 5vw 17vh;
   box-sizing: border-box;
   z-index: 11;
 }
@@ -111,10 +111,10 @@
 .splash-glass-effect::after {
   content: '';
   position: absolute;
-  top: 20%;
+  top: 19.8%;
   left: 45%;
   width: 10%;
-  height: 60%;
+  height: 60.4%;
   box-shadow: 0 0 0 0.5px #FFFFFF;
   pointer-events: none;
 }
@@ -142,31 +142,42 @@
   color: $color-white;
 }
 
-.splash-intro-text {
-  @include font-tiny;
-  max-width: 200px;
-  text-align: right;
+.splash-text-container {
   align-self: flex-end;
-  color: $color-white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 40%;
 }
 
-// .splash-enter-button {
-//   @include font-tiny;
-//   align-self: center;
-//   background: none;
-//   border: none;
-//   cursor: pointer;
-//   display: none; // Hide by default
-//   align-items: center;
-//   gap: 2px;
-//   color: $color-white;
-// }
+.splash-intro-text {
+  @include font-tiny;
+  text-align: left;
+  color: $color-white;
+  margin-bottom: 20px;
+}
 
-// .splash-enter-button::after {
-//   content: '/';
-//   font-size: 26px;
-//   line-height: 1;
-// }
+.splash-enter-button {
+  @include font-tiny;
+  background: none;
+  border: none;
+  color: $color-white;
+  cursor: pointer;
+  padding: 4px 0;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  .slash-icon {
+    margin-left: 5px;
+    font-size: 1.2em;
+  }
+}
 
 .snap-points {
   position: absolute;
@@ -185,13 +196,15 @@
   // background-color: rgba(255, 255, 255, 0.5); // Optional: for debugging
 }
 
-// Show the enter button only on touch devices
-@media (hover: none) and (pointer: coarse) {
-  .splash-enter-button {
-    display: flex; // Show on touch devices
-  }
+// Show the enter button on all devices
+.splash-enter-button {
+  display: flex;
+}
 
-  .splash-glass-effect::after {
-    display: none; // Hide the glass effect on touch devices
+// Media query for mobile devices
+@media (max-width: 768px) {
+  .splash-glass-effect {
+    left: -60%;
+    width: 220%;
   }
 }
