@@ -3,7 +3,16 @@
   "name": "ABSENCE OF PROMISED SAFETY",
   "season": "SS25",
   "themeColor": "#091115",
+  "aboutText": "You hear a drop falling. It’s a tear. Are the cries really that silent? Why are they so loud in your heart? You see a drop falling. It’s blood. You work so hard to hide your stains but you feel like there is nothing else to see. Can you heal on your own terms? You feel a drop falling. It’s sweat. Your hands hurt and your body is tired, for how long have you been building your monster? It has to protect you now, healing is a full time job. You hear a drop falling and the sound bounces on every wall and you realise that you grew in your silence and from the rubbles of promised safety you have risen.",
   "images": [
+    {
+      "id": "about",
+      "src": "absence-of-promised-safety/ABOUT.jpg",
+      "highlight": null,
+      "nodes": [],
+      "text": "Your about text here...",
+      "navLabel": "ABOUT"
+    },
     {
       "id": "aos1",
       "src": "absence-of-promised-safety/01_FAUNUS.jpg",
@@ -36,7 +45,8 @@
           "y": 0.35,
           "label": "White/fuchsia/yellow ice dye"
         }
-      ]
+      ],
+      "navLabel": "FAUNUS_DRESS"
     },
     {
       "id": "aos2",
@@ -65,7 +75,8 @@
           "y": 0.5,
           "label": "White/fuchsia/yellow ice dye"
         }
-      ]
+      ],
+      "navLabel": "GINA_DRESS"
     },
     {
       "id": "aos3",
@@ -94,7 +105,8 @@
           "y": 0.5,
           "label": "White/fuchsia/yellow ice dye"
         }
-      ]
+      ],
+      "navLabel": "EDEN_DRESS"
     },
     {
       "id": "aos4",
@@ -123,7 +135,8 @@
           "y": 0.46,
           "label": "White/fuchsia ice dye"
         }
-      ]
+      ],
+      "navLabel": "MITRA_DRESS"
     },
     {
       "id": "aos5",
@@ -152,7 +165,8 @@
           "y": 0.5,
           "label": "White/fuchsia/yellow ice dye"
         }
-      ]
+      ],
+      "navLabel": "GRANA_DRESS"
     },
     {
       "id": "aos6",
@@ -170,7 +184,8 @@
         { "x": 0.57, "y": 0.40, "label": "12.7mm button closures" },
         { "x": 0.47, "y": 0.6, "label": "Godet train construction" },
         { "x": 0.46, "y": 0.65, "label": "White/fuchsia/yellow ice dye" }
-      ]
+      ],
+      "navLabel": "NEO_GOWN"
     },
     {
       "id": "aos8",
@@ -187,7 +202,8 @@
         { "x": 0.48, "y": 0.42, "label": "Metal boning belt" },
         { "x": 0.46, "y": 0.65, "label": "Hand poured tin buttons" },
         { "x": 0.37, "y": 0.72, "label": "Godet leg pattern" }
-      ]
+      ],
+      "navLabel": "LIMAX_PANTS"
     },
     {
       "id": "aos9",
@@ -216,7 +232,8 @@
           "y": 0.34,
           "label": "White/fuchsia/yellow ice dye"
         }
-      ]
+      ],
+      "navLabel": "TAIA_DRESS"
     },
     {
       "id": "aos10",
@@ -250,7 +267,8 @@
           "y": 0.34,
           "label": "White/fuchsia/yellow ice dye"
         }
-      ]
+      ],
+      "navLabel": "HELIX_TOP"
     }
   ]
 }

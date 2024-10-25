@@ -5,6 +5,14 @@
   "themeColor": "#AB765A",
   "images": [
     {
+      "id": "about",
+      "src": "alluvial/ABOUT.jpg",
+      "highlight": null,
+      "nodes": [],
+      "text": "Step into the ethereal world – where fairy tales dive beneath ocean cliffs and coral reefs with the crashing waves above. How does it feel to be vulnerable? How do we find power in sharing our dreams with the world? Inspired by the textures of flotsam found on the beaches of Nabeul, Tunisia – each detail a reflection on the intricate beauty of an underwater landscape.",
+      "navLabel": "ABOUT"
+    },
+    {
       "id": "al1",
       "src": "alluvial/01_RUNA.jpg",
       "highlight": {
@@ -31,7 +39,8 @@
           "y": 0.31,
           "label": "Polycarbonate boning corset"
         }
-      ]
+      ],
+      "navLabel": "RUNA_DRESS"
     },
     {
       "id": "al2",
@@ -60,7 +69,8 @@
           "y": 0.5,
           "label": "Hand-made button loops"
         }
-      ]
+      ],
+      "navLabel": "ANDREA_BODYSUIT"
     },
     {
       "id": "al3",
@@ -89,7 +99,8 @@
           "y": 0.81,
           "label": "Circular train construction"
         }
-      ]
+      ],
+      "navLabel": "REBECCA_DRESS"
     },
     {
       "id": "al4",
@@ -118,7 +129,8 @@
           "y": 0.5,
           "label": "Fitted silhouette"
         }
-      ]
+      ],
+      "navLabel": "THALEA_DRESS"
     },
     {
       "id": "al5",
@@ -147,7 +159,8 @@
           "y": 0.5,
           "label": "Fitted silhouette"
         }
-      ]
+      ],
+      "navLabel": "VIRGINIA_DRESS"
     },
     {
       "id": "al6",
@@ -176,7 +189,8 @@
           "y": 0.56,
           "label": "Digital printed silk organza"
         }
-      ]
+      ],
+      "navLabel": "SARA_DRESS"
     },
     {
       "id": "al7",
@@ -205,7 +219,8 @@
           "y": 0.41,
           "label": "white silk screen mesh"
         }
-      ]
+      ],
+      "navLabel": "JULIA_JACKET"
     },
     {
       "id": "al8",
@@ -234,7 +249,8 @@
           "y": 0.31,
           "label": "8mm hollow glass buttons"
         }
-      ]
+      ],
+      "navLabel": "CORNELIA_JACKET"
     },
     {
       "id": "al9",
@@ -263,7 +279,8 @@
           "y": 0.59,
           "label": "digital printed ultra light silk organza"
         }
-      ]
+      ],
+      "navLabel": "CARO_SET"
     }
   ]
 }

@@ -5,6 +5,14 @@
   "themeColor": "#584B39",
   "images": [
     {
+      "id": "about",
+      "src": "des-nachtmahrs-schmetterlinge/ABOUT.jpg",
+      "highlight": null,
+      "nodes": [],
+      "text": "\"Des Nachtmahrs Schmetterlinge\" took guests on a journey from isolation to transformation and fusion. It served as a metaphor for reviving social life after a long phase of loneliness. Nachtmahrs Schmetterlinge is Elodie's latest fashion collection featuring 13 fantastic characters: Each representing a commonly familiar feeling that is yet not spoken of. I aspire to create inclusive spaces where emotions can be experienced and shared authentically, free from masks and restrictions. In the vulnerable beginnings of a project, I always face the boundless void, rarely revealing this loneliness even to close friends. Through my art, I aim to inspire the strength that can only be found by accepting and embracing emotions, resisting suppression or numbness.",
+      "navLabel": "ABOUT"
+    },
+    {
       "id": "dns1",
       "src": "des-nachtmahrs-schmetterlinge/01_GNOSSIENNE.jpg",
       "highlight": {
@@ -16,22 +24,11 @@
         "status": "Custom made on request"
       },
       "nodes": [
-        {
-          "x": 0.45,
-          "y": 0.35,
-          "label": "layered blue nylon ruffles"
-        },
-        {
-          "x": 0.68,
-          "y": 0.51,
-          "label": "upcycled suit jacket"
-        },
-        {
-          "x": 0.4,
-          "y": 0.29,
-          "label": "hand braided shoulder straps"
-        }
-      ]
+        { "x": 0.45, "y": 0.35, "label": "layered blue nylon ruffles" },
+        { "x": 0.68, "y": 0.51, "label": "upcycled suit jacket" },
+        { "x": 0.4, "y": 0.29, "label": "hand braided shoulder straps" }
+      ],
+      "navLabel": "GNOSSIENNE_DRESS"
     },
     {
       "id": "dns2",
@@ -45,27 +42,12 @@
         "status": "Custom made on request"
       },
       "nodes": [
-        {
-          "x": 0.43,
-          "y": 0.76,
-          "label": "100% cotton with Red & white stripes"
-        },
-        {
-          "x": 0.69,
-          "y": 0.32,
-          "label": "asymmetric silk puff sleeves"
-        },
-        {
-          "x": 0.61,
-          "y": 0.43,
-          "label": "custom made fabric buttons"
-        },
-        {
-          "x": 0.57,
-          "y": 0.56,
-          "label": "hand made button loops"
-        }
-      ]
+        { "x": 0.43, "y": 0.76, "label": "100% cotton with Red & white stripes" },
+        { "x": 0.69, "y": 0.32, "label": "asymmetric silk puff sleeves" },
+        { "x": 0.61, "y": 0.43, "label": "custom made fabric buttons" },
+        { "x": 0.57, "y": 0.56, "label": "hand made button loops" }
+      ],
+      "navLabel": "MINEOMIA_DRESS"
     },
     {
       "id": "dns3",
@@ -79,22 +61,11 @@
         "status": "Custom made on request"
       },
       "nodes": [
-        {
-          "x": 0.30,
-          "y": 0.62,
-          "label": "cotton oranza underskirt"
-        },
-        {
-          "x": 0.45,
-          "y": 0.4,
-          "label": "Turquoise synthetic mesh"
-        },
-        {
-          "x": 0.44,
-          "y": 0.64,
-          "label": "Ruffled hem detail"
-        }
-      ]
+        { "x": 0.30, "y": 0.62, "label": "cotton oranza underskirt" },
+        { "x": 0.45, "y": 0.4, "label": "Turquoise synthetic mesh" },
+        { "x": 0.44, "y": 0.64, "label": "Ruffled hem detail" }
+      ],
+      "navLabel": "AVENOIR_SKIRT"
     },
     {
       "id": "dns4",
@@ -108,22 +79,11 @@
         "status": "Custom made on request"
       },
       "nodes": [
-        {
-          "x": 0.39,
-          "y": 0.44,
-          "label": "Royal blue tulle"
-        },
-        {
-          "x": 0.54,
-          "y": 0.45,
-          "label": "hand made ribbon bow detail"
-        },
-        {
-          "x": 0.56,
-          "y": 0.43,
-          "label": "Gathered empire waist"
-        }
-      ]
+        { "x": 0.39, "y": 0.44, "label": "Royal blue tulle" },
+        { "x": 0.54, "y": 0.45, "label": "hand made ribbon bow detail" },
+        { "x": 0.56, "y": 0.43, "label": "Gathered empire waist" }
+      ],
+      "navLabel": "NUDUS_TOLLENS_DRESS"
     },
     {
       "id": "dns5",
@@ -137,22 +97,11 @@
         "status": "Custom made on request"
       },
       "nodes": [
-        {
-          "x": 0.35,
-          "y": 0.3,
-          "label": "Pearl-embellished upcycled shirt"
-        },
-        {
-          "x": 0.45,
-          "y": 0.38,
-          "label": "organical shaped leather bag"
-        },
-        {
-          "x": 0.57,
-          "y": 0.69,
-          "label": "upcycled vintage cotton pants with embroidery and peacock feathers"
-        }
-      ]
+        { "x": 0.35, "y": 0.3, "label": "Pearl-embellished upcycled shirt" },
+        { "x": 0.45, "y": 0.38, "label": "organical shaped leather bag" },
+        { "x": 0.57, "y": 0.69, "label": "upcycled vintage cotton pants with embroidery and peacock feathers" }
+      ],
+      "navLabel": "JOUSKA_set"
     },
     {
       "id": "dns6",
@@ -166,22 +115,11 @@
         "status": "Custom made on request"
       },
       "nodes": [
-        {
-          "x": 0.39,
-          "y": 0.3,
-          "label": "Mint tulle crop top with yellow leather base"
-        },
-        {
-          "x": 0.47,
-          "y": 0.51,
-          "label": "headpiece made of real feathers"
-        },
-        {
-          "x": 0.44,
-          "y": 0.49,
-          "label": "High-slit satin skirt"
-        }
-      ]
+        { "x": 0.39, "y": 0.3, "label": "Mint tulle crop top with yellow leather base" },
+        { "x": 0.47, "y": 0.51, "label": "headpiece made of real feathers" },
+        { "x": 0.44, "y": 0.49, "label": "High-slit satin skirt" }
+      ],
+      "navLabel": "FATA_ORGANA_SET"
     },
     {
       "id": "dns7",
@@ -195,22 +133,11 @@
         "status": "Custom made on request"
       },
       "nodes": [
-        {
-          "x": 0.6,
-          "y": 0.3,
-          "label": "upcycled pinstripe jacket"
-        },
-        {
-          "x": 0.36,
-          "y": 0.35,
-          "label": "Red ruffle detail"
-        },
-        {
-          "x": 0.59,
-          "y": 0.46,
-          "label": "Crystal button closures"
-        }
-      ]
+        { "x": 0.6, "y": 0.3, "label": "upcycled pinstripe jacket" },
+        { "x": 0.36, "y": 0.35, "label": "Red ruffle detail" },
+        { "x": 0.59, "y": 0.46, "label": "Crystal button closures" }
+      ],
+      "navLabel": "MONACHOPSIS_BLAZER"
     },
     {
       "id": "dns8",
@@ -224,22 +151,11 @@
         "status": "Custom made on request"
       },
       "nodes": [
-        {
-          "x": 0.58,
-          "y": 0.42,
-          "label": "upcycled vintage shirt with beaded embroidery"
-        },
-        {
-          "x": 0.38,
-          "y": 0.47,
-          "label": "Rose gold puff sleeves"
-        },
-        {
-          "x": 0.62,
-          "y": 0.66,
-          "label": "ruffled layered skirt with silk hemming"
-        }
-      ]
+        { "x": 0.58, "y": 0.42, "label": "upcycled vintage shirt with beaded embroidery" },
+        { "x": 0.38, "y": 0.47, "label": "Rose gold puff sleeves" },
+        { "x": 0.62, "y": 0.66, "label": "ruffled layered skirt with silk hemming" }
+      ],
+      "navLabel": "ADRONITIS_DRESS"
     },
     {
       "id": "dns9",
@@ -253,22 +169,11 @@
         "status": "Custom made on request"
       },
       "nodes": [
-        {
-          "x": 0.53,
-          "y": 0.28,
-          "label": "Lime green ruffled headpiece"
-        },
-        {
-          "x": 0.35,
-          "y": 0.4,
-          "label": "Checkered pattern upcycled suit jacket"
-        },
-        {
-          "x": 0.6,
-          "y": 0.53,
-          "label": "upcycled suit pants with yellow trim details"
-        }
-      ]
+        { "x": 0.53, "y": 0.28, "label": "Lime green ruffled headpiece" },
+        { "x": 0.35, "y": 0.4, "label": "Checkered pattern upcycled suit jacket" },
+        { "x": 0.6, "y": 0.53, "label": "upcycled suit pants with yellow trim details" }
+      ],
+      "navLabel": "KAIROSCLEROSIS_SET"
     },
     {
       "id": "dns10",
@@ -282,22 +187,11 @@
         "status": "Custom made on request"
       },
       "nodes": [
-        {
-          "x": 0.45,
-          "y": 0.4,
-          "label": "Teal velvet dress with high slit"
-        },
-        {
-          "x": 0.58,
-          "y": 0.35,
-          "label": "white lace neck hemming"
-        },
-        {
-          "x": 0.39,
-          "y": 0.4,
-          "label": "blue upcycled suit jacket with silver broche closures"
-        }
-      ]
+        { "x": 0.45, "y": 0.4, "label": "Teal velvet dress with high slit" },
+        { "x": 0.58, "y": 0.35, "label": "white lace neck hemming" },
+        { "x": 0.39, "y": 0.4, "label": "blue upcycled suit jacket with silver broche closures" }
+      ],
+      "navLabel": "ANECDOCHE_SET"
     },
     {
       "id": "dns11",
@@ -311,27 +205,12 @@
         "status": "Custom made on request"
       },
       "nodes": [
-        {
-          "x": 0.65,
-          "y": 0.25,
-          "label": "pink velvet ribbon straps"
-        },
-        {
-          "x": 0.55,
-          "y": 0.5,
-          "label": "Pink mesh dress"
-        },
-        {
-          "x": 0.47,
-          "y": 0.29,
-          "label": "Scalloped hem detail"
-        },
-        {
-          "x": 0.41,
-          "y": 0.61,
-          "label": "pink silk knit binding"
-        }
-      ]
+        { "x": 0.65, "y": 0.25, "label": "pink velvet ribbon straps" },
+        { "x": 0.55, "y": 0.5, "label": "Pink mesh dress" },
+        { "x": 0.47, "y": 0.29, "label": "Scalloped hem detail" },
+        { "x": 0.41, "y": 0.61, "label": "pink silk knit binding" }
+      ],
+      "navLabel": "SONDER_DRESS"
     },
     {
       "id": "dns12",
@@ -345,22 +224,11 @@
         "status": "Custom made on request"
       },
       "nodes": [
-        {
-          "x": 0.41,
-          "y": 0.12,
-          "label": "heavy glass embroidered headpiece"
-        },
-        {
-          "x": 0.42,
-          "y": 0.33,
-          "label": "blue knit bodysuit with cutout details"
-        },
-        {
-          "x": 0.43,
-          "y": 0.59,
-          "label": "blue cutout skirt with heavy glass embroidery"
-        }
-      ]
+        { "x": 0.41, "y": 0.12, "label": "heavy glass embroidered headpiece" },
+        { "x": 0.42, "y": 0.33, "label": "blue knit bodysuit with cutout details" },
+        { "x": 0.43, "y": 0.59, "label": "blue cutout skirt with heavy glass embroidery" }
+      ],
+      "navLabel": "RIGOR_SAMSA_SET"
     },
     {
       "id": "dns13",
@@ -374,22 +242,11 @@
         "status": "Custom made on request"
       },
       "nodes": [
-        {
-          "x": 0.35,
-          "y": 0.3,
-          "label": "Yellow cropped upcycled suit blazer with pink silk binding"
-        },
-        {
-          "x": 0.35,
-          "y": 0.5,
-          "label": "yellow upcycled suit skirt"
-        },
-        {
-          "x": 0.37,
-          "y": 0.57,
-          "label": "silver glass embroidered details"
-        }
-      ]
+        { "x": 0.35, "y": 0.3, "label": "Yellow cropped upcycled suit blazer with pink silk binding" },
+        { "x": 0.35, "y": 0.5, "label": "yellow upcycled suit skirt" },
+        { "x": 0.37, "y": 0.57, "label": "silver glass embroidered details" }
+      ],
+      "navLabel": "LIBEROSIS_SET"
     }
   ]
 }

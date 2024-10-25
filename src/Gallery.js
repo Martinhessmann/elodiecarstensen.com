@@ -27,7 +27,6 @@ const Gallery = ({ projects, currentProject, setCurrentProject }) => {
     const scrollContainer = scrollContainerRef.current;
     if (!scrollContainer || !currentProject) return;
 
-    // Reset scroll position and trigger animation when project changes
     scrollContainer.scrollTop = 0;
     setCurrentIndex(0);
     setShouldAnimate(true);
@@ -97,9 +96,18 @@ const Gallery = ({ projects, currentProject, setCurrentProject }) => {
   return (
     <div className="gallery-container" ref={scrollContainerRef}>
       {projectWithCorrectImagePaths.images.map((image, index) => (
-        <div key={image.id} className="gallery-slide" data-index={index}>
+        <div
+          key={image.id}
+          className={`gallery-slide ${image.id === 'about' ? 'about-slide' : ''}`}
+          data-index={index}
+        >
           <div className="image-container">
             <img src={image.src} alt={`Gallery item ${index + 1}`} className="gallery-image" />
+            {image.text && (
+              <div className="about-text">
+                {image.text}
+              </div>
+            )}
             <DynamicImageHighlight
               image={image.src}
               highlightData={image.highlight}
@@ -119,7 +127,7 @@ const Gallery = ({ projects, currentProject, setCurrentProject }) => {
             className={`gallery-nav-item ${index === currentIndex ? 'active' : ''}`}
             onClick={() => handleDotClick(index)}
           >
-            <div className="gallery-nav-label">{image.highlight?.text || `Image ${index + 1}`}</div>
+            <div className="gallery-nav-label">{image.navLabel || `Image ${index + 1}`}</div>
             <div className="gallery-nav-dot"></div>
           </div>
         ))}
