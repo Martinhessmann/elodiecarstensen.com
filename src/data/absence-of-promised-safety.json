@@ -3,14 +3,14 @@
   "name": "ABSENCE OF PROMISED SAFETY",
   "season": "SS25",
   "themeColor": "#091115",
-  "aboutText": "You hear a drop falling. It’s a tear. Are the cries really that silent? Why are they so loud in your heart? You see a drop falling. It’s blood. You work so hard to hide your stains but you feel like there is nothing else to see. Can you heal on your own terms? You feel a drop falling. It’s sweat. Your hands hurt and your body is tired, for how long have you been building your monster? It has to protect you now, healing is a full time job. You hear a drop falling and the sound bounces on every wall and you realise that you grew in your silence and from the rubbles of promised safety you have risen.",
+  "credits": "art Direction elodie carstensen\nPhotographer anika zachow, Frédéric Hermann\nModels sarah mohamed Abdulaahi, mamadama diaby\nagency uns* lgbtqia+ agency\nMakeUp rafa Delgado\nHair Béanne Da Costa\nProducer gina greving, martin heßsmann\nSTYLING HALLA FARHAT\nJewelery elodie carstensen\nSHOES ESSIE KRAMER\nlocation studio stellar berlin",
   "images": [
     {
       "id": "about",
       "src": "absence-of-promised-safety/ABOUT.jpg",
       "highlight": null,
       "nodes": [],
-      "text": "Your about text here...",
+      "text": "You hear a drop falling. It’s a tear. Are the cries really that silent? Why are they so loud in your heart? You see a drop falling. It’s blood. You work so hard to hide your stains but you feel like there is nothing else to see. Can you heal on your own terms? You feel a drop falling. It’s sweat. Your hands hurt and your body is tired, for how long have you been building your monster? It has to protect you now, healing is a full time job. You hear a drop falling and the sound bounces on every wall and you realise that you grew in your silence and from the rubbles of promised safety you have risen.",
       "navLabel": "ABOUT"
     },
     {

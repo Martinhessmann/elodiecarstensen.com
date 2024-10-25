@@ -13,6 +13,7 @@ const Gallery = ({ projects, currentProject, setCurrentProject }) => {
       const project = projects.find(p => p.id === projectId);
       if (project) {
         setCurrentProject(project);
+        setShowCredits(false); // Reset showCredits when project changes
       }
     }
   }, [projectId, currentProject, projects, setCurrentProject]);
@@ -21,6 +22,7 @@ const Gallery = ({ projects, currentProject, setCurrentProject }) => {
   const [showNodes, setShowNodes] = useState(true);
   const [isScrolling, setIsScrolling] = useState(false);
   const [shouldAnimate, setShouldAnimate] = useState(true);
+  const [showCredits, setShowCredits] = useState(false);
   const scrollContainerRef = useRef(null);
 
   useEffect(() => {
@@ -73,6 +75,10 @@ const Gallery = ({ projects, currentProject, setCurrentProject }) => {
     }
   };
 
+  const toggleCredits = () => {
+    setShowCredits(!showCredits);
+  };
+
   if (!currentProject) {
     return <div className="gallery-container">Loading...</div>;
   }
@@ -103,9 +109,23 @@ const Gallery = ({ projects, currentProject, setCurrentProject }) => {
         >
           <div className="image-container">
             <img src={image.src} alt={`Gallery item ${index + 1}`} className="gallery-image" />
-            {image.text && (
+            {image.id === 'about' && (
               <div className="about-text">
                 {image.text}
+                <div className="credits-button-wrapper">
+                  <span className="credits-separator">*</span>
+                  <button className="credits-button" onClick={toggleCredits}>
+                    {showCredits ? 'Hide Credits' : 'Show Credits'}
+                  </button>
+                  <span className="credits-separator">*</span>
+                </div>
+                {showCredits && (
+                  <div className="credits-content">
+                    {currentProject.credits.split('\n').map((line, index) => (
+                      <p key={index}>{line.split('/').join(' / ')}</p>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
             <DynamicImageHighlight
