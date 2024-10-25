@@ -47,7 +47,10 @@ const Header = ({ project, projects, onProjectSelect }) => {
           onMouseEnter={() => setIsMenuOpen(true)}
           onMouseLeave={() => setIsMenuOpen(false)}
         >
-          <div className={`current-project ${isContactActive && project.id === 'contact' ? 'active' : ''}`}>
+          <div
+            className={`current-project ${isContactActive && project.id === 'contact' ? 'active' : ''}`}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
             <span className="project-name">{project.name}</span>
             {project.season && (
               <>
