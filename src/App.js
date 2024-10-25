@@ -2,15 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import SplashPage from './SplashPage';
 import Gallery from './Gallery';
-import ContactPage from './ContactPage';
+import AboutPage from './AboutPage';
 import Header from './Header';
-import { loadProjects, loadContact } from './utils/dataLoader';
+import { loadProjects } from './utils/dataLoader';
 import './App.scss';
 
 function App() {
   const [currentProject, setCurrentProject] = useState(null);
   const [projects, setProjects] = useState([]);
-  const [contact, setContact] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
 
@@ -19,7 +18,6 @@ function App() {
       setIsLoading(true);
       const projectsData = await loadProjects();
       setProjects(projectsData);
-      setContact(loadContact());
       setIsLoading(false);
     };
     fetchData();
@@ -36,7 +34,7 @@ function App() {
     setCurrentProject(selected);
   };
 
-  const showHeader = location.pathname !== '/' && (currentProject !== null || location.pathname === '/contact');
+  const showHeader = location.pathname !== '/';
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -69,9 +67,9 @@ function App() {
             }
           />
           <Route
-            path="/contact"
+            path="/about"
             element={
-              <ContactPage data={projects.find(p => p.id === 'contact')} />
+              <AboutPage data={projects.find(p => p.id === 'contact')} />
             }
           />
         </Routes>

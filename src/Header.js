@@ -18,13 +18,13 @@ const Header = ({ project, projects, onProjectSelect }) => {
     onProjectSelect(projectId);
     setIsMenuOpen(false); // Close the menu when a project is selected
     if (projectId === 'contact') {
-      navigate('/contact');
+      navigate('/about');
     } else {
       navigate(`/gallery/${projectId}`);
     }
   };
 
-  const isContactActive = location.pathname === '/contact';
+  const isAboutActive = location.pathname === '/about';
 
   return (
     <motion.header
@@ -48,7 +48,7 @@ const Header = ({ project, projects, onProjectSelect }) => {
           onMouseLeave={() => setIsMenuOpen(false)}
         >
           <div
-            className={`current-project ${isContactActive && project.id === 'contact' ? 'active' : ''}`}
+            className={`current-project ${isAboutActive && project.id === 'contact' ? 'active' : ''}`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <span className="project-name">{project.name}</span>
@@ -63,7 +63,7 @@ const Header = ({ project, projects, onProjectSelect }) => {
             {projects.filter(p => p.id !== project.id).map(p => (
               <div
                 key={p.id}
-                className={`project-option ${isContactActive && p.id === 'contact' ? 'active' : ''}`}
+                className={`project-option ${isAboutActive && p.id === 'contact' ? 'active' : ''}`}
                 onClick={() => handleProjectClick(p.id)}
               >
                 <span className="project-name">{p.name}</span>

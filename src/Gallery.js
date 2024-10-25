@@ -3,7 +3,6 @@ import DynamicImageHighlight from './DynamicImageHighlight';
 import { getAssetUrl } from './assetUtils';
 import './Gallery.scss';
 import { useParams } from 'react-router-dom';
-import ContactPage from './ContactPage';
 
 const Gallery = ({ projects, currentProject, setCurrentProject }) => {
   const { projectId } = useParams();
@@ -79,10 +78,6 @@ const Gallery = ({ projects, currentProject, setCurrentProject }) => {
 
   if (!currentProject) {
     return <div className="gallery-container">Loading...</div>;
-  }
-
-  if (currentProject.id === 'contact') {
-    return <ContactPage data={currentProject} />;
   }
 
   if (!currentProject.images) {

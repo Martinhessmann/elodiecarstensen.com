@@ -1,6 +1,6 @@
 @import 'styles/variables';
 
-.contact-page {
+.about-page {
   width: 100vw;
   height: 100vh;
   background-size: cover;
@@ -13,7 +13,7 @@
   overflow: hidden;
 }
 
-.contact-content {
+.about-content {
   position: absolute;
   top: 0;
   left: 0;
@@ -25,7 +25,7 @@
   align-items: center;
 }
 
-.contact-frame {
+.about-frame {
   width: 80%;
   max-width: 800px;
   height: 70vh;
@@ -41,8 +41,12 @@
   box-sizing: border-box;
 }
 
-.contact-section {
+.about-section {
   margin-bottom: 20px;
+
+  &.nested {
+    margin-left: 20px;
+  }
 }
 
 .section-header {
@@ -50,6 +54,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .section-title {
@@ -69,9 +74,8 @@
   margin-left: 20px;
 }
 
-.json-content {
-  font-family: monospace;
-  white-space: pre-wrap;
+.about-info, .contact-info, .exhibitions-list, .awards-list, .press-list {
+  margin-bottom: 15px;
 }
 
 .newsletter-form {
@@ -123,7 +127,7 @@
 
 // Media query for mobile devices
 @media (max-width: 768px) {
-  .contact-frame {
+  .about-frame {
     width: 90%;
   }
 }
