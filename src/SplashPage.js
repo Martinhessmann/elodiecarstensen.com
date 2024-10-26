@@ -156,15 +156,23 @@ const SplashPage = () => {
       className="splash-container"
       style={{ '--enter-cursor': `url(${enterCursor})` }}
     >
-      <div className="splash-glass-effect" />
-      <div className="splash-content">
+      {/* Hidden content for screen readers and search engines */}
+      <div className="visually-hidden">
+        <h1>Elodie Carstensen</h1>
+        <p>
+          Elodie Carstensen is a Berlin-based designer and artist, crafting immersive, story-driven fashion through collections like Alluvial, Des Nachtmahrs Schmetterlinge, and Absence of Promised Safety. Known for custom costume design and thematic depth, her work spans installations, performances, and collaborative projects.
+        </p>
+      </div>
+
+      <div className="splash-glass-effect" aria-hidden="true" />
+      <div className="splash-content" aria-hidden="true">
         <div className="splash-logo-name">
-          <img src={logoUrl} alt="Logo" className="splash-logo" />
+          <img src={logoUrl} alt="" className="splash-logo" />
           <h1 className="splash-title">ELODIE CARSTENSEN</h1>
         </div>
         <div className="splash-text-container">
           <p className="splash-intro-text">
-            STEP INTO A WORLD WHERE VULNERABILITY BECOMES ARMOR AND FLUIDITY DEFIES SOCIETAL CONSTRUCTS. ELODIE CARSTENSEN INVITES YOU TO EXPLORE ABSENCE OF PROMISED SAFETY, A SPACE WHERE CREATURES, ARTIFACTS, AND DESIGNS COALESCE, EACH PIECE CHALLENGING THE CONVENTIONS OF IDENTITY AND STRENGTH.
+            Elodie Carstensen is a Berlin-based designer and artist, crafting immersive, story-driven fashion through collections like Alluvial, Des Nachtmahrs Schmetterlinge, and Absence of Promised Safety. Known for custom costume design and thematic depth, her work spans installations, performances, and collaborative projects.
           </p>
           <button className="splash-enter-button" onClick={handleContainerClick}>
             ENTER <span className="slash-icon">/</span>
@@ -178,6 +186,7 @@ const SplashPage = () => {
       >
         <div className="splash-background"
           style={{ backgroundImage: `url(${splashUrl})` }}
+          aria-hidden="true"
         >
           <div className="snap-points">
             <div className="snap-point" style={{ left: '19%' }}></div>

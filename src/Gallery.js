@@ -138,6 +138,18 @@ const Gallery = ({ projects, currentProject, setCurrentProject }) => {
               themeColor={currentProject.themeColor}
               shouldAnimate={shouldAnimate}
             />
+            {/* Hidden content for SEO and accessibility */}
+            <div className="hidden-content">
+              <h2>Image Details</h2>
+              <p>{image.highlight?.text}</p>
+              <p>Status: {image.highlight?.status}</p>
+              <h3>Image Features</h3>
+              <ul>
+                {image.nodes?.map((node, nodeIndex) => (
+                  <li key={nodeIndex}>{node.label}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
       ))}
