@@ -93,31 +93,41 @@ const Gallery = ({ projects, currentProject, setCurrentProject }) => {
   };
 
   return (
-    <div className="gallery-container" ref={scrollContainerRef}>
+    <article className="gallery-container" ref={scrollContainerRef}>
       {projectWithCorrectImagePaths.images.map((image, index) => (
-        <div
+        <section
           key={image.id}
           className={`gallery-slide ${image.id === 'about' ? 'about-slide' : ''}`}
           data-index={index}
         >
           <div className="image-container">
-            <img src={image.src} alt={`Gallery item ${index + 1}`} className="gallery-image" />
+            <img
+              src={image.src}
+              alt={`${currentProject.name} - ${image.highlight?.text || `Image ${index + 1}`}`}
+              className="gallery-image"
+            />
             {image.id === 'about' && (
               <div className="about-text">
-                {image.text}
+                <h1>{currentProject.name}</h1>
+                <p>{image.text}</p>
                 <div className="credits-button-wrapper">
-                  <span className={`credits-separator ${showCredits ? 'show' : ''}`}>*</span>
-                  <button className={`credits-button ${showCredits ? 'show' : ''}`} onClick={toggleCredits}>
+                  <span className="credits-separator">*</span>
+                  <button className="credits-button" onClick={toggleCredits}>
                     {showCredits ? 'Hide Credits' : 'Show Credits'}
                   </button>
-                  <span className={`credits-separator ${showCredits ? 'show' : ''}`}>*</span>
+                  <span className="credits-separator">*</span>
                 </div>
-                {currentProject.credits && (
-                  <div className={`credits-content ${showCredits ? 'show' : ''}`}>
+                {showCredits && currentProject.credits && (
+                  <div className="credits-content">
                     {currentProject.credits}
                   </div>
                 )}
               </div>
+            )}
+            {image.highlight && (
+              <figcaption className="image-caption">
+                {image.highlight.text}
+              </figcaption>
             )}
             <DynamicImageHighlight
               image={image.src}
@@ -129,21 +139,21 @@ const Gallery = ({ projects, currentProject, setCurrentProject }) => {
               shouldAnimate={shouldAnimate}
             />
           </div>
-        </div>
+        </section>
       ))}
-      <div className="gallery-navigation">
+      <nav className="gallery-navigation">
         {projectWithCorrectImagePaths.images.map((image, index) => (
-          <div
+          <button
             key={index}
             className={`gallery-nav-item ${index === currentIndex ? 'active' : ''}`}
             onClick={() => handleDotClick(index)}
           >
-            <div className="gallery-nav-label">{image.id === 'about' ? 'INTRO' : (image.navLabel || `Image ${index + 1}`)}</div>
-            <div className="gallery-nav-dot"></div>
-          </div>
+            <span className="gallery-nav-label">{image.id === 'about' ? 'INTRO' : (image.navLabel || `Image ${index + 1}`)}</span>
+            <span className="gallery-nav-dot"></span>
+          </button>
         ))}
-      </div>
-    </div>
+      </nav>
+    </article>
   );
 };
 

@@ -1,14 +1,21 @@
 @import 'styles/variables';
 
+body {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
 .gallery-container {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-  height: calc(var(--vh, 1vh) * 100);
-  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
   scroll-snap-type: y mandatory;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
@@ -20,9 +27,8 @@
 }
 
 .gallery-slide {
-  width: 100vw;
-  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-  height: calc(var(--vh, 1vh) * 100);
+  width: 100%;
+  height: 100%;
   scroll-snap-align: start;
   scroll-snap-stop: always;
   display: flex;
@@ -59,11 +65,13 @@
 }
 
 .gallery-nav-item {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   margin: 0.4em;
-  cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover {
@@ -122,6 +130,10 @@
   margin: 0;
   z-index: 10;
   max-height: 80vh;
+
+  h1 {
+    @include font-small;
+  }
 }
 
 .credits-button-wrapper {
@@ -188,4 +200,26 @@
   .credits-text {
     width: 50%;
   }
+}
+
+.image-description {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.image-caption {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8em;
 }

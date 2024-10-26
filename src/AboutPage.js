@@ -5,7 +5,6 @@ import './AboutPage.scss';
 const AboutPage = ({ data }) => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [isSuccess, setIsSuccess] = useState(false);
   const [expandedSections, setExpandedSections] = useState({
     about: true,
     exhibitions: false,
@@ -19,7 +18,6 @@ const AboutPage = ({ data }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage('SENT');
-    setIsSuccess(true);
 
     try {
       const response = await fetch('https://9c0c9eba.sibforms.com/serve/MUIFAGV8z5aEiJz2JbmFOXTMPovqB2ofgsyUEWpTrkclNo_JNcBVguHkrJAG-ZOqC1mskrL_YGGX-y8Nn3URrxm_u9ahSbl0YZs_cYdjSQH9_zeUo55gkRdVZ2yQI-NLVTdDAvNU4wW2ndemJNQHeoLrJxSQztkhNZ2XAYpJrVPzrEPj5DURK7C8NJCNJU5mk-vXAf8ZpeZiJGGv', {
@@ -41,20 +39,6 @@ const AboutPage = ({ data }) => {
     setExpandedSections(prev => ({ ...prev, [section]: !prev[section] }));
   };
 
-  const renderSection = (title, content, isNested = false) => (
-    <div className={`about-section ${isNested ? 'nested' : ''}`}>
-      <div className="section-header" onClick={() => toggleSection(title.toLowerCase())}>
-        <span className={`chevron ${expandedSections[title.toLowerCase()] ? 'expanded' : ''}`}>›</span>
-        <span className="section-title">{title}</span>
-      </div>
-      {expandedSections[title.toLowerCase()] && (
-        <div className="section-content">
-          {content}
-        </div>
-      )}
-    </div>
-  );
-
   const renderLink = (url) => {
     if (url && url !== "Unavailable") {
       return (
@@ -67,6 +51,20 @@ const AboutPage = ({ data }) => {
     }
     return null;
   };
+
+  const renderSection = (title, content) => (
+    <div className="about-section">
+      <div className="section-header" onClick={() => toggleSection(title.toLowerCase())}>
+        <span className={`chevron ${expandedSections[title.toLowerCase()] ? 'expanded' : ''}`}>›</span>
+        <span className="section-title">{title}</span>
+      </div>
+      {expandedSections[title.toLowerCase()] && (
+        <div className="section-content">
+          {content}
+        </div>
+      )}
+    </div>
+  );
 
   return (
     <div
@@ -106,7 +104,7 @@ const AboutPage = ({ data }) => {
                   </div>
                 ))}
               </div>
-            ), true)}
+            ))}
             {renderSection("Awards", (
               <div className="awards-list">
                 {data.awards.map((award, index) => (
@@ -119,7 +117,7 @@ const AboutPage = ({ data }) => {
                   </div>
                 ))}
               </div>
-            ), true)}
+            ))}
             {renderSection("Press", (
               <div className="press-list">
                 {data.press_mentions.map((yearGroup, index) => (
@@ -138,7 +136,7 @@ const AboutPage = ({ data }) => {
                   </div>
                 ))}
               </div>
-            ), true)}
+            ))}
             {renderSection("Muses", (
               <div className="person-list">
                 {data.muses.map((person, index) => (
@@ -150,7 +148,7 @@ const AboutPage = ({ data }) => {
                   </div>
                 ))}
               </div>
-            ), true)}
+            ))}
             {renderSection("Collaborators", (
               <div className="person-list">
                 {data.collaborators.map((person, index) => (
@@ -162,7 +160,7 @@ const AboutPage = ({ data }) => {
                   </div>
                 ))}
               </div>
-            ), true)}
+            ))}
             {renderSection("Subscribe for more updates", (
               <>
                 <div className="newsletter-form">
@@ -181,7 +179,7 @@ const AboutPage = ({ data }) => {
                         </svg>
                       </button>
                     </div>
-                    {message && <div className={`form-message ${isSuccess ? 'success' : 'error'}`}>{message}</div>}
+                    {message && <div className="form-message">{message}</div>}
                   </form>
                 </div>
               </>

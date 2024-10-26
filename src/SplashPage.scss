@@ -139,7 +139,7 @@
 }
 
 .splash-title {
-  @include font-small;
+  @include font-title;
   text-align: center;
   color: $color-white;
 }

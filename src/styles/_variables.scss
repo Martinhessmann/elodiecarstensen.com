@@ -14,7 +14,7 @@ $background-color: $color-dark;
   font-family: 'SF Mono', monospace;
   font-style: normal;
   font-weight: 400;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 100%;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -24,8 +24,16 @@ $background-color: $color-dark;
   font-family: 'SF Mono', monospace;
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 100%;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+@mixin font-title {
+  font-family: 'Ogg', monospace;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  letter-spacing: 0.04em;
 }
