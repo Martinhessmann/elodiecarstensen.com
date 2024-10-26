@@ -97,7 +97,7 @@ const Gallery = ({ projects, currentProject, setCurrentProject }) => {
       {projectWithCorrectImagePaths.images.map((image, index) => (
         <section
           key={image.id}
-          className={`gallery-slide ${image.id === 'about' ? 'about-slide' : ''}`}
+          className={`gallery-slide ${image.id === 'about' ? 'about-slide' : ''} ${currentProject.id === 'alluvial' && image.id === 'about' ? 'alluvial-intro' : ''}`}
           data-index={index}
         >
           <div className="image-container">
@@ -117,11 +117,9 @@ const Gallery = ({ projects, currentProject, setCurrentProject }) => {
                   </button>
                   <span className="credits-separator">*</span>
                 </div>
-                {showCredits && currentProject.credits && (
-                  <div className="credits-content">
-                    {currentProject.credits}
-                  </div>
-                )}
+                <div className={`credits-content ${showCredits ? 'visible' : ''}`}>
+                  {currentProject.credits}
+                </div>
               </div>
             )}
             {image.highlight && (

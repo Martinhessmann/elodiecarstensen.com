@@ -53,6 +53,14 @@ body {
   width: 100vw; // Full width for ABOUT images
 }
 
+.gallery-slide.alluvial-intro .image-container {
+  background-position: 60% center; // Adjust this value to move the background more to the right
+}
+
+.gallery-slide.alluvial-intro .image-container img {
+  object-position: 60% center; // Adjust this value to move the image more to the right
+}
+
 .gallery-navigation {
   position: fixed;
   right: 1rem;
@@ -164,18 +172,15 @@ body {
 }
 
 .credits-content {
-  margin-top: 10px;
-  @include font-tiny;
+  opacity: 0;
   max-height: 0;
   overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.3s ease-out, opacity 0.3s ease-out, margin-top 0.3s ease-out;
-}
+  transition: opacity 0.3s ease, max-height 0.3s ease;
 
-.credits-content.show {
-  max-height: 1000px; // Adjust this value based on your content
-  opacity: 1;
-  margin-top: 10px;
+  &.visible {
+    opacity: 1;
+    max-height: 1000px; // Adjust this value based on your content
+  }
 }
 
 .credits-separator {
