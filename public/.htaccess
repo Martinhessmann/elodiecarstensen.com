@@ -1,0 +1,18 @@
+RewriteEngine On
+
+# Redirect old project URL to new gallery URL
+RewriteRule ^work/alluvial/?$ /gallery/alluvial [R=301,L]
+
+# Redirect old project URL to new gallery URL (example)
+RewriteRule ^old-project-url$ /gallery/new-project-id [R=301,L]
+
+# Redirect old about page to new about page
+RewriteRule ^old-about-url$ /about [R=301,L]
+
+# Redirect any other old URLs to homepage
+RewriteRule ^old-url$ / [R=301,L]
+
+# If the requested resource doesn't exist, serve index.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [QSA,L]

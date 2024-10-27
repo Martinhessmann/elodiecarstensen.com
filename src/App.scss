@@ -26,6 +26,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: $background-color;
+  @include font-tiny;
   margin: 0;
   /* mobile viewport bug fix */
   min-height: -webkit-fill-available;

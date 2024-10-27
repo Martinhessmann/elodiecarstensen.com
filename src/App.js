@@ -4,6 +4,7 @@ import SplashPage from './SplashPage';
 import Gallery from './Gallery';
 import AboutPage from './AboutPage';
 import Header from './Header';
+import NotFound from './NotFound';
 import { loadProjects } from './utils/dataLoader';
 import './App.scss';
 
@@ -84,6 +85,7 @@ function App() {
               <AboutPage data={projects.find(p => p.id === 'about')} />
             }
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
     </div>
