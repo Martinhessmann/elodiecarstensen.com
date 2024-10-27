@@ -172,8 +172,7 @@ const SplashPage = () => {
         </div>
         <div className="splash-text-container">
           <p className="splash-intro-text">
-            Elodie Carstensen is a Berlin-based designer and artist, crafting immersive, story-driven fashion through collections like Alluvial, Des Nachtmahrs Schmetterlinge, and Absence of Promised Safety. Known for custom costume design and thematic depth, her work spans installations, performances, and collaborative projects.
-          </p>
+            Elodie Carstensen is a Berlin-based artist and designer. She is creating worlds that are reveled in the webs of imagination and analysis, experimenting with fashion, immersive installations, custom costume designs, performances and collaborations. Her collections Alluvial, Des Nachtmahrs Schmetterlinge, and Absence of Promised Safety are the beginning of her ever expanding universe.</p>
           <button className="splash-enter-button" onClick={handleContainerClick}>
             ENTER <span className="slash-icon">/</span>
           </button>
