@@ -1,5 +1,5 @@
 # Redirect old project URL to new gallery URL
-/work/des-nachtmahrs-schmetterlinge   /gallery/des-nachtmahrs-schmetterlinge   301
+/work/alluvial   /gallery/alluvial   301
 
 # Redirect old project URL to new gallery URL (example)
 /old-project-url   /gallery/new-project-id   301

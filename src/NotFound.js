@@ -12,15 +12,15 @@ function NotFound() {
       textAlign: 'center',
       backgroundColor: '#091115',
       color: '#fff',
+      fontFamily: 'Arial, sans-serif',
     },
     title: {
-      fontSize: '1.2rem',
+      fontSize: '3rem',
       marginBottom: '1rem',
     },
     text: {
-      fontSize: '1rem',
+      fontSize: '1.2rem',
       marginBottom: '2rem',
-      lineHeight: '1.2',
     },
     button: {
       padding: '10px 20px',
