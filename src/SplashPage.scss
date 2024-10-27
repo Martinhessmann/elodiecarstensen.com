@@ -57,6 +57,10 @@
   padding: 5vh 10vw 20vh;
   box-sizing: border-box;
   z-index: 11;
+
+  @media (max-width: 768px) {
+    padding: 5vh 5vw 10vh;
+  }
 }
 
 /* Add pointer-events back to the children of splash-content */
