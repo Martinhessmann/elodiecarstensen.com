@@ -1,0 +1,13 @@
+{
+  "redirects": [
+    { "source": "/work/alluvial", "destination": "/gallery/alluvial", "permanent": true },
+    { "source": "/work/des-nachtmahrs-schmetterlinge", "destination": "/gallery/des-nachtmahrs-schmetterlinge", "permanent": true },
+    { "source": "/old-about-url", "destination": "/about", "permanent": true },
+    { "source": "/old-url", "destination": "/", "permanent": true }
+  ],
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/work/(.*)", "dest": "/api/redirect?url=/work/$1" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
