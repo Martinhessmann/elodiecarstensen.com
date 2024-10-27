@@ -205,6 +205,14 @@ body {
   .credits-text {
     width: 50%;
   }
+
+  .gallery-slide.alluvial-intro .image-container {
+    background-position: 80% center; // Move further right on mobile
+  }
+
+  .gallery-slide.alluvial-intro .image-container img {
+    object-position: 80% center; // Move further right on mobile
+  }
 }
 
 .image-description {
