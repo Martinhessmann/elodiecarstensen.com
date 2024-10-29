@@ -44,12 +44,31 @@
   left: 0;
   bottom: 0;
   transform: translate(0, 100%);
-  @include font-small;
   padding: 4px;
   background: $color-white;
   color: var(--theme-color);
   z-index: 20;
-  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+
+  .frame-text {
+    font-size: 1em;
+    white-space: nowrap;
+  }
+
+  .frame-status {
+    font-size: 0.7em;
+    color: var(--theme-color);
+    opacity: 0.7;
+    white-space: nowrap;
+
+    &::before {
+      content: '//';
+      margin-right: 4px;
+    }
+  }
 }
 
 .node-label {
@@ -57,7 +76,6 @@
   @include font-tiny;
   color: $color-white;
   opacity: 0;
-  transform: translate(-50%, -50%);
   border: 0.25px solid $color-white;
   padding: 2px 4px;
   animation: fadeIn 0.3s ease-out forwards;
@@ -65,8 +83,18 @@
   backdrop-filter: blur(4px);
   white-space: normal;
   z-index: 10;
-  max-width: 200px; // Increased max-width
+  max-width: 200px;
   overflow: auto;
+
+  &.left-side {
+    transform: translate(-5%, -50%);
+    text-align: right;
+  }
+
+  &.right-side {
+    transform: translate(-80%, -50%);
+    text-align: left;
+  }
 }
 
 .node-line {

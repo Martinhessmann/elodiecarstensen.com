@@ -12,6 +12,10 @@
   height: 76px;
   background-color: transparent;
   z-index: 20;
+
+  @media (max-width: 768px) {
+    padding: 8px 16px;
+  }
 }
 
 .header-logo-container {

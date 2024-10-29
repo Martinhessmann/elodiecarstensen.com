@@ -2,65 +2,71 @@ import React, { useEffect, useRef, useState, useMemo, useCallback } from 'react'
 import './DynamicImageHighlight.scss';
 
 const generateLabelOffset = (node, highlightData, index, totalNodes) => {
-  const angle = (index / totalNodes) * 2 * Math.PI;
-  const baseDistance = 0.2; // Increased base distance
-  const frameLabelBuffer = 0.1; // Buffer zone for frame label
+  const gridCells = 6; // Number of cells in each direction
+  const margin = 0.05; // Margin from edges
+  const cellWidth = (1 - 2 * margin) / gridCells;
+  const cellHeight = (1 - 2 * margin) / gridCells;
 
-  let offsetX = Math.cos(angle) * baseDistance;
-  let offsetY = Math.sin(angle) * baseDistance;
+  // Determine which side of the frame to place labels
+  const isLeftSide = node.x < highlightData.x + highlightData.width / 2;
 
-  // Adjust offset to ensure label is outside the frame
-  if (node.x < highlightData.x) {
-    offsetX = -Math.abs(offsetX) - 0.1;
-  } else if (node.x > highlightData.x + highlightData.width) {
-    offsetX = Math.abs(offsetX) + 0.1;
+  // Calculate grid position starting from bottom
+  const gridX = isLeftSide ? 0 : gridCells - 1;
+  // Reverse the index to start from bottom
+  const reversedIndex = totalNodes - 1 - index;
+  const gridY = Math.floor((reversedIndex % gridCells) * (gridCells / totalNodes));
+
+  // Convert grid position to actual coordinates
+  let labelX = margin + (gridX * cellWidth);
+  let labelY = 1 - margin - (gridY * cellHeight); // Start from bottom
+
+  // Ensure minimum distance from frame
+  const minDistance = 0.15;
+  const labelOffset = 0.15; // Offset for text alignment
+
+  // Adjust X position based on which side we're on
+  if (isLeftSide) {
+    labelX = Math.min(node.x - minDistance, labelX);
+    labelX -= labelOffset; // Move left for right-aligned text
   } else {
-    offsetX = (node.x < highlightData.x + highlightData.width / 2) ?
-      -Math.abs(offsetX) - 0.1 :
-      Math.abs(offsetX) + 0.1;
+    labelX = Math.max(node.x + minDistance, labelX);
+    labelX += 0.05; // Small offset from the node point for left-aligned text
   }
 
-  if (node.y < highlightData.y) {
-    offsetY = -Math.abs(offsetY) - 0.1;
-  } else if (node.y > highlightData.y + highlightData.height) {
-    offsetY = Math.abs(offsetY) + 0.1;
+  // Avoid header area
+  if (labelY < 0.15) { // Top 15% reserved for header
+    labelY += 0.15;
+  }
+
+  // Avoid portrait area (middle of the image)
+  const portraitArea = {
+    top: 0.2,
+    bottom: 0.8,
+    left: 0.3,
+    right: 0.7
+  };
+
+  if (labelY > portraitArea.top && labelY < portraitArea.bottom &&
+    labelX > portraitArea.left && labelX < portraitArea.right) {
+    if (labelY > (portraitArea.top + portraitArea.bottom) / 2) {
+      labelY = portraitArea.bottom + 0.05;
+    } else {
+      labelY = portraitArea.top - 0.05;
+    }
+  }
+
+  // Ensure we stay within bounds while maintaining alignment
+  if (isLeftSide) {
+    labelX = Math.max(margin, labelX);
   } else {
-    offsetY = (node.y < highlightData.y + highlightData.height / 2) ?
-      -Math.abs(offsetY) - 0.1 :
-      Math.abs(offsetY) + 0.1;
+    labelX = Math.min(1 - margin, labelX);
   }
-
-  // Extra spacing for labels near the frame label (bottom of frame)
-  if (node.y > highlightData.y + highlightData.height - 0.1 &&
-    node.x >= highlightData.x - 0.1 &&
-    node.x <= highlightData.x + highlightData.width + 0.1) {
-    offsetY += frameLabelBuffer; // Move label down more to avoid frame label
-  }
-
-  // Prevent labels from being too close to the edges
-  const finalX = node.x + offsetX;
-  const finalY = node.y + offsetY;
-
-  // Add minimum spacing between labels and frame edges
-  const edgeBuffer = 0.05;
-  if (finalX < highlightData.x && finalX > highlightData.x - edgeBuffer) {
-    offsetX -= edgeBuffer;
-  }
-  if (finalX > highlightData.x + highlightData.width &&
-    finalX < highlightData.x + highlightData.width + edgeBuffer) {
-    offsetX += edgeBuffer;
-  }
-  if (finalY < highlightData.y && finalY > highlightData.y - edgeBuffer) {
-    offsetY -= edgeBuffer;
-  }
-  if (finalY > highlightData.y + highlightData.height &&
-    finalY < highlightData.y + highlightData.height + edgeBuffer) {
-    offsetY += edgeBuffer;
-  }
+  labelY = Math.max(0.15, Math.min(0.95, labelY));
 
   return {
-    x: node.x + offsetX,
-    y: node.y + offsetY
+    x: labelX,
+    y: labelY,
+    align: isLeftSide ? 'right' : 'left' // Add alignment information
   };
 };
 
@@ -146,7 +152,10 @@ const DynamicImageHighlight = React.memo(({ highlightData, nodeData, showNodes, 
         >
           {highlightData.text && (
             <div className="frame-label">
-              {highlightData.text}
+              <span className="frame-text">{highlightData.text}</span>
+              {highlightData.status && (
+                <span className="frame-status">{highlightData.status}</span>
+              )}
             </div>
           )}
         </div>
@@ -178,11 +187,12 @@ const DynamicImageHighlight = React.memo(({ highlightData, nodeData, showNodes, 
           {nodesWithOffsets.map((node, index) => (
             <React.Fragment key={index}>
               <div
-                className="node-label"
+                className={`node-label ${node.labelX > 0.5 ? 'right-side' : 'left-side'}`}
                 style={{
                   left: `${node.labelX * 100}%`,
                   top: `${node.labelY * 100}%`,
-                  animationDelay: `${index * 0.2 + 0.6}s`
+                  animationDelay: `${index * 0.2 + 0.6}s`,
+                  textAlign: node.align
                 }}
               >
                 {node.label}
