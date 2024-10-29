@@ -33,6 +33,7 @@
 .header-project-menu {
   position: relative;
   cursor: pointer;
+  width: -webkit-fill-available;
 }
 
 .current-project,
@@ -44,8 +45,6 @@
   border-radius: 4px;
   transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
   text-align: right;
-  white-space: nowrap;
-  min-width: max-content;
   min-height: 34px;
 }
 
@@ -95,6 +94,15 @@
 }
 
 .project-name,
+.project-season {
+  @include font-tiny;
+  color: $color-white;
+
+  @media (min-width: 769px) {
+    @include font-small;
+  }
+}
+
 .project-season {
   @include font-tiny;
   color: $color-white;

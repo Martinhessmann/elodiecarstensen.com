@@ -157,14 +157,22 @@
 }
 
 .splash-intro-text {
-  @include font-tiny;
+  @include font-tiny; // Default for mobile
+
+  @media (min-width: 769px) {
+    @include font-small; // Desktop
+  }
   text-align: left;
   color: $color-white;
   margin-bottom: 20px;
 }
 
 .splash-enter-button {
-  @include font-tiny;
+  @include font-tiny; // Default for mobile
+
+  @media (min-width: 769px) {
+    @include font-small; // Desktop
+  }
   background: none;
   border: none;
   color: $color-white;

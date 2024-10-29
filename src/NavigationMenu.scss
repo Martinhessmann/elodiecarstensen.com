@@ -68,7 +68,11 @@
 }
 
 .project-name {
-  @include font-small;
+  @include font-tiny;
+
+  @media (min-width: 769px) {
+    @include font-small;
+  }
 }
 
 .project-separator {

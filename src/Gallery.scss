@@ -140,9 +140,18 @@ body {
   margin: 0;
   z-index: 10;
   max-height: 80vh;
+  overflow: auto;
+
+  @media (min-width: 769px) {
+    @include font-small;
+  }
 
   h1 {
-    @include font-small;
+    @include font-tiny;
+
+    @media (min-width: 769px) {
+      @include font-small;
+    }
   }
 }
 
@@ -150,10 +159,6 @@ body {
   display: flex;
   align-items: center;
   margin: 10px 0;
-}
-
-.credits-separator {
-  margin: 0 5px;
 }
 
 .credits-button {
@@ -167,6 +172,10 @@ body {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+
+  @media (min-width: 769px) {
+    @include font-small;
+  }
 
   &:hover {
     text-decoration: underline;

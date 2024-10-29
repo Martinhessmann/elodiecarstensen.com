@@ -3,25 +3,59 @@ import './DynamicImageHighlight.scss';
 
 const generateLabelOffset = (node, highlightData, index, totalNodes) => {
   const angle = (index / totalNodes) * 2 * Math.PI;
-  const distance = 0.15; // Increased base distance
+  const baseDistance = 0.2; // Increased base distance
+  const frameLabelBuffer = 0.1; // Buffer zone for frame label
 
-  let offsetX = Math.cos(angle) * distance;
-  let offsetY = Math.sin(angle) * distance;
+  let offsetX = Math.cos(angle) * baseDistance;
+  let offsetY = Math.sin(angle) * baseDistance;
 
   // Adjust offset to ensure label is outside the frame
-  if (node.x < highlightData.x) offsetX = -Math.abs(offsetX) - 0.05;
-  else if (node.x > highlightData.x + highlightData.width) offsetX = Math.abs(offsetX) + 0.05;
-  else offsetX = (node.x < highlightData.x + highlightData.width / 2) ? -Math.abs(offsetX) - 0.05 : Math.abs(offsetX) + 0.05;
+  if (node.x < highlightData.x) {
+    offsetX = -Math.abs(offsetX) - 0.1;
+  } else if (node.x > highlightData.x + highlightData.width) {
+    offsetX = Math.abs(offsetX) + 0.1;
+  } else {
+    offsetX = (node.x < highlightData.x + highlightData.width / 2) ?
+      -Math.abs(offsetX) - 0.1 :
+      Math.abs(offsetX) + 0.1;
+  }
 
-  if (node.y < highlightData.y) offsetY = -Math.abs(offsetY) - 0.05;
-  else if (node.y > highlightData.y + highlightData.height) offsetY = Math.abs(offsetY) + 0.05;
-  else offsetY = (node.y < highlightData.y + highlightData.height / 2) ? -Math.abs(offsetY) - 0.05 : Math.abs(offsetY) + 0.05;
+  if (node.y < highlightData.y) {
+    offsetY = -Math.abs(offsetY) - 0.1;
+  } else if (node.y > highlightData.y + highlightData.height) {
+    offsetY = Math.abs(offsetY) + 0.1;
+  } else {
+    offsetY = (node.y < highlightData.y + highlightData.height / 2) ?
+      -Math.abs(offsetY) - 0.1 :
+      Math.abs(offsetY) + 0.1;
+  }
 
-  // Avoid overlap with frame label
-  if (node.y > highlightData.y + highlightData.height &&
-    node.x >= highlightData.x &&
-    node.x <= highlightData.x + highlightData.width) {
-    offsetY += 0.05; // Move label up a bit more
+  // Extra spacing for labels near the frame label (bottom of frame)
+  if (node.y > highlightData.y + highlightData.height - 0.1 &&
+    node.x >= highlightData.x - 0.1 &&
+    node.x <= highlightData.x + highlightData.width + 0.1) {
+    offsetY += frameLabelBuffer; // Move label down more to avoid frame label
+  }
+
+  // Prevent labels from being too close to the edges
+  const finalX = node.x + offsetX;
+  const finalY = node.y + offsetY;
+
+  // Add minimum spacing between labels and frame edges
+  const edgeBuffer = 0.05;
+  if (finalX < highlightData.x && finalX > highlightData.x - edgeBuffer) {
+    offsetX -= edgeBuffer;
+  }
+  if (finalX > highlightData.x + highlightData.width &&
+    finalX < highlightData.x + highlightData.width + edgeBuffer) {
+    offsetX += edgeBuffer;
+  }
+  if (finalY < highlightData.y && finalY > highlightData.y - edgeBuffer) {
+    offsetY -= edgeBuffer;
+  }
+  if (finalY > highlightData.y + highlightData.height &&
+    finalY < highlightData.y + highlightData.height + edgeBuffer) {
+    offsetY += edgeBuffer;
   }
 
   return {

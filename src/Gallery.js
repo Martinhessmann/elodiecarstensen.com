@@ -111,11 +111,9 @@ const Gallery = ({ projects, currentProject, setCurrentProject }) => {
                 <h1>{currentProject.name}</h1>
                 <p>{image.text}</p>
                 <div className="credits-button-wrapper">
-                  <span className="credits-separator">*</span>
                   <button className="credits-button" onClick={toggleCredits}>
-                    {showCredits ? 'Hide Credits' : 'Show Credits'}
+                    {showCredits ? '// Hide Credits' : '// Show Credits'}
                   </button>
-                  <span className="credits-separator">*</span>
                 </div>
                 <div className={`credits-content ${showCredits ? 'visible' : ''}`}>
                   {currentProject.credits}
