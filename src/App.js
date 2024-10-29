@@ -6,6 +6,7 @@ import AboutPage from './AboutPage';
 import Header from './Header';
 import NotFound from './NotFound';
 import { loadProjects } from './utils/dataLoader';
+import { initViewportHeight } from './utils/viewportHeight';
 import './App.scss';
 
 function App() {
@@ -38,15 +39,7 @@ function App() {
   const showHeader = location.pathname !== '/';
 
   useEffect(() => {
-    const setViewportHeight = () => {
-      let vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
-    };
-
-    setViewportHeight();
-    window.addEventListener('resize', setViewportHeight);
-
-    return () => window.removeEventListener('resize', setViewportHeight);
+    initViewportHeight();
   }, []);
 
   if (isLoading) {
@@ -54,7 +47,7 @@ function App() {
   }
 
   return (
-    <div className="app" style={{ backgroundColor: currentProject?.themeColor || '#091115' }}>
+    <div className="app-container" style={{ backgroundColor: currentProject?.themeColor || '#091115' }}>
       {showHeader && (
         <Header
           project={currentProject || projects.find(p => p.id === 'about')}

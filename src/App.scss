@@ -19,7 +19,7 @@
 }
 
 html {
-  height: -webkit-fill-available;
+  height: 100vh;
 }
 
 body {
@@ -29,10 +29,18 @@ body {
   @include font-tiny;
   margin: 0;
   /* mobile viewport bug fix */
-  min-height: -webkit-fill-available;
+  height: 100vh;
 }
 
 /* Use a CSS variable for viewport height */
 :root {
   --vh: 1vh;
+}
+
+/* Add this new class */
+.app-container {
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  overflow: hidden;
+  width: 100%;
 }
