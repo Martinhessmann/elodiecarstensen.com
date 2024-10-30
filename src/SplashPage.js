@@ -167,7 +167,14 @@ const SplashPage = () => {
       <div className="splash-glass-effect" aria-hidden="true" />
       <div className="splash-content" aria-hidden="true">
         <div className="splash-logo-name">
-          <img src={logoUrl} alt="" className="splash-logo" />
+          <img
+            src={logoUrl}
+            alt="Elodie Carstensen"
+            className="splash-logo"
+            loading="eager"
+            width="200"
+            height="50" // adjust dimensions as needed
+          />
           <h1 className="splash-title">ELODIE CARSTENSEN</h1>
         </div>
         <div className="splash-text-container">

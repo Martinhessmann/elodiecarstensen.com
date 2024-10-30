@@ -16,6 +16,25 @@ function App() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Elodie Carstensen",
+    "url": "https://www.elodiecarstensen.com",
+    "jobTitle": "Fashion Designer & Artist",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Berlin",
+      "addressCountry": "DE"
+    },
+    "description": "Berlin-based artist and designer creating immersive fashion experiences through collections, installations, and performances.",
+    "image": "https://www.elodiecarstensen.com/assets/images/social-preview.jpg",
+    "sameAs": [
+      "https://www.instagram.com/elodiecarstensen/",
+      // Add other social media URLs
+    ]
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
@@ -56,6 +75,9 @@ function App() {
 
   return (
     <div className="app-container" style={{ backgroundColor: currentProject?.themeColor || '#091115' }}>
+      <script type="application/ld+json">
+        {JSON.stringify(structuredData)}
+      </script>
       {showHeader && (
         <Header
           project={currentProject || projects.find(p => p.id === 'about')}

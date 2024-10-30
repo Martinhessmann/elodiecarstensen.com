@@ -1,19 +1,19 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Elodie Carstensen",
+  "name": "Elodie Carstensen - Fashion Designer & Artist",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "favicon/favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "favicon/web-app-manifest-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "favicon/web-app-manifest-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
@@ -21,5 +21,6 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#091115",
-  "background_color": "#ffffff"
+  "background_color": "#091115",
+  "description": "Berlin-based fashion designer and artist creating immersive experiences through collections, installations, and performances."
 }
