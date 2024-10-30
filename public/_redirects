@@ -3,12 +3,40 @@ http://elodiecarstensen.com/*  https://www.elodiecarstensen.com/:splat  301!
 https://elodiecarstensen.com/* https://www.elodiecarstensen.com/:splat  301!
 
 # Specific redirects
-/echoes-of-promised-safety    /gallery/echoes-of-promised-safety   301
-/work/*                       /gallery/:splat                      301
-/newsletter                   /about                               301
-/imprint                      /about                               301
-/about                        /about                               301
-/news                         /about                               301
+/freelance-costume-designer-in-berlin          /                                          301
+/freelance-costume-designer-in-berlin/         /                                          301
+
+# Redirects to /about
+/twisted-vorn-berlin-fashion-hub-design-academy    /about                                 301
+/twisted-vorn-berlin-fashion-hub-design-academy/   /about                                 301
+/plastic-barock                                    /about                                 301
+/plastic-barock/                                   /about                                 301
+/berlin-showroom-bei-der-paris-fashion-week       /about                                 301
+/berlin-showroom-bei-der-paris-fashion-week/      /about                                 301
+/the-severed-tail-piglet-dress                    /about                                 301
+/the-severed-tail-piglet-dress/                   /about                                 301
+/miriam-for-crownsproject                         /about                                 301
+/miriam-for-crownsproject/                        /about                                 301
+/ari-emily                                        /about                                 301
+/ari-emily/                                       /about                                 301
+/monja-morphing-muse                              /about                                 301
+/monja-morphing-muse/                             /about                                 301
+/nikeata-thompson-on-greentech-festival           /about                                 301
+/nikeata-thompson-on-greentech-festival/          /about                                 301
+/bassam-allam                                     /about                                 301
+/bassam-allam/                                    /about                                 301
+/lenaig-chatel-for-pump                           /about                                 301
+/lenaig-chatel-for-pump/                          /about                                 301
+/miss-ivanka-t-on-queerclub                       /about                                 301
+/miss-ivanka-t-on-queerclub/                      /about                                 301
+/rebirth-for-kaltblut-magazine                    /about                                 301
+/rebirth-for-kaltblut-magazine/                   /about                                 301
+/runa-by-beto-ruiz-alonso                         /about                                 301
+/runa-by-beto-ruiz-alonso/                        /about                                 301
+/gaia                                             /about                                 301
+/gaia/                                            /about                                 301
+
+# Previous redirects...
 
 # Default SPA fallback
 /*    /index.html   200
