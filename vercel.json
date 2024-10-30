@@ -1,11 +1,20 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ],
-  "functions": {
-    "api/redirect.js": {
-      "memory": 1024,
-      "maxDuration": 10
-    }
-  }
+  "redirects": [
+    { "source": "/work/:path*", "destination": "/gallery/:path*", "permanent": true },
+    { "source": "/freelance-costume-designer-in-berlin", "destination": "/", "permanent": true },
+    { "source": "/twisted-vorn-berlin-fashion-hub-design-academy", "destination": "/about", "permanent": true },
+    { "source": "/plastic-barock", "destination": "/about", "permanent": true },
+    { "source": "/berlin-showroom-bei-der-paris-fashion-week", "destination": "/about", "permanent": true },
+    { "source": "/the-severed-tail-piglet-dress", "destination": "/about", "permanent": true },
+    { "source": "/miriam-for-crownsproject", "destination": "/about", "permanent": true },
+    { "source": "/ari-emily", "destination": "/about", "permanent": true },
+    { "source": "/monja-morphing-muse", "destination": "/about", "permanent": true },
+    { "source": "/nikeata-thompson-on-greentech-festival", "destination": "/about", "permanent": true },
+    { "source": "/bassam-allam", "destination": "/about", "permanent": true },
+    { "source": "/lenaig-chatel-for-pump", "destination": "/about", "permanent": true },
+    { "source": "/miss-ivanka-t-on-queerclub", "destination": "/about", "permanent": true },
+    { "source": "/rebirth-for-kaltblut-magazine", "destination": "/about", "permanent": true },
+    { "source": "/runa-by-beto-ruiz-alonso", "destination": "/about", "permanent": true },
+    { "source": "/gaia", "destination": "/about", "permanent": true }
+  ]
 }
