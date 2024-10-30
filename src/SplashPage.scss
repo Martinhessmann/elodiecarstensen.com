@@ -146,6 +146,13 @@
   @include font-title;
   text-align: center;
   color: $color-white;
+  font-size: 55px; // Desktop size
+  margin-block-start: 20px;
+  margin-block-end: 0; // Reset default margin if needed
+
+  @media (max-width: 768px) {
+    font-size: 7vw; // Mobile size
+  }
 }
 
 .splash-text-container {
