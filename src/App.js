@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate, useNavigate } from 'react-router-dom';
 import SplashPage from './SplashPage';
 import Gallery from './Gallery';
 import AboutPage from './AboutPage';
@@ -14,6 +14,7 @@ function App() {
   const [projects, setProjects] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,6 +42,13 @@ function App() {
   useEffect(() => {
     initViewportHeight();
   }, []);
+
+  useEffect(() => {
+    if (location.pathname.startsWith('/work/')) {
+      const projectId = location.pathname.split('/').pop();
+      navigate(`/gallery/${projectId}`, { replace: true });
+    }
+  }, [location.pathname]);
 
   if (isLoading) {
     return <div>Loading...</div>;

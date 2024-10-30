@@ -1,6 +1,11 @@
 {
   "rewrites": [
-    { "source": "/(work|welcome|preview|freelance-costume-designer-in-berlin|newsletter|imprint|about|news|miss-ivanka-t-on-queerclub|plastic-barock|monja-morphing-muse|miriam-for-crownsproject|ari-emily|lenaig-chatel-for-pump|rebirth-for-kaltblut-magazine|bassam-allam|gaia|runa-by-beto-ruiz-alonso|elodie-carstensen-presents-des-nachtmahrs-schmetterlinge-an-immersive-experience|des-nachmahrs-schmetterlinge-chaussee36|the-severed-tail-piglet-dress|berlin-showroom-bei-der-paris-fashion-week|nikeata-thompson-on-greentech-festival|twisted-vorn-berlin-fashion-hub-design-academy|echoes-of-promised-safety)/:path*", "destination": "/api/redirect" },
     { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  ],
+  "functions": {
+    "api/redirect.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  }
 }

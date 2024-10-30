@@ -1,26 +1,6 @@
-# Redirect non-www to www
+# Redirect domain variants
 http://elodiecarstensen.com/*  https://www.elodiecarstensen.com/:splat  301!
 https://elodiecarstensen.com/* https://www.elodiecarstensen.com/:splat  301!
 
-# Redirect specific old URLs to new gallery URLs
-/work/alluvial                /gallery/alluvial                301
-/work/einhellig               /gallery/einhellig               301
-/work/blauer-himmel-zuckerwatte /gallery/blauer-himmel-zuckerwatte 301
-/work/des-nachtmahrs-schmetterlinge /gallery/des-nachtmahrs-schmetterlinge 301
-/work/bridal                  /gallery/bridal                  301
-/work/absence-of-promised-safety /gallery/absence-of-promised-safety 301
-/work/death-drive-in          /gallery/death-drive-in          301
-
-# Redirect other specific old URLs
-/welcome                      /                                301
-/preview                      /                                301
-/freelance-costume-designer-in-berlin /about                   301
-/newsletter                   /about                           301
-/imprint                      /about                           301
-/news                         /about                           301
-
-# Redirect remaining /work/ URLs to /gallery/
-/work/*                       /gallery/:splat                  301
-
-# Handle client-side routing
-/*                            /index.html                      200
+# SPA fallback
+/*    /index.html   200
