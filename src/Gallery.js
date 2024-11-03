@@ -3,6 +3,7 @@ import DynamicImageHighlight from './DynamicImageHighlight';
 import { getAssetUrl } from './assetUtils';
 import './Gallery.scss';
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const Gallery = ({ projects, currentProject, setCurrentProject }) => {
   const { projectId } = useParams();
@@ -93,75 +94,83 @@ const Gallery = ({ projects, currentProject, setCurrentProject }) => {
   };
 
   return (
-    <article className="gallery-container" ref={scrollContainerRef}>
-      {projectWithCorrectImagePaths.images.map((image, index) => (
-        <section
-          key={image.id}
-          className={`gallery-slide ${image.id === 'about' ? 'about-slide' : ''} ${currentProject.id === 'alluvial' && image.id === 'about' ? 'alluvial-intro' : ''}`}
-          data-index={index}
-        >
-          <div className="image-container">
-            <img
-              src={image.src}
-              alt={`${currentProject.name} - ${image.highlight?.text || `Image ${index + 1}`}`}
-              className="gallery-image"
-            />
-            {image.id === 'about' && (
-              <div className="about-text">
-                <h1>{currentProject.name}</h1>
-                <p>{image.text}</p>
-                <div className="credits-button-wrapper">
-                  <button className="credits-button" onClick={toggleCredits}>
-                    {showCredits ? '// Hide Credits' : '// Show Credits'}
-                  </button>
-                </div>
-                <div className={`credits-content ${showCredits ? 'visible' : ''}`}>
-                  {currentProject.credits}
-                </div>
-              </div>
-            )}
-            {image.highlight && (
-              <figcaption className="image-caption">
-                {image.highlight.text}
-              </figcaption>
-            )}
-            <DynamicImageHighlight
-              image={image.src}
-              highlightData={image.highlight}
-              nodeData={image.nodes}
-              showNodes={index === currentIndex}
-              isScrolling={isScrolling}
-              themeColor={currentProject.themeColor}
-              shouldAnimate={shouldAnimate}
-            />
-            {/* Hidden content for SEO and accessibility */}
-            <div className="hidden-content">
-              <h2>Image Details</h2>
-              <p>{image.highlight?.text}</p>
-              <p>Status: {image.highlight?.status}</p>
-              <h3>Image Features</h3>
-              <ul>
-                {image.nodes?.map((node, nodeIndex) => (
-                  <li key={nodeIndex}>{node.label}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-      ))}
-      <nav className="gallery-navigation">
+    <>
+      <Helmet>
+        <link rel="canonical" href={`https://www.elodiecarstensen.com/gallery/${projectId}`} />
+        <link rel="alternate" href={`https://elodiecarstensen.com/gallery/${projectId}`} />
+        {/* If there were old URLs, add them here */}
+        <link rel="alternate" href={`https://www.elodiecarstensen.com/work/${projectId}`} />
+      </Helmet>
+      <article className="gallery-container" ref={scrollContainerRef}>
         {projectWithCorrectImagePaths.images.map((image, index) => (
-          <button
-            key={index}
-            className={`gallery-nav-item ${index === currentIndex ? 'active' : ''}`}
-            onClick={() => handleDotClick(index)}
+          <section
+            key={image.id}
+            className={`gallery-slide ${image.id === 'about' ? 'about-slide' : ''} ${currentProject.id === 'alluvial' && image.id === 'about' ? 'alluvial-intro' : ''}`}
+            data-index={index}
           >
-            <span className="gallery-nav-label">{image.id === 'about' ? 'INTRO' : (image.navLabel || `Image ${index + 1}`)}</span>
-            <span className="gallery-nav-dot"></span>
-          </button>
+            <div className="image-container">
+              <img
+                src={image.src}
+                alt={`${currentProject.name} - ${image.highlight?.text || `Image ${index + 1}`}`}
+                className="gallery-image"
+              />
+              {image.id === 'about' && (
+                <div className="about-text">
+                  <h1>{currentProject.name}</h1>
+                  <p>{image.text}</p>
+                  <div className="credits-button-wrapper">
+                    <button className="credits-button" onClick={toggleCredits}>
+                      {showCredits ? '// Hide Credits' : '// Show Credits'}
+                    </button>
+                  </div>
+                  <div className={`credits-content ${showCredits ? 'visible' : ''}`}>
+                    {currentProject.credits}
+                  </div>
+                </div>
+              )}
+              {image.highlight && (
+                <figcaption className="image-caption">
+                  {image.highlight.text}
+                </figcaption>
+              )}
+              <DynamicImageHighlight
+                image={image.src}
+                highlightData={image.highlight}
+                nodeData={image.nodes}
+                showNodes={index === currentIndex}
+                isScrolling={isScrolling}
+                themeColor={currentProject.themeColor}
+                shouldAnimate={shouldAnimate}
+              />
+              {/* Hidden content for SEO and accessibility */}
+              <div className="hidden-content">
+                <h2>Image Details</h2>
+                <p>{image.highlight?.text}</p>
+                <p>Status: {image.highlight?.status}</p>
+                <h3>Image Features</h3>
+                <ul>
+                  {image.nodes?.map((node, nodeIndex) => (
+                    <li key={nodeIndex}>{node.label}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
         ))}
-      </nav>
-    </article>
+        <nav className="gallery-navigation">
+          {projectWithCorrectImagePaths.images.map((image, index) => (
+            <button
+              key={index}
+              className={`gallery-nav-item ${index === currentIndex ? 'active' : ''}`}
+              onClick={() => handleDotClick(index)}
+            >
+              <span className="gallery-nav-label">{image.id === 'about' ? 'INTRO' : (image.navLabel || `Image ${index + 1}`)}</span>
+              <span className="gallery-nav-dot"></span>
+            </button>
+          ))}
+        </nav>
+      </article>
+    </>
   );
 };
 

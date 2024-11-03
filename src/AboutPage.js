@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { getAssetUrl } from './assetUtils';
 import './AboutPage.scss';
+import { Helmet } from 'react-helmet-async';
 
 const AboutPage = ({ data }) => {
   const [email, setEmail] = useState('');
@@ -68,129 +69,135 @@ const AboutPage = ({ data }) => {
   };
 
   return (
-    <div
-      className="about-page"
-      style={{
-        backgroundImage: `url(${getAssetUrl(data.backgroundImage)})`,
-        '--project-theme-color': data.themeColor
-      }}
-    >
-      <div className="about-content">
-        <div className="about-frame">
-          <div className="scrollable-content">
-            <div className="newsletter-form top-form">
-              <h2>// subscribe for more updates</h2>
-              <form onSubmit={handleSubmit}>
-                <div className="input-group">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder={data.newsletter.placeholder}
-                    required
-                  />
-                  <button type="submit" className="send-button">
-                    <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M8.09999 4.49961V0.599609H7.19999V4.49961C7.19999 4.69824 7.12089 4.88926 6.98027 5.02989C6.83965 5.17051 6.64863 5.24961 6.44999 5.24961H2.43569L4.08569 3.59961L3.44994 2.96386L1.03179 5.38142C0.856591 5.5572 0.856591 5.84196 1.03179 6.01775L3.44994 8.4353L4.08569 7.79955L2.43569 6.14955H6.44999C7.36112 6.14955 8.09999 5.41074 8.09999 4.49961Z" fill="white" />
-                    </svg>
-                  </button>
-                </div>
-                {message && <div className="form-message">{message}</div>}
-              </form>
-            </div>
+    <>
+      <Helmet>
+        <link rel="canonical" href="https://www.elodiecarstensen.com/about" />
+        <link rel="alternate" href="https://elodiecarstensen.com/about" />
+      </Helmet>
+      <div
+        className="about-page"
+        style={{
+          backgroundImage: `url(${getAssetUrl(data.backgroundImage)})`,
+          '--project-theme-color': data.themeColor
+        }}
+      >
+        <div className="about-content">
+          <div className="about-frame">
+            <div className="scrollable-content">
+              <div className="newsletter-form top-form">
+                <h2>// subscribe for more updates</h2>
+                <form onSubmit={handleSubmit}>
+                  <div className="input-group">
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder={data.newsletter.placeholder}
+                      required
+                    />
+                    <button type="submit" className="send-button">
+                      <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.09999 4.49961V0.599609H7.19999V4.49961C7.19999 4.69824 7.12089 4.88926 6.98027 5.02989C6.83965 5.17051 6.64863 5.24961 6.44999 5.24961H2.43569L4.08569 3.59961L3.44994 2.96386L1.03179 5.38142C0.856591 5.5572 0.856591 5.84196 1.03179 6.01775L3.44994 8.4353L4.08569 7.79955L2.43569 6.14955H6.44999C7.36112 6.14955 8.09999 5.41074 8.09999 4.49961Z" fill="white" />
+                      </svg>
+                    </button>
+                  </div>
+                  {message && <div className="form-message">{message}</div>}
+                </form>
+              </div>
 
-            <h1>// About Elodie Carstensen</h1>
-            {renderSection("ABOUT", (
-              <div className="about-info">
-                <div className="info-line"><span className="info-key">creator</span> <span className="info-value">{data.imprint.name}</span></div>
-                <div className="info-line"><span className="info-key">location</span> <span className="info-value">{data.imprint.address.join(', ')}</span></div>
-                <div className="info-line">
-                  <span className="info-key">email</span>
-                  <span className="info-value">
-                    <a href={`mailto:${data.inquiries.email}`}>{data.inquiries.email}</a>
-                  </span>
+              <h1>// About Elodie Carstensen</h1>
+              {renderSection("ABOUT", (
+                <div className="about-info">
+                  <div className="info-line"><span className="info-key">creator</span> <span className="info-value">{data.imprint.name}</span></div>
+                  <div className="info-line"><span className="info-key">location</span> <span className="info-value">{data.imprint.address.join(', ')}</span></div>
+                  <div className="info-line">
+                    <span className="info-key">email</span>
+                    <span className="info-value">
+                      <a href={`mailto:${data.inquiries.email}`}>{data.inquiries.email}</a>
+                    </span>
+                  </div>
                 </div>
-              </div>
-            ))}
-            {renderSection("Exhibitions", (
-              <div className="exhibitions-list">
-                {data.exhibitions.map((yearGroup, index) => (
-                  <div key={index} className="year-group">
-                    <h3 className="year">{yearGroup.year}</h3>
-                    <ul className="year-content">
-                      {yearGroup.events.map((exhibition, eventIndex) => (
-                        <li key={eventIndex} className="info-line">
-                          <span className="info-key">{exhibition.title}</span>
-                          <span className="info-value">
-                            {exhibition.type} at {exhibition.location}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            ))}
-            {renderSection("Awards", (
-              <ul className="awards-list">
-                {data.awards.map((award, index) => (
-                  <li key={index} className="info-line">
-                    <span className="info-key">{award.title}{renderLink(award.link)}</span>
-                    <div className="info-value">
-                      {award.type}, {award.year}
-                      <div>{award.description}</div>
+              ))}
+              {renderSection("Exhibitions", (
+                <div className="exhibitions-list">
+                  {data.exhibitions.map((yearGroup, index) => (
+                    <div key={index} className="year-group">
+                      <h3 className="year">{yearGroup.year}</h3>
+                      <ul className="year-content">
+                        {yearGroup.events.map((exhibition, eventIndex) => (
+                          <li key={eventIndex} className="info-line">
+                            <span className="info-key">{exhibition.title}</span>
+                            <span className="info-value">
+                              {exhibition.type} at {exhibition.location}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  </li>
-                ))}
-              </ul>
-            ))}
-            {renderSection("Press", (
-              <div className="press-list">
-                {data.press_mentions.map((yearGroup, index) => (
-                  <div key={index} className="year-group">
-                    <h3 className="year">{yearGroup.year}</h3>
-                    <ul className="year-content">
-                      {yearGroup.mentions.map((item, mentionIndex) => (
-                        <li key={mentionIndex} className="info-line">
-                          <span className="info-key">{item.title}{renderLink(item.link)}</span>
-                          <span className="info-value">
-                            {item.date}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            ))}
-            {renderSection("Muses", (
-              <ul className="person-list">
-                {data.muses.map((person, index) => (
-                  <li key={index} className="info-line">
-                    <span className="info-key">{person.name}{renderLink(person.instagram)}</span>
-                    <span className="info-value">
-                      {person.role}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            ))}
-            {renderSection("Collaborators", (
-              <ul className="person-list">
-                {data.collaborators.map((person, index) => (
-                  <li key={index} className="info-line">
-                    <span className="info-key">{person.name}{renderLink(person.instagram)}</span>
-                    <span className="info-value">
-                      {person.role}, {person.project.join(', ')}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            ))}
+                  ))}
+                </div>
+              ))}
+              {renderSection("Awards", (
+                <ul className="awards-list">
+                  {data.awards.map((award, index) => (
+                    <li key={index} className="info-line">
+                      <span className="info-key">{award.title}{renderLink(award.link)}</span>
+                      <div className="info-value">
+                        {award.type}, {award.year}
+                        <div>{award.description}</div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              ))}
+              {renderSection("Press", (
+                <div className="press-list">
+                  {data.press_mentions.map((yearGroup, index) => (
+                    <div key={index} className="year-group">
+                      <h3 className="year">{yearGroup.year}</h3>
+                      <ul className="year-content">
+                        {yearGroup.mentions.map((item, mentionIndex) => (
+                          <li key={mentionIndex} className="info-line">
+                            <span className="info-key">{item.title}{renderLink(item.link)}</span>
+                            <span className="info-value">
+                              {item.date}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              ))}
+              {renderSection("Muses", (
+                <ul className="person-list">
+                  {data.muses.map((person, index) => (
+                    <li key={index} className="info-line">
+                      <span className="info-key">{person.name}{renderLink(person.instagram)}</span>
+                      <span className="info-value">
+                        {person.role}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              ))}
+              {renderSection("Collaborators", (
+                <ul className="person-list">
+                  {data.collaborators.map((person, index) => (
+                    <li key={index} className="info-line">
+                      <span className="info-key">{person.name}{renderLink(person.instagram)}</span>
+                      <span className="info-value">
+                        {person.role}, {person.project.join(', ')}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

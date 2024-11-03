@@ -8,6 +8,7 @@ import NotFound from './NotFound';
 import { loadProjects } from './utils/dataLoader';
 import { initViewportHeight } from './utils/viewportHeight';
 import './App.scss';
+import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
   const [currentProject, setCurrentProject] = useState(null);
@@ -74,44 +75,46 @@ function App() {
   }
 
   return (
-    <div className="app-container" style={{ backgroundColor: currentProject?.themeColor || '#091115' }}>
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData)}
-      </script>
-      {showHeader && (
-        <Header
-          project={currentProject || projects.find(p => p.id === 'about')}
-          projects={projects}
-          onProjectSelect={handleProjectSelect}
-        />
-      )}
-      <main className={`main-content ${showHeader ? 'with-header' : ''}`}>
-        <Routes>
-          <Route path="/" element={<SplashPage onEnter={() => handleProjectSelect(projects[0]?.id)} />} />
-          <Route
-            path="/gallery"
-            element={projects.length > 0 ? <Navigate to={`/gallery/${projects[0]?.id}`} replace /> : null}
+    <HelmetProvider>
+      <div className="app-container" style={{ backgroundColor: currentProject?.themeColor || '#091115' }}>
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+        {showHeader && (
+          <Header
+            project={currentProject || projects.find(p => p.id === 'about')}
+            projects={projects}
+            onProjectSelect={handleProjectSelect}
           />
-          <Route
-            path="/gallery/:projectId"
-            element={
-              <Gallery
-                projects={projects}
-                currentProject={currentProject}
-                setCurrentProject={setCurrentProject}
-              />
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <AboutPage data={projects.find(p => p.id === 'about')} />
-            }
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </main>
-    </div>
+        )}
+        <main className={`main-content ${showHeader ? 'with-header' : ''}`}>
+          <Routes>
+            <Route path="/" element={<SplashPage onEnter={() => handleProjectSelect(projects[0]?.id)} />} />
+            <Route
+              path="/gallery"
+              element={projects.length > 0 ? <Navigate to={`/gallery/${projects[0]?.id}`} replace /> : null}
+            />
+            <Route
+              path="/gallery/:projectId"
+              element={
+                <Gallery
+                  projects={projects}
+                  currentProject={currentProject}
+                  setCurrentProject={setCurrentProject}
+                />
+              }
+            />
+            <Route
+              path="/about"
+              element={
+                <AboutPage data={projects.find(p => p.id === 'about')} />
+              }
+            />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+      </div>
+    </HelmetProvider>
   );
 }
 
