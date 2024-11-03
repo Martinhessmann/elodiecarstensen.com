@@ -52,6 +52,11 @@ body {
   }
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 /* Use a CSS variable for viewport height */
 :root {
   --vh: 1vh;

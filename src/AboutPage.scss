@@ -79,7 +79,6 @@
 }
 
 .section-content {
-  max-height: 1000px; // Adjust this value based on your content
   overflow: hidden;
   transition: max-height 0.3s ease-out, opacity 0.3s ease-out, margin-top 0.3s ease-out;
   opacity: 1;
@@ -97,7 +96,36 @@
 }
 
 .info-line {
-  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1em;
+  font-family: 'SF Mono', monospace;
+
+  .info-key {
+    flex: 1 0 50%;
+    margin-right: 1em;
+    white-space: normal; // Allow wrapping by default
+  }
+
+  .info-value {
+    flex: 1 0 50%;
+    color: rgba(255, 255, 255, 0.5);
+    white-space: normal; // Allow wrapping
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .external-link-icon {
+    color: rgba(107, 114, 128, 0.5);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    flex-shrink: 0; // Prevent link from shrinking
+
+    &:hover {
+      color: #FFFFFF;
+    }
+  }
 }
 
 .info-key {
@@ -110,16 +138,35 @@
 }
 
 .year-group {
-  margin-bottom: 20px;
-}
+  position: relative;
 
-.year {
-  margin-bottom: 10px;
+  &:not(:last-child) {
+    margin-bottom: 3em;
+    padding-bottom: 1.5em;
+
+    &::after {
+      content: ". . . . . . . . . . . . . . . . . . . .";
+      display: block;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.3);
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      letter-spacing: 4px;
+      font-family: 'SF Mono', monospace;
+    }
+  }
+
+  .year {
+    margin-bottom: 1em;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'SF Mono', monospace;
+  }
 }
 
 .year-content {
-  margin-left: 15px;
-  padding-left: 10px;
+  padding: 0;
+  margin: 0;
 }
 
 .newsletter-form {
@@ -197,11 +244,6 @@ a {
   justify-content: center;
   vertical-align: middle;
   margin-left: 4px;
-  background-color: $color-white;
-  border-radius: 6%;
-  padding: 3px;
-  width: 7px;
-  height: 7px;
 
   svg {
     width: 100%;
@@ -301,5 +343,84 @@ h3.year {
     @media (min-width: 769px) {
       @include font-small;
     }
+  }
+}
+
+.email-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+
+  .mail-icon {
+    margin-left: 8px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    .mail-icon {
+      opacity: 1;
+    }
+  }
+}
+
+// Special handling for press entries
+.press-list {
+  .info-line {
+    .info-key {
+      padding-right: 2em;
+    }
+  }
+}
+
+// Special handling for person lists
+.person-list {
+  .info-line {
+    .info-key {
+      white-space: nowrap; // Keep single line for names
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.date-display {
+  font-family: 'SF Mono', monospace;
+  letter-spacing: 0.5px;
+}
+
+// Special handling for exhibitions and awards
+.exhibitions-list, .awards-list {
+  .info-line {
+    .info-key {
+      white-space: normal; // Allow text wrapping
+      padding-right: 2em;
+    }
+  }
+}
+
+// Keep the ellipsis only for other sections where needed
+.person-list {
+  .info-line {
+    .info-key {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.project-links {
+  margin-left: 0.5em;
+}
+
+.project-link {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #FFFFFF;
   }
 }

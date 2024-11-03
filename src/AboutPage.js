@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { getAssetUrl } from './assetUtils';
 import './AboutPage.scss';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
+import { getProjectReference, getProjectLink } from './utils/projectUtils';
 
 const AboutPage = ({ data }) => {
   const [email, setEmail] = useState('');
@@ -40,18 +42,41 @@ const AboutPage = ({ data }) => {
     setExpandedSections(prev => ({ ...prev, [section]: !prev[section] }));
   };
 
-  const renderLink = (url) => {
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const date = new Date(dateString);
+    if (isNaN(date)) {
+      // Handle custom date formats like "September 12—15, 2024"
+      return dateString.replace(/(January|February|March|April|May|June|July|August|September|October|November|December)/g,
+        (match) => match.substring(0, 3));
+    }
+    return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+  };
+
+  const renderLink = (url, content, infoValue) => {
     if (url && url !== "Unavailable") {
       return (
-        <a href={url} target="_blank" rel="noopener noreferrer" className="external-link-icon">
-          <svg width="8" height="7" viewBox="0 0 8 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2.38574 1.03198V0.100342L7.33691 0.100342L7.33691 5.07495H6.45801L6.47559 3.24683L6.5166 1.5769L6.50488 1.55933L5.24512 2.85425L1.60645 6.46948L0.985352 5.81323L4.60645 2.22144L5.94238 0.973389L5.93066 0.955811L4.21973 1.0144L2.38574 1.03198Z" fill="white" />
-          </svg>
-        </a>
+        <>
+          <span className="info-key">{content}</span>
+          <span className="info-value">
+            {infoValue}
+            <a href={url} target="_blank" rel="noopener noreferrer" className="external-link-icon">
+              [↗]
+            </a>
+          </span>
+        </>
       );
     }
-    return null;
+    return (
+      <>
+        <span className="info-key">{content}</span>
+        <span className="info-value">{infoValue}</span>
+      </>
+    );
   };
+
+  const sortByName = (a, b) => a.name.localeCompare(b.name);
 
   const renderSection = (title, content, level = 2) => {
     const HeadingTag = `h${level}`;
@@ -66,6 +91,28 @@ const AboutPage = ({ data }) => {
         </div>
       </section>
     );
+  };
+
+  const renderProjectLinks = (projects) => {
+    return projects.map((project, index) => {
+      const projectLink = getProjectLink(project);
+      if (projectLink) {
+        return (
+          <React.Fragment key={projectLink.id}>
+            <Link to={`/gallery/${projectLink.id}`} className="project-link">
+              [{project}]
+            </Link>
+            {index < projects.length - 1 ? ', ' : ''}
+          </React.Fragment>
+        );
+      }
+      return (
+        <React.Fragment key={project}>
+          {project}
+          {index < projects.length - 1 ? ', ' : ''}
+        </React.Fragment>
+      );
+    });
   };
 
   return (
@@ -113,7 +160,12 @@ const AboutPage = ({ data }) => {
                   <div className="info-line">
                     <span className="info-key">email</span>
                     <span className="info-value">
-                      <a href={`mailto:${data.inquiries.email}`}>{data.inquiries.email}</a>
+                      <a href={`mailto:${data.inquiries.email}`} className="email-link">
+                        {data.inquiries.email}
+                        <svg className="mail-icon" width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12.6 0H1.4C0.63 0 0.00699999 0.63 0.00699999 1.4L0 9.8C0 10.57 0.63 11.2 1.4 11.2H12.6C13.37 11.2 14 10.57 14 9.8V1.4C14 0.63 13.37 0 12.6 0ZM12.6 2.8L7 6.3L1.4 2.8V1.4L7 4.9L12.6 1.4V2.8Z" fill="white" />
+                        </svg>
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -126,10 +178,11 @@ const AboutPage = ({ data }) => {
                       <ul className="year-content">
                         {yearGroup.events.map((exhibition, eventIndex) => (
                           <li key={eventIndex} className="info-line">
-                            <span className="info-key">{exhibition.title}</span>
-                            <span className="info-value">
-                              {exhibition.type} at {exhibition.location}
-                            </span>
+                            {renderLink(
+                              exhibition.link,
+                              exhibition.title,
+                              `${exhibition.type} at ${exhibition.location}${exhibition.date ? `, ${exhibition.date}` : ''}`
+                            )}
                           </li>
                         ))}
                       </ul>
@@ -141,7 +194,7 @@ const AboutPage = ({ data }) => {
                 <ul className="awards-list">
                   {data.awards.map((award, index) => (
                     <li key={index} className="info-line">
-                      <span className="info-key">{award.title}{renderLink(award.link)}</span>
+                      {renderLink(award.link, award.title)}
                       <div className="info-value">
                         {award.type}, {award.year}
                         <div>{award.description}</div>
@@ -158,10 +211,11 @@ const AboutPage = ({ data }) => {
                       <ul className="year-content">
                         {yearGroup.mentions.map((item, mentionIndex) => (
                           <li key={mentionIndex} className="info-line">
-                            <span className="info-key">{item.title}{renderLink(item.link)}</span>
-                            <span className="info-value">
-                              {item.date}
-                            </span>
+                            {renderLink(
+                              item.link,
+                              item.title,
+                              formatDate(item.date)
+                            )}
                           </li>
                         ))}
                       </ul>
@@ -171,24 +225,33 @@ const AboutPage = ({ data }) => {
               ))}
               {renderSection("Muses", (
                 <ul className="person-list">
-                  {data.muses.map((person, index) => (
+                  {data.muses.sort(sortByName).map((person, index) => (
                     <li key={index} className="info-line">
-                      <span className="info-key">{person.name}{renderLink(person.instagram)}</span>
-                      <span className="info-value">
-                        {person.role}
-                      </span>
+                      {renderLink(
+                        person.instagram,
+                        person.name,
+                        person.role
+                      )}
                     </li>
                   ))}
                 </ul>
               ))}
               {renderSection("Collaborators", (
                 <ul className="person-list">
-                  {data.collaborators.map((person, index) => (
+                  {data.collaborators.sort(sortByName).map((person, index) => (
                     <li key={index} className="info-line">
-                      <span className="info-key">{person.name}{renderLink(person.instagram)}</span>
-                      <span className="info-value">
-                        {person.role}, {person.project.join(', ')}
-                      </span>
+                      {renderLink(
+                        person.instagram,
+                        person.name,
+                        <>
+                          {person.role}
+                          {person.project && person.project.length > 0 && (
+                            <span className="project-links">
+                              {' '}{renderProjectLinks(person.project)}
+                            </span>
+                          )}
+                        </>
+                      )}
                     </li>
                   ))}
                 </ul>
