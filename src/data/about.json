@@ -37,31 +37,78 @@
     }
   ],
   "exhibitions": [
-    { "year": 2024, "events": [
-      { "title": "Echoes of Promised Safety", "type": "Solo Exhibition", "location": "Großer Wasserspeicher, Berlin" },
-      {
-        "title": "FASHION POSITIONS",
-        "type": "Group Exhibition",
-        "location": "POSITIONS Berlin Art Fair, Flughafen Tempelhof, Hangar 5-6",
-        "date": "September 12—15, 2024",
-        "link": "https://fashionweek.berlin/blog/single-news/rueckblickfashion-position-verbindet-kunst-und-mode.html"
-      },
-      { "title": "Absence of Promised Safety", "type": "Group Exhibition", "location": "Arts&Wine24, Munich" },
-      { "title": "Des Nachtmahrs Schmetterlinge", "type": "Solo Exhibition", "location": "FreeWilly, Erlangen" }
-    ]},
-    { "year": 2023, "events": [
-      { "title": "Blauer Himmel Zuckerwatte", "type": "Solo Exhibition", "location": "Perlenvordiesau, Munich" },
-      { "title": "Einhellig", "type": "Group Exhibition", "location": "Art&Wine, Munich" }
-    ]},
-    { "year": 2021, "events": [
-      { "title": "Einhellig", "type": "Solo Exhibition", "location": "Perlenvordiesau, Munich" }
-    ]}
+    {
+      "year": 2021,
+      "events": [
+        {
+          "title": "Arts&Wine",
+          "type": "Group Exhibition featuring 'Einhellig'",
+          "location": "Villa Flora, Munich",
+          "date": "October 23, 2021"
+        },
+        {
+          "title": "Einhellig",
+          "type": "Solo Exhibition",
+          "location": "Perlenvordiesau, Munich",
+          "date": "September 11, 2021"
+        }
+      ]
+    },
+    {
+      "year": 2023,
+      "events": [
+        {
+          "title": "Blauer Himmel Zuckerwatte",
+          "type": "Solo Exhibition",
+          "location": "Perlenvordiesau, Munich",
+          "date": "June 10, 2023"
+        },
+        {
+          "title": "Des Nachtmahrs Schmetterlinge",
+          "type": "Immersive Performance",
+          "location": "Chaussee36, Berlin",
+          "date": "June 24, 2023"
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "events": [
+        {
+          "title": "Arts&Wine24",
+          "type": "Group Exhibition, Live-Dye Installation featuring 'Absence of Promised Safety'",
+          "location": "Arts&Wine24, Munich",
+          "date": "April 13, 2024"
+        },
+        {
+          "title": "Fashion Revolution Week",
+          "type": "Solo Exhibition featuring 'Des Nachtmahrs Schmetterlinge'",
+          "location": "FreeWilly, Erlangen",
+          "date": "April 14, 2024"
+        },
+        {
+          "title": "Echoes of Promised Safety",
+          "type": "Solo Exhibition, immersive Experience with Live-Dye Installation",
+          "location": "Großer Wasserspeicher, Berlin",
+          "date": "June 30 - July 1, 2024",
+          "time": "16:00 - 22:00"
+        },
+        {
+          "title": "FASHION POSITIONS",
+          "type": "Group Exhibition featuring 'Absence of Promised Safety' live dyeing installation",
+          "location": "POSITIONS Berlin Art Fair, Flughafen Tempelhof, Hangar 5-6, Berlin",
+          "date": "September 12—15, 2024",
+          "link": "https://fashionweek.berlin/blog/single-news/rueckblickfashion-position-verbindet-kunst-und-mode.html"
+        }
+      ]
+    }
   ],
   "awards": [
     {
       "title": "VORN – The Berlin Fashion Hub",
       "type": "Sustainable Fashion Award",
       "year": 2023,
+      "date": "November 2023",
       "description": "Selected as one of 10 awardees for the VORN Academy II Program",
       "link": "https://vorn-hub.com/news/vorn-academy-ii-loom"
     },
@@ -69,6 +116,7 @@
       "title": "VORN Design Academy 'ADAPT'",
       "type": "Jury Member",
       "year": 2024,
+      "date": "January 2024",
       "description": "Selected as jury for VORN Design Academy 'ADAPT' 2024",
       "link": "https://vorn-hub.com/design-academy-adapt"
     }
@@ -178,10 +226,10 @@
   "muses": [
     { "name": "Ajsa Selimovic", "role": "Model", "instagram": "https://www.instagram.com/ajsa.movic/?hl=en" },
     { "name": "Runa Ruckstuhl", "role": "Model and Photographer", "instagram": "https://www.instagram.com/runa.ruckstuhl/" },
-    { "name": "Tara Nome Doyle", "role": "Musician", "instagram": "Unavailable" },
-    { "name": "Aywing", "role": "Musician", "instagram": "Unavailable" },
+    { "name": "Tara Nome Doyle", "role": "Musician", "instagram": "https://www.instagram.com/taranomedoyle/" },
+    { "name": "Aywing", "role": "Musician", "instagram": "https://www.instagram.com/aywingmusic/" },
     { "name": "Mulay", "role": "Musician", "instagram": "https://www.instagram.com/mulaymusic/" },
-    { "name": "Fiti Fantome", "role": "Performer", "instagram": "Unavailable" },
+    { "name": "Fiti Fantome", "role": "Performer", "instagram": "https://www.instagram.com/fififantome/" },
     { "name": "Sabina Moe", "role": "Performer", "instagram": "https://www.instagram.com/sabinamoe/" },
     { "name": "AŸA", "role": "Artist", "instagram": "https://www.instagram.com/aya.loveu/" },
     { "name": "Halla Farhat", "role": "Stylist", "instagram": "https://www.instagram.com/hallafarhat/" },

@@ -60,6 +60,13 @@
   align-items: center;
   cursor: pointer;
   user-select: none;
+  padding: 1em;
+  margin: 0 -1em;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
 }
 
 .chevron {
@@ -84,9 +91,9 @@
   opacity: 1;
   margin-top: 15px;
   margin-left: 15px;
-  border-left: 1px dotted $color-white;
   padding-left: 10px;
   padding-bottom: 15px;
+  border-left: 1px dotted rgba(255, 255, 255, 0.3);
 
   &:not(.expanded) {
     max-height: 0;
@@ -104,23 +111,32 @@
   .info-key {
     flex: 1 0 50%;
     margin-right: 1em;
-    white-space: normal; // Allow wrapping by default
+    white-space: normal;
   }
 
   .info-value {
     flex: 1 0 50%;
     color: rgba(255, 255, 255, 0.5);
-    white-space: normal; // Allow wrapping
+    white-space: normal;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 0.5em;
   }
 
   .external-link-icon {
-    color: rgba(107, 114, 128, 0.5);
+    color: rgba(255, 255, 255, 0.5);
     text-decoration: none;
     transition: color 0.3s ease;
-    flex-shrink: 0; // Prevent link from shrinking
+    margin: 0;
+
+    &::before {
+      content: '[more info ';
+    }
+
+    &::after {
+      content: ']';
+    }
 
     &:hover {
       color: #FFFFFF;
@@ -412,7 +428,7 @@ h3.year {
 }
 
 .project-links {
-  margin-left: 0.5em;
+  margin-left: 0;
 }
 
 .project-link {
@@ -422,5 +438,18 @@ h3.year {
 
   &:hover {
     color: #FFFFFF;
+  }
+}
+
+.info-value-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+
+  .exhibition-type,
+  .exhibition-location,
+  .exhibition-date,
+  .exhibition-time {
+    color: rgba(255, 255, 255, 0.5);
   }
 }

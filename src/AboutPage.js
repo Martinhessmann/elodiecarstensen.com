@@ -181,7 +181,12 @@ const AboutPage = ({ data }) => {
                             {renderLink(
                               exhibition.link,
                               exhibition.title,
-                              `${exhibition.type} at ${exhibition.location}${exhibition.date ? `, ${exhibition.date}` : ''}`
+                              <div className="info-value-content">
+                                <span className="exhibition-type">{exhibition.type}</span>
+                                <span className="exhibition-location">at {exhibition.location}</span>
+                                {exhibition.date && <span className="exhibition-date">{exhibition.date}</span>}
+                                {exhibition.time && <span className="exhibition-time">{exhibition.time}</span>}
+                              </div>
                             )}
                           </li>
                         ))}
