@@ -1,5 +1,16 @@
 @import 'styles/variables';
 
+@keyframes headerGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.1),
+                0 0 10px rgba(0, 255, 255, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2),
+                0 0 20px rgba(0, 255, 255, 0.2);
+  }
+}
+
 .header {
   position: fixed;
   top: 0;
@@ -10,8 +21,27 @@
   align-items: center;
   padding: 8px 32px;
   height: 76px;
-  background-color: transparent;
+  background-color: rgba(0, 12, 24, 0.85);
+  backdrop-filter: blur(10px);
   z-index: 20;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+  animation: headerGlow 2s ease-in-out infinite alternate;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 255, 255, 0.3) 20%,
+      rgba(0, 255, 255, 0.3) 80%,
+      transparent
+    );
+  }
 
   @media (max-width: 768px) {
     padding: 8px 16px;
@@ -20,99 +50,162 @@
 
 .header-logo-container {
   cursor: pointer;
-  padding: 4px 8px;
+  padding: 8px;
   border-radius: 4px;
-  transition: background-color 0.3s ease;
+  position: relative;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  background: rgba(0, 12, 24, 0.3);
+
+  &::before {
+    content: 'SYSTEM';
+    position: absolute;
+    top: -12px;
+    left: 8px;
+    font-size: 8px;
+    color: rgba(0, 255, 255, 0.4);
+    letter-spacing: 0.1em;
+    font-family: 'SF Mono', monospace;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 16px);
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 255, 255, 0.3),
+      transparent
+    );
+  }
 
   &:hover {
-    background-color: rgba($color-white, 0.1);
+    background-color: rgba(0, 255, 255, 0.05);
+    border-color: rgba(0, 255, 255, 0.3);
+
+    .header-logo {
+      filter: drop-shadow(0 0 4px rgba(0, 255, 255, 0.6));
+    }
+
+    .logo-status {
+      color: rgba(0, 255, 255, 0.9);
+    }
   }
 }
 
 .header-logo {
   width: 2rem;
   height: 2rem;
+  filter: drop-shadow(0 0 2px rgba(0, 255, 255, 0.4));
+  transition: filter 0.3s ease;
 }
 
-.header-project-menu {
-  position: relative;
-  cursor: pointer;
-  width: -webkit-fill-available;
-}
-
-.current-project,
-.project-option {
+.logo-status {
+  @include font-tiny;
+  color: rgba(0, 255, 255, 0.4);
+  font-family: 'SF Mono', monospace;
+  transition: color 0.3s ease;
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 4px 8px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
-  text-align: right;
-  min-height: 34px;
+  flex-direction: column;
+  gap: 4px;
+
+  &::after {
+    content: 'ONLINE';
+    font-size: 8px;
+    color: rgba(0, 255, 255, 0.6);
+    letter-spacing: 0.2em;
+  }
 }
 
-.project-option {
+.header-project-trigger {
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  background: rgba(0, 12, 24, 0.3);
+
+  &::before {
+    content: 'ACTIVE PROJECT';
+    position: absolute;
+    top: -12px;
+    right: 8px;
+    font-size: 8px;
+    color: rgba(0, 255, 255, 0.4);
+    letter-spacing: 0.1em;
+    font-family: 'SF Mono', monospace;
+  }
+
   &:hover {
-    background-color: rgba($color-white, 0.1);
-  }
-}
+    background-color: rgba(0, 255, 255, 0.05);
+    border-color: rgba(0, 255, 255, 0.3);
 
-.project-options {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  border-radius: 4px;
-  padding: 4px 8px;
-  min-width: 100%;
-  overflow: hidden;
-  transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
-  max-height: 0;
-  opacity: 0;
-  transform: translateY(-10px);
-  pointer-events: none;
+    .project-name {
+      color: rgba(0, 255, 255, 0.9);
+    }
 
-  &.open {
-    max-height: 300px; // Adjust this value based on your needs
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-}
-
-.project-option {
-  transform: translateY(-30px);
-  opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-
-  .project-options.open & {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  @for $i from 1 through 5 {
-    &:nth-child(#{$i}) {
-      transition-delay: #{$i * 0.05}s;
+    .project-separator,
+    .project-season {
+      color: rgba(0, 255, 255, 0.6);
     }
   }
 }
 
-.project-name,
-.project-season {
+.current-project {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 34px;
+  position: relative;
+  padding-right: 20px;
+
+  &::after {
+    content: '▼';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 8px;
+    color: rgba(0, 255, 255, 0.4);
+    transition: transform 0.3s ease;
+  }
+
+  .open & {
+    &::after {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+}
+
+.project-name {
   @include font-tiny;
-  color: $color-white;
+  color: rgba(255, 255, 255, 0.9);
+  transition: color 0.3s ease;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
 
   @media (min-width: 769px) {
     @include font-small;
   }
 }
 
-.project-season {
-  @include font-tiny;
-  color: $color-white;
-}
-
 .project-separator {
   margin: 0 4px;
-  color: $color-white;
+  color: rgba(0, 255, 255, 0.4);
+  transition: color 0.3s ease;
+}
+
+.project-season {
+  @include font-tiny;
+  color: rgba(0, 255, 255, 0.4);
+  transition: color 0.3s ease;
+  font-family: 'SF Mono', monospace;
 }

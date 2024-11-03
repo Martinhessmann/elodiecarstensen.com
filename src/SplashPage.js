@@ -165,53 +165,59 @@ const SplashPage = () => {
         className="splash-container"
         style={{ '--enter-cursor': `url(${enterCursor})` }}
       >
-        {/* Hidden content for screen readers and search engines */}
         <div className="visually-hidden">
           <h1>Elodie Carstensen</h1>
           <p>
-            Elodie Carstensen is a Berlin-based designer and artist, crafting immersive, story-driven fashion through collections like Alluvial, Des Nachtmahrs Schmetterlinge, and Absence of Promised Safety. Known for custom costume design and thematic depth, her work spans installations, performances, and collaborative projects.
+            Elodie Carstensen is a Berlin-based designer and artist, crafting immersive, story-driven fashion through collections like Alluvial, Des Nachtmahrs Schmetterlinge, and Absence of Promised Safety.
           </p>
         </div>
 
-        <div className="splash-glass-effect" aria-hidden="true" />
         <div className="splash-content" aria-hidden="true">
           <div className="splash-logo-name">
+            <div className="system-status">
+              <span className="status-text">SYSTEM ONLINE</span>
+              <span className="status-time">{new Date().toLocaleTimeString()}</span>
+            </div>
             <img
               src={logoUrl}
               alt="Elodie Carstensen"
               className="splash-logo"
               loading="eager"
-              width="200"
-              height="50" // adjust dimensions as needed
             />
             <h1 className="splash-title">ELODIE CARSTENSEN</h1>
           </div>
           <div className="splash-text-container">
+            <div className="system-info">
+              <span className="info-item">ID: EC-2024</span>
+              <span className="info-item">STATUS: ACTIVE</span>
+            </div>
             <p className="splash-intro-text">
-              Elodie Carstensen is a Berlin-based artist and designer. She is creating worlds that are reveled in the webs of imagination and analysis, experimenting with fashion, immersive installations, custom costume designs, performances and collaborations. Her collections Alluvial, Des Nachtmahrs Schmetterlinge, and Absence of Promised Safety are the beginning of her ever expanding universe.</p>
+              Elodie Carstensen is a Berlin-based artist and designer. She is creating worlds that are reveled in the webs of imagination and analysis, experimenting with fashion, immersive installations, custom costume designs, performances and collaborations.
+            </p>
             <button className="splash-enter-button" onClick={handleContainerClick}>
-              ENTER <span className="slash-icon">/</span>
+              INITIALIZE <span className="slash-icon">//</span>
             </button>
           </div>
         </div>
+
         <div
           className="splash-scroll-container"
           ref={scrollContainerRef}
           onClick={handleContainerClick}
         >
-          <div className="splash-background"
+          <div
+            className="splash-background"
             style={{ backgroundImage: `url(${splashUrl})` }}
             aria-hidden="true"
           >
             <div className="snap-points">
-              <div className="snap-point" style={{ left: '19%' }}></div>
-              <div className="snap-point" style={{ left: '27%' }}></div>
-              <div className="snap-point" style={{ left: '36.5%' }}></div>
-              <div className="snap-point" style={{ left: '41%' }}></div>
-              <div className="snap-point" style={{ left: '50%' }}></div>
-              <div className="snap-point" style={{ left: '59%' }}></div>
-              <div className="snap-point" style={{ left: '64.5%' }}></div>
-              <div className="snap-point" style={{ left: '80%' }}></div>
+              {[19, 27, 36.5, 41, 50, 59, 64.5, 80].map((position, index) => (
+                <div
+                  key={index}
+                  className="snap-point"
+                  style={{ left: `${position}%` }}
+                />
+              ))}
             </div>
           </div>
         </div>

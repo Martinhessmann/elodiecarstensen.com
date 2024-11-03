@@ -1,17 +1,61 @@
 @import 'styles/variables';
 
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.5; }
+  100% { opacity: 0.3; }
+}
+
 .about-page {
   width: 100vw;
   height: 100vh;
   background-size: cover;
   background-position: center;
   position: relative;
-  color: $color-white;
+  color: rgba(0, 255, 255, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   @include font-tiny;
+  font-family: 'SF Mono', monospace;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      transparent 0%,
+      rgba(0, 255, 255, 0.05) 50%,
+      transparent 100%
+    );
+    animation: scanline 8s linear infinite;
+    pointer-events: none;
+  }
+
+  // Add surveillance grid overlay
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+      linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    opacity: 0.3;
+  }
 
   @media (min-width: 769px) {
     @include font-small;
@@ -35,8 +79,41 @@
   max-width: 800px;
   height: 90vh;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(5px);
+  background-color: rgba(0, 12, 24, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  position: relative;
+
+  &::before {
+    content: 'SURVEILLANCE FEED';
+    position: absolute;
+    top: -8px;
+    left: 20px;
+    font-size: 8px;
+    color: rgba(0, 255, 255, 0.4);
+    letter-spacing: 0.1em;
+    background: rgba(0, 12, 24, 0.85);
+    padding: 0 4px;
+    z-index: 1;
+  }
+
+  // Add corner brackets
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    pointer-events: none;
+    clip-path: polygon(
+      0 0, 20px 0, 0 20px,
+      calc(100% - 20px) 0, 100% 0, 100% 20px,
+      0 calc(100% - 20px), 0 100%, 20px 100%,
+      calc(100% - 20px) 100%, 100% 100%, 100% calc(100% - 20px)
+    );
+  }
 }
 
 .scrollable-content {
@@ -44,14 +121,17 @@
   overflow-y: auto;
   padding: 20px;
   box-sizing: border-box;
-  padding-bottom: calc(20px + 120px); // Adjust the 120px based on your form height
-}
+  padding-bottom: calc(20px + 120px);
 
-.about-section {
-  margin-bottom: 20px;
-
-  &.nested {
-    margin-left: 20px;
+  // Add coordinates overlay
+  &::before {
+    content: 'LAT: 52.5200° N  LONG: 13.4050° E';
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 10px;
+    color: rgba(0, 255, 255, 0.6);
+    font-family: 'SF Mono', monospace;
   }
 }
 
@@ -60,6 +140,15 @@
   align-items: center;
   cursor: pointer;
   user-select: none;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  padding: 8px;
+  background: rgba(0, 12, 24, 0.3);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(0, 255, 255, 0.05);
+    border-color: rgba(0, 255, 255, 0.3);
+  }
 }
 
 .chevron {
@@ -99,18 +188,25 @@
   display: flex;
   align-items: flex-start;
   margin-bottom: 1em;
-  font-family: 'SF Mono', monospace;
+  padding: 8px;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  background: rgba(0, 12, 24, 0.3);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(0, 255, 255, 0.05);
+    border-color: rgba(0, 255, 255, 0.3);
+  }
 
   .info-key {
     flex: 1 0 50%;
     margin-right: 1em;
-    white-space: normal; // Allow wrapping by default
+    color: rgba(0, 255, 255, 0.8);
   }
 
   .info-value {
     flex: 1 0 50%;
-    color: rgba(255, 255, 255, 0.5);
-    white-space: normal; // Allow wrapping
+    color: rgba(0, 255, 255, 0.5);
     display: flex;
     align-items: center;
     gap: 0.5em;
@@ -422,5 +518,26 @@ h3.year {
 
   &:hover {
     color: #FFFFFF;
+  }
+}
+
+// Add status indicators
+.status-indicator {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 10px;
+  color: rgba(0, 255, 255, 0.6);
+
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background-color: rgba(0, 255, 255, 0.6);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
   }
 }

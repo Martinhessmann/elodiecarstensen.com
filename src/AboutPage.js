@@ -130,9 +130,12 @@ const AboutPage = ({ data }) => {
       >
         <div className="about-content">
           <div className="about-frame">
+            <div className="status-indicator">
+              SURVEILLANCE ACTIVE // SIGNAL STRENGTH: 98%
+            </div>
             <div className="scrollable-content">
               <div className="newsletter-form top-form">
-                <h2>// subscribe for more updates</h2>
+                <h2>// SYSTEM BROADCAST SUBSCRIPTION</h2>
                 <form onSubmit={handleSubmit}>
                   <div className="input-group">
                     <input
@@ -152,25 +155,31 @@ const AboutPage = ({ data }) => {
                 </form>
               </div>
 
-              <h1>// About Elodie Carstensen</h1>
-              {renderSection("ABOUT", (
+              <h1>// SUBJECT PROFILE: ELODIE CARSTENSEN</h1>
+              {renderSection("LOCATION DATA", (
                 <div className="about-info">
-                  <div className="info-line"><span className="info-key">creator</span> <span className="info-value">{data.imprint.name}</span></div>
-                  <div className="info-line"><span className="info-key">location</span> <span className="info-value">{data.imprint.address.join(', ')}</span></div>
                   <div className="info-line">
-                    <span className="info-key">email</span>
+                    <span className="info-key">SUBJECT ID</span>
+                    <span className="info-value">{data.imprint.name}</span>
+                  </div>
+                  <div className="info-line">
+                    <span className="info-key">BASE COORDINATES</span>
+                    <span className="info-value">{data.imprint.address.join(', ')}</span>
+                  </div>
+                  <div className="info-line">
+                    <span className="info-key">COMM CHANNEL</span>
                     <span className="info-value">
                       <a href={`mailto:${data.inquiries.email}`} className="email-link">
                         {data.inquiries.email}
                         <svg className="mail-icon" width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M12.6 0H1.4C0.63 0 0.00699999 0.63 0.00699999 1.4L0 9.8C0 10.57 0.63 11.2 1.4 11.2H12.6C13.37 11.2 14 10.57 14 9.8V1.4C14 0.63 13.37 0 12.6 0ZM12.6 2.8L7 6.3L1.4 2.8V1.4L7 4.9L12.6 1.4V2.8Z" fill="white" />
+                          <path d="M12.6 0H1.4C0.63 0 0.00699999 0.63 0.00699999 1.4L0 9.8C0 10.57 0.63 11.2 1.4 11.2H12.6C13.37 11.2 14 10.57 14 9.8V1.4C14 0.63 13.37 0 12.6 0ZM12.6 2.8L7 6.3L1.4 2.8V1.4L7 4.9L12.6 1.4V2.8Z" fill="currentColor" />
                         </svg>
                       </a>
                     </span>
                   </div>
                 </div>
               ))}
-              {renderSection("Exhibitions", (
+              {renderSection("RECORDED ACTIVITIES", (
                 <div className="exhibitions-list">
                   {data.exhibitions.map((yearGroup, index) => (
                     <div key={index} className="year-group">
@@ -190,7 +199,7 @@ const AboutPage = ({ data }) => {
                   ))}
                 </div>
               ))}
-              {renderSection("Awards", (
+              {renderSection("ACHIEVEMENTS", (
                 <ul className="awards-list">
                   {data.awards.map((award, index) => (
                     <li key={index} className="info-line">
@@ -203,7 +212,7 @@ const AboutPage = ({ data }) => {
                   ))}
                 </ul>
               ))}
-              {renderSection("Press", (
+              {renderSection("MEDIA COVERAGE", (
                 <div className="press-list">
                   {data.press_mentions.map((yearGroup, index) => (
                     <div key={index} className="year-group">
@@ -223,7 +232,7 @@ const AboutPage = ({ data }) => {
                   ))}
                 </div>
               ))}
-              {renderSection("Muses", (
+              {renderSection("KNOWN ASSOCIATES", (
                 <ul className="person-list">
                   {data.muses.sort(sortByName).map((person, index) => (
                     <li key={index} className="info-line">
@@ -236,7 +245,7 @@ const AboutPage = ({ data }) => {
                   ))}
                 </ul>
               ))}
-              {renderSection("Collaborators", (
+              {renderSection("COLLABORATORS", (
                 <ul className="person-list">
                   {data.collaborators.sort(sortByName).map((person, index) => (
                     <li key={index} className="info-line">

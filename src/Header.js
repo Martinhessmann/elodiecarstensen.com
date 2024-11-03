@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { getAssetUrl } from './assetUtils';
+import NavigationMenu from './NavigationMenu';
 import './Header.scss';
 
 const Header = ({ project, projects, onProjectSelect }) => {
@@ -16,7 +17,7 @@ const Header = ({ project, projects, onProjectSelect }) => {
 
   const handleProjectClick = (projectId) => {
     onProjectSelect(projectId);
-    setIsMenuOpen(false); // Close the menu when a project is selected
+    setIsMenuOpen(false);
     if (projectId === 'about') {
       navigate('/about');
     } else {
@@ -27,58 +28,48 @@ const Header = ({ project, projects, onProjectSelect }) => {
   const isAboutActive = location.pathname === '/about';
 
   return (
-    <motion.header
-      className="header"
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ type: 'spring', stiffness: 120, damping: 20 }}
-    >
-      <div className="header-logo-container">
-        <img
-          src={logoUrl}
-          alt="Elodie Carstensen Logo"
-          className="header-logo"
-          onClick={handleLogoClick}
-        />
-      </div>
-      {project && (
-        <div
-          className={`header-project-menu ${isMenuOpen ? 'open' : ''}`}
-          onMouseEnter={() => setIsMenuOpen(true)}
-          onMouseLeave={() => setIsMenuOpen(false)}
-        >
-          <div
-            className={`current-project ${isAboutActive && project.id === 'contact' ? 'active' : ''}`}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <span className="project-name">{project.name}</span>
-            {project.season && (
-              <>
-                <span className="project-separator">/</span>
-                <span className="project-season">{project.season}</span>
-              </>
-            )}
-          </div>
-          <div className={`project-options ${isMenuOpen ? 'open' : ''}`}>
-            {projects.filter(p => p.id !== project.id).map(p => (
-              <div
-                key={p.id}
-                className={`project-option ${isAboutActive && p.id === 'contact' ? 'active' : ''}`}
-                onClick={() => handleProjectClick(p.id)}
-              >
-                <span className="project-name">{p.name}</span>
-                {p.season && (
-                  <>
-                    <span className="project-separator">/</span>
-                    <span className="project-season">{p.season}</span>
-                  </>
-                )}
-              </div>
-            ))}
+    <>
+      <motion.header
+        className="header"
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ type: 'spring', stiffness: 120, damping: 20 }}
+      >
+        <div className="header-logo-container">
+          <img
+            src={logoUrl}
+            alt="Elodie Carstensen Logo"
+            className="header-logo"
+            onClick={handleLogoClick}
+          />
+          <div className="logo-status">
+            EC-SYSTEM
           </div>
         </div>
-      )}
-    </motion.header>
+        {project && (
+          <div
+            className="header-project-trigger"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <div className={`current-project ${isAboutActive && project.id === 'contact' ? 'active' : ''}`}>
+              <span className="project-name">{project.name}</span>
+              {project.season && (
+                <>
+                  <span className="project-separator">/</span>
+                  <span className="project-season">{project.season}</span>
+                </>
+              )}
+            </div>
+          </div>
+        )}
+      </motion.header>
+      <NavigationMenu
+        isOpen={isMenuOpen}
+        onSelectProject={handleProjectClick}
+        projects={projects}
+        currentProject={project}
+      />
+    </>
   );
 };
 
