@@ -93,9 +93,15 @@ const Gallery = ({ projects, currentProject, setCurrentProject }) => {
     }))
   };
 
+  const projectTitle = currentProject ? `${currentProject.name} by Elodie Carstensen` : 'Elodie Carstensen - Fashion Designer & Artist';
+
   return (
     <>
       <Helmet>
+        <title>{projectTitle}</title>
+        <meta name="title" content={projectTitle} />
+        <meta property="og:title" content={projectTitle} />
+        <meta property="twitter:title" content={projectTitle} />
         <link rel="canonical" href={`https://www.elodiecarstensen.com/gallery/${projectId}`} />
         <link rel="alternate" href={`https://elodiecarstensen.com/gallery/${projectId}`} />
         {/* If there were old URLs, add them here */}

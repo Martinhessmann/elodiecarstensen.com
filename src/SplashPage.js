@@ -155,11 +155,10 @@ const SplashPage = () => {
   return (
     <>
       <Helmet>
-        <link rel="canonical" href="https://www.elodiecarstensen.com" />
-        {/* These are the alternate versions */}
-        <link rel="alternate" href="https://elodiecarstensen.com" />
-        <link rel="alternate" href="http://www.elodiecarstensen.com" />
-        <link rel="alternate" href="http://elodiecarstensen.com" />
+        <title>Elodie Carstensen - Fashion Designer & Artist Creating Immersive Worlds</title>
+        <meta name="title" content="Elodie Carstensen - Fashion Designer & Artist Creating Immersive Worlds" />
+        <meta property="og:title" content="Elodie Carstensen - Fashion Designer & Artist Creating Immersive Worlds" />
+        <meta property="twitter:title" content="Elodie Carstensen - Fashion Designer & Artist Creating Immersive Worlds" />
       </Helmet>
       <div
         className="splash-container"
