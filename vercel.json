@@ -1,6 +1,7 @@
 {
   "redirects": [
-    { "source": "/work/:path*", "destination": "/gallery/:path*", "permanent": true },
+    { "source": "/work/:slug", "destination": "/gallery/:slug", "permanent": true },
+    { "source": "/work", "destination": "/gallery", "permanent": true },
     { "source": "/freelance-costume-designer-in-berlin", "destination": "/", "permanent": true },
     { "source": "/twisted-vorn-berlin-fashion-hub-design-academy", "destination": "/about", "permanent": true },
     { "source": "/plastic-barock", "destination": "/about", "permanent": true },

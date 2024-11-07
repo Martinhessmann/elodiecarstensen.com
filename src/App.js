@@ -65,10 +65,14 @@ function App() {
 
   useEffect(() => {
     if (location.pathname.startsWith('/work/')) {
-      const projectId = location.pathname.split('/').pop();
-      navigate(`/gallery/${projectId}`, { replace: true });
+      const projectId = location.pathname.split('/work/')[1];
+      if (projectId) {
+        navigate(`/gallery/${projectId}`, { replace: true });
+      } else {
+        navigate('/gallery', { replace: true });
+      }
     }
-  }, [location.pathname]);
+  }, [location.pathname, navigate]);
 
   if (isLoading) {
     return <div>Loading...</div>;
