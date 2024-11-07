@@ -53,6 +53,19 @@ body {
 
 .gallery-slide.about-slide .image-container {
   width: 100vw; // Full width for ABOUT images
+
+  // Add gradient overlay
+  &:before {
+    content: '';
+    position: absolute;
+    left: -5vw; // Extend slightly beyond the container
+    top: -2rem;
+    width: calc(100% + 5vw);
+    height: calc(100% + 4rem);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0) 100%);
+    z-index: 2;
+    pointer-events: none;
+  }
 }
 
 .gallery-slide.alluvial-intro .image-container {
@@ -132,30 +145,45 @@ body {
   text-align: right;
 }
 
-.about-text {
+.about-text-container {
   position: absolute;
   bottom: 5%;
   left: 5%;
-  width: 25%; // 25% width for desktop
+  width: 25%;
+  z-index: 10;
+
+  @media (max-width: 768px) {
+    width: 50%;
+  }
+}
+
+.about-text {
   color: $color-white;
   @include font-tiny;
   text-align: left;
   padding: 0;
-  margin: 0;
-  z-index: 10;
-  max-height: 80vh;
-  overflow: auto;
+  margin: 0 0 8px 0; // Add margin bottom for button
+  display: -webkit-box;
+  -webkit-line-clamp: 10;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.3s ease;
+
+  &.expanded {
+    -webkit-line-clamp: unset;
+    max-height: 75vh;
+    overflow-y: auto;
+  }
 
   @media (min-width: 769px) {
     @include font-small;
   }
 
-  h1 {
-    @include font-tiny;
-
-    @media (min-width: 769px) {
-      @include font-small;
-    }
+  .credits-label {
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 5px;
   }
 }
 
@@ -176,13 +204,20 @@ body {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  margin-top: 8px; // Add some space between text and button
 
   @media (min-width: 769px) {
     @include font-small;
   }
 
+  &:before {
+    content: '>>';
+    margin-right: 5px;
+    transition: transform 0.1s ease-in-out;
+  }
+
   &:hover {
-    text-decoration: underline;
+    transform: translateX(5px);
   }
 }
 
@@ -191,9 +226,16 @@ body {
   max-height: 0;
   overflow: hidden;
   transition: opacity 0.3s ease, max-height 0.3s ease;
+  display: -webkit-box;
+  -webkit-line-clamp: 10; // Show 10 lines
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
 
   &.visible {
     opacity: 1;
+    display: block; // Reset display to show full content
+    max-height: 1000px;
+    -webkit-line-clamp: unset;
   }
 }
 
@@ -212,14 +254,6 @@ body {
 
 // Media query for mobile devices
 @media (max-width: 768px) {
-  .about-text {
-    width: 50%; // 50% width for mobile
-  }
-
-  .credits-text {
-    width: 50%;
-  }
-
   .gallery-slide.alluvial-intro .image-container {
     background-position: 80% center; // Move further right on mobile
   }
@@ -227,6 +261,10 @@ body {
   .gallery-slide.alluvial-intro .image-container img {
     object-position: 80% center; // Move further right on mobile
   }
+}
+
+.gallery-slide.alluvial-intro .image-container img {
+  filter: brightness(50%);
 }
 
 .image-description {

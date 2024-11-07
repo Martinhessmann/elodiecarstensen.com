@@ -101,6 +101,9 @@
   height: 110%;
   background: rgba(217, 217, 217, 0.01);
   backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  transform: translateZ(0);
+  will-change: backdrop-filter;
   pointer-events: none;
   z-index: 10;
   -webkit-mask:

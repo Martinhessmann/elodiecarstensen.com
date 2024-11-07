@@ -120,18 +120,29 @@ const Gallery = ({ projects, currentProject, setCurrentProject }) => {
                 alt={`${currentProject.name} - ${image.highlight?.text || `Image ${index + 1}`}`}
                 className="gallery-image"
               />
-              {image.id === 'about' && (
-                <div className="about-text">
-                  <h1>{currentProject.name}</h1>
-                  <p>{image.text}</p>
-                  <div className="credits-button-wrapper">
-                    <button className="credits-button" onClick={toggleCredits}>
-                      {showCredits ? '// Hide Credits' : '// Show Credits'}
-                    </button>
+              {index === 0 && (
+                <div className="about-text-container">
+                  <div className={`about-text ${showCredits ? 'expanded' : ''}`}>
+                    {image.text && (
+                      <>
+                        {image.text}
+                        {currentProject.credits && (
+                          <>
+                            <br />
+                            <br />
+                          </>
+                        )}
+                      </>
+                    )}
+                    {currentProject.credits && (
+                      <>
+                        <span className="credits-label">Credits:</span> {currentProject.credits}
+                      </>
+                    )}
                   </div>
-                  <div className={`credits-content ${showCredits ? 'visible' : ''}`}>
-                    {currentProject.credits}
-                  </div>
+                  <button className="credits-button" onClick={toggleCredits}>
+                    {showCredits ? 'Show Less' : 'Show More'}
+                  </button>
                 </div>
               )}
               {image.highlight && (
