@@ -5,9 +5,11 @@ const BrevoForm = ({ onSubmit, email, setEmail }) => {
     e.preventDefault();
 
     try {
-      if (!process.env.REACT_APP_BREVO_API_KEY) {
+      const apiKey = process.env.REACT_APP_BREVO_API_KEY;
+      if (!apiKey) {
         console.error('API key is missing');
-        throw new Error('Configuration error');
+        onSubmit(false);
+        return;
       }
 
       const response = await fetch('https://api.brevo.com/v3/contacts', {
@@ -15,7 +17,7 @@ const BrevoForm = ({ onSubmit, email, setEmail }) => {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'api-key': process.env.REACT_APP_BREVO_API_KEY
+          'api-key': apiKey
         },
         body: JSON.stringify({
           email: email,
