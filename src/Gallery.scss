@@ -185,6 +185,16 @@ body {
     display: inline-block;
     margin-right: 5px;
   }
+
+  h1 {
+    @include font-small;
+    margin: 0 0 1em 0;
+    color: $color-white;
+    &::before {
+      content: '//';
+      margin-right: 0.5em;
+    }
+  }
 }
 
 .credits-button-wrapper {

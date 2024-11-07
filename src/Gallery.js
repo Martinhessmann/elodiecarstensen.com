@@ -125,6 +125,7 @@ const Gallery = ({ projects, currentProject, setCurrentProject }) => {
                   <div className={`about-text ${showCredits ? 'expanded' : ''}`}>
                     {image.text && (
                       <>
+                        <h1>{currentProject.name}</h1>
                         {image.text}
                         {currentProject.credits && (
                           <>
