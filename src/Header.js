@@ -16,13 +16,20 @@ const Header = ({ project, projects, onProjectSelect }) => {
 
   const handleProjectClick = (projectId) => {
     onProjectSelect(projectId);
-    setIsMenuOpen(false); // Close the menu when a project is selected
+    setIsMenuOpen(false);
     if (projectId === 'about') {
       navigate('/about');
     } else {
       navigate(`/gallery/${projectId}`);
     }
   };
+
+  // Sort projects chronologically by season
+  const sortedProjects = [...projects].sort((a, b) => {
+    const seasonA = parseInt(a.season?.replace('SS', '') || '0');
+    const seasonB = parseInt(b.season?.replace('SS', '') || '0');
+    return seasonB - seasonA; // Descending order (newest first)
+  });
 
   const isAboutActive = location.pathname === '/about';
 
@@ -46,10 +53,15 @@ const Header = ({ project, projects, onProjectSelect }) => {
           className={`header-project-menu ${isMenuOpen ? 'open' : ''}`}
           onMouseEnter={() => setIsMenuOpen(true)}
           onMouseLeave={() => setIsMenuOpen(false)}
+          role="navigation"
+          aria-label="Project navigation"
         >
-          <div
+          <button
             className={`current-project ${isAboutActive && project.id === 'contact' ? 'active' : ''}`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-expanded={isMenuOpen}
+            aria-controls="project-menu"
+            aria-label="Toggle project menu"
           >
             <span className="project-name">{project.name}</span>
             {project.season && (
@@ -58,23 +70,38 @@ const Header = ({ project, projects, onProjectSelect }) => {
                 <span className="project-season">{project.season}</span>
               </>
             )}
-          </div>
-          <div className={`project-options ${isMenuOpen ? 'open' : ''}`}>
-            {projects.filter(p => p.id !== project.id).map(p => (
-              <div
-                key={p.id}
-                className={`project-option ${isAboutActive && p.id === 'contact' ? 'active' : ''}`}
-                onClick={() => handleProjectClick(p.id)}
-              >
-                <span className="project-name">{p.name}</span>
-                {p.season && (
-                  <>
-                    <span className="project-separator">/</span>
-                    <span className="project-season">{p.season}</span>
-                  </>
-                )}
-              </div>
-            ))}
+            <span className="menu-indicator" aria-hidden="true">
+              {['absence-of-promised-safety', 'des-nachtmahrs-schmetterlinge', 'alluvial', 'about'].map((pageId) => (
+                <span
+                  key={pageId}
+                  className={`dot ${project.id === pageId ? 'active' : ''}`}
+                />
+              ))}
+            </span>
+          </button>
+          <div
+            id="project-menu"
+            className={`project-options ${isMenuOpen ? 'open' : ''}`}
+            role="menu"
+          >
+            {sortedProjects
+              .filter(p => p.id !== project.id)
+              .map(p => (
+                <button
+                  key={p.id}
+                  className={`project-option ${isAboutActive && p.id === 'contact' ? 'active' : ''}`}
+                  onClick={() => handleProjectClick(p.id)}
+                  role="menuitem"
+                >
+                  <span className="project-name">{p.name}</span>
+                  {p.season && (
+                    <>
+                      <span className="project-separator">/</span>
+                      <span className="project-season">{p.season}</span>
+                    </>
+                  )}
+                </button>
+              ))}
           </div>
         </div>
       )}
