@@ -7,17 +7,13 @@
     <meta name="supported-color-schemes" content="light dark">
     <title>Neural Link Established</title>
     <style>
-        /* Reset styles for email clients */
+        /* Reset and base styles */
         body, p, div, ul, li {
             margin: 0;
             padding: 0;
             border: 0;
-            font-size: 100%;
-            font: inherit;
-            vertical-align: baseline;
         }
 
-        /* Base styles */
         body {
             background-color: #091115 !important;
             color: #FFFFFF !important;
@@ -42,67 +38,72 @@
             white-space: pre;
             text-align: center;
             line-height: 1.2;
-            font-size: 4px;
+            font-size: 7px;
             letter-spacing: 0;
             color: #38DBD5;
             margin: 20px auto;
             display: block;
         }
 
-        @media screen and (min-width: 400px) {
-            .ascii-logo {
-                font-size: 6px;
-            }
-        }
-
-        @media screen and (min-width: 600px) {
-            .ascii-logo {
-                font-size: 8px;
-            }
-        }
-
-        .title {
-            text-align: center;
-            color: #FFFFFF;
-            margin-bottom: 20px;
-            font-weight: normal;
-        }
-
-        .divider {
-            border: 0;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.2);
-            margin: 30px 0;
-        }
-
-        .terminal-box {
+        .terminal-window {
             border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 20px;
-            margin: 20px 0;
             background-color: rgba(0, 0, 0, 0.3);
-            line-height: 1.6;
-            position: relative;
+            margin: 30px 0;
+            padding: 20px;
         }
 
-        .terminal-box::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 20px;
-            width: 4px;
-            height: 16px;
-            background: #38DBD5;
-            animation: blink 1s step-end infinite;
-        }
-
-        .terminal-box p {
+        .status-message {
+            color: rgba(255, 255, 255, 0.7);
             margin-bottom: 10px;
-            padding-left: 16px;
+        }
+
+        .status-message::before {
+            content: ">";
+            color: #38DBD5;
+            margin-right: 10px;
+        }
+
+        .access-list {
+            color: rgba(255, 255, 255, 0.7);
+            margin: 20px 0;
+            list-style: none;
+        }
+
+        .access-list li {
+            margin-bottom: 5px;
+        }
+
+        .access-list li::before {
+            content: "//";
+            color: #38DBD5;
+            margin-right: 10px;
+        }
+
+        .cursor-line {
+            margin-top: 30px;
             color: rgba(255, 255, 255, 0.7);
         }
 
-        .terminal-box p:last-child {
+        .cursor-line::before {
+            content: ">";
             color: #38DBD5;
+            margin-right: 10px;
+        }
+
+        .cursor-line span {
+            animation: blink 1s step-end infinite;
+        }
+
+        .mail-footer {
+            margin-top: 40px;
+            color: rgba(255, 255, 255, 0.4);
+            text-align: center;
+            font-size: 10px;
+        }
+
+        .footer-links {
+            margin: 10px 0;
+            color: rgba(255, 255, 255, 0.5);
         }
 
         .link {
@@ -110,68 +111,24 @@
             text-decoration: none;
         }
 
-        .footer {
-            text-align: center;
-            color: rgba(255, 255, 255, 0.5);
+        .brand-footer {
             margin-top: 40px;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer p {
-            margin-bottom: 10px;
-        }
-
-        .footer-links {
-            margin: 20px 0;
-        }
-
-        .footer-brand {
-            letter-spacing: 3px;
-            color: rgba(255, 255, 255, 0.4);
-            margin-top: 30px;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .legal-footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 3px;
             font-size: 10px;
-            color: rgba(255, 255, 255, 0.4);
-            margin-top: 10px;
         }
 
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin: 20px 0;
-        }
-
-        ul li {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        ul li::before {
-            content: "//";
-            position: absolute;
-            left: 0;
-            color: #38DBD5;
-            display: inline-block;
-            width: 20px;
+        .legal-info {
+            margin-top: 8px;
+            color: rgba(255, 255, 255, 0.2);
         }
 
         @keyframes blink {
             0%, 50% { opacity: 1; }
             51%, 100% { opacity: 0; }
-        }
-
-        /* Mobile responsiveness */
-        @media screen and (max-width: 600px) {
-            .container {
-                padding: 15px;
-            }
         }
     </style>
 </head>
@@ -201,44 +158,37 @@
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</pre>
 
-        <div class="title">[!] ACCESS LEVEL UPDATE RECEIVED</div>
+        <div class="terminal-window">
+            <div class="status-message">INITIALIZING CONNECTION...</div>
+            <div class="status-message">AUTHENTICATING USER: {{contact.EMAIL}}</div>
+            <div class="status-message">ACCESS LEVEL: GRANTED</div>
+            <div class="status-message">NETWORK ACCESS CONFIRMED</div>
 
-        <hr class="divider">
+            <ul class="access-list">
+                <li>EARLY ANNOUNCEMENTS</li>
+                <li>EXHIBITION PREVIEWS</li>
+                <li>BEHIND-THE-SCENES CONTENT</li>
+                <li>SPECIAL EVENTS ACCESS</li>
+            </ul>
 
-        <div class="terminal-box">
-            <p>> INITIALIZING CONNECTION...</p>
-            <p>> AUTHENTICATING USER: {{contact.EMAIL}}</p>
-            <p>> ACCESS LEVEL: GRANTED</p>
-            <p>> WELCOME TO THE NETWORK</p>
+            <div class="cursor-line"><span>_</span></div>
         </div>
 
-        <p>YOUR CONNECTION TO THE ELODIE CARSTENSEN CREATIVE NETWORK HAS BEEN SUCCESSFULLY ESTABLISHED. YOU NOW HAVE PRIVILEGED ACCESS TO:</p>
-
-        <ul>
-            <li>EARLY ANNOUNCEMENTS</li>
-            <li>EXHIBITION PREVIEWS</li>
-            <li>BEHIND-THE-SCENES CONTENT</li>
-            <li>SPECIAL EVENTS ACCESS</li>
-        </ul>
-
-        <hr class="divider">
-
-        <div class="footer">
-            <p>THIS IS AN AUTOMATED MESSAGE FROM THE ELODIE CARSTENSEN NETWORK.</p>
-            <p>SENT TO: {{contact.EMAIL}}</p>
+        <div class="mail-footer">
+            <div>THIS IS AN AUTOMATED MESSAGE</div>
+            <div>SENT TO: {{contact.EMAIL}}</div>
 
             <div class="footer-links">
                 <a href="{{ mirror }}" class="link">VIEW IN BROWSER</a> |
                 <a href="{{ unsubscribe }}" class="link">TERMINATE CONNECTION</a>
             </div>
+        </div>
 
-            <div class="footer-brand">
-                ELODIE CARSTENSEN
-            </div>
-
-            <div class="legal-footer">
-                <p><a href="https://www.elodiecarstensen.com" class="link">WWW.ELODIECARSTENSEN.COM</a></p>
-                <p>KADINER STR. 20A, 10243-B</p>
+        <div class="brand-footer">
+            ELODIE CARSTENSEN
+            <div class="legal-info">
+                <div><a href="https://www.elodiecarstensen.com" class="link">WWW.ELODIECARSTENSEN.COM</a></div>
+                <div>KADINER STR. 20A, 10243-B</div>
             </div>
         </div>
     </div>
